@@ -1,0 +1,2020 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClientSDK</name>
+    </assembly>
+    <members>
+        <member name="T:com.ricoh.livestreaming.ConnectionParameter">
+            <summary>
+            Connectionの情報。
+            Connect成功時などにレスポンスとして取得できる。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.ConnectMessage">
+            <summary>
+            Connect要求のメッセージ。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.ErrorDetail">
+            <summary>
+            Error detail.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.ErrorDetail.Code">
+            <summary>
+            Error code.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.ErrorDetail.Error">
+            <summary>
+            Error string.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.ErrorDetail.Type">
+            <summary>
+            Error type.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.ErrorDetail.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Create new ErrorDetail.
+            </summary>
+            <param name="code">Error code.</param>
+            <param name="error">Error string.</param>
+            <param name="exception"><see cref="T:System.Exception"/></param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.ErrorDetail.ToReportString">
+            <summary>
+            Get report string of error.
+            </summary>
+            <returns>report string of error.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.ErrorType">
+            <summary>
+            Enum of error type of SDK
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.ErrorType.ParameterError">
+            <summary>
+            Invalid parameter
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.ErrorType.NetworkError">
+            <summary>
+            Network error
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.ErrorType.UnexpectedError">
+            <summary>
+            Unexpected error
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.IceTransportPolicy">
+            <summary>
+            Transport policies of the ICE candidates.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.IceTransportPolicy.Relay">
+            <summary>
+            Only ICE candidates whose IP addresses are being relayed, such as those being passed through a TURN server, will be considered.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.IceTransportPolicy.All">
+            <summary>
+            All ICE candidates will be considered.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.IMessage">
+            <summary>
+            メッセージのインターフェース。
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IMessage.ToJson">
+            <summary>
+            JSON形式の文字列に変換する。
+            </summary>
+            <returns>JSON形式の文字列</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.ISignalingChannelListener">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.SignalingChannel"/>のイベントのコールバックを受けるインターフェース
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.ISignalingChannelListener.OnUpdateRemoteConnection(System.String,System.Collections.Generic.List{com.ricoh.livestreaming.RemoteTag})">
+            <summary>
+            Called when received notify.connection.update message
+            </summary>
+            <param name="connectionId">updated connection id</param>
+            <param name="metadata">new metadata of remote connection</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.IClientListener">
+            <summary>
+            Event Listener of <see cref="T:com.ricoh.livestreaming.Client"/>.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnConnecting">
+            <summary>
+            Called when the <see cref="T:com.ricoh.livestreaming.Client"/> start to connect to the server.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnOpen">
+            <summary>
+            Called when the <see cref="T:com.ricoh.livestreaming.Client"/> is connected to the server.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnClosing">
+            <summary>
+            Called when the <see cref="T:com.ricoh.livestreaming.Client"/> start to disconnect from the server.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnClosed">
+            <summary>
+            Called when the <see cref="T:com.ricoh.livestreaming.Client"/> is disconnected from the server.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddLocalTrack(com.ricoh.livestreaming.webrtc.MediaStreamTrack,com.ricoh.livestreaming.webrtc.MediaStream)">
+            <summary>
+            Called when new local track added.
+            </summary>
+            <param name="mediaStreamTrack">Added local track.</param>
+            <param name="stream">Added local stream.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddRemoteTrack(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.Collections.Generic.Dictionary{System.String,System.Object},com.ricoh.livestreaming.MuteType)">
+            <summary>
+            Called when new remote track added.
+            </summary>
+            <param name="connectionId">Connection ID.</param>
+            <param name="stream">Added remote stream.</param>
+            <param name="mediaStreamTrack">Added remote track.</param>
+            <param name="metadata">Metadata of track.</param>
+            <param name="muteType">Mute type of track.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Called when remote connection added.
+            </summary>
+            <param name="connectionId">connection id</param>
+            <param name="metadata">Metadata of track.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{com.ricoh.livestreaming.webrtc.MediaStreamTrack})">
+            <summary>
+            Called when remote connection removed.
+            </summary>
+            <param name="connectionId">Connection ID.</param>
+            <param name="metadata">Metadata of track.</param>
+            <param name="mediaStreamTracks">List of media stream track.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnError(com.ricoh.livestreaming.SDKErrorEvent)">
+            <summary>
+            Called when an error occurs.
+            </summary>
+            <param name="errorEvent"><see cref="T:com.ricoh.livestreaming.SDKErrorEvent"/></param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Called when update metadata of remote connection
+            </summary>
+            <param name="connectionId">updated connection id</param>
+            <param name="metadata">new metadata of remote connection</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateRemoteTrack(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Called when remote track updated.
+            </summary>
+            <param name="connectionId">Connection ID.</param>
+            <param name="stream">Updated remote stream.</param>
+            <param name="mediaStreamTrack">Updated remote track.</param>
+            <param name="metadata">Metadata of track.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateMute(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,com.ricoh.livestreaming.MuteType)">
+            <summary>
+            Called when remote track mute state updated.
+            </summary>
+            <param name="connectionId">Connection ID.</param>
+            <param name="stream">Updated remote stream.</param>
+            <param name="mediaStreamTrack">Updated remote track.</param>
+            <param name="muteType">new mute state.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnChangeStability(System.String,com.ricoh.livestreaming.Stability)">
+            <summary>
+            Called when stability of the connection changed.
+            </summary>
+            <param name="connectionId">Connection ID.</param>
+            <param name="stability">Stability.</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LocalLSTrack">
+            <summary>
+            LocalLSTrack
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalLSTrack.TrackId">
+            <summary>
+            ID of LSTrack.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalLSTrack.MediaStreamTrack">
+            <summary>
+            Media stream track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalLSTrack.MediaStream">
+            <summary>
+            Media stream.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalLSTrack.LSTrack">
+            <summary>
+            LSTrack set when connected.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalLSTrack.Metadata">
+            <summary>
+            Metadata.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalLSTrack.MuteType">
+            <summary>
+            Mute type.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.LocalLSTrack.#ctor(com.ricoh.livestreaming.LSTrack)">
+            <summary>
+            Create new LocalLSTrack.
+            </summary>
+            <param name="lsTrack"><see cref="T:com.ricoh.livestreaming.LSTrack"/></param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LocalTags">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.LocalTag"/>の配列を表すクラス。
+            配列のユニーク制約の機能を提供する。
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.LocalTags.Add(com.ricoh.livestreaming.LocalTag)">
+            <summary>
+            配列に要素を追加する。
+            </summary>
+            <param name="tag"></param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.LocalTags.ToList">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.LocalTag"/>の配列に変換する。
+            </summary>
+            <returns><see cref="T:com.ricoh.livestreaming.LocalTag"/>の配列</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LocalTagUpdate">
+            <summary>
+            LocalTag更新用
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalTagUpdate.Source">
+            <summary>
+            この Tag の生成元。
+            実際に送受信する文字列を表す。
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalTagUpdate.SourceType">
+            <summary>
+            この Tag の生成元。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSTrack">
+            <summary>
+            Wrapper of MediaStreamTrack.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.LSTrack.#ctor(com.ricoh.livestreaming.webrtc.MediaStreamTrack,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.LSTrackOption)">
+            <summary>
+            Create new LSTrack.
+            </summary>
+            <param name="mediaStreamTrack">Media stream track.</param>
+            <param name="stream">Media stream.</param>
+            <param name="option">option of LSTrack.</param>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSTrack.MediaStreamTrack">
+            <summary>
+            Media stream track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSTrack.MediaStream">
+            <summary>
+            Media stream.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSTrack.Metadata">
+            <summary>
+            Metadata.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSTrack.MuteType">
+            <summary>
+            Mute type.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSTrackOption">
+            <summary>
+            Options for LSTrack.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSTrackOption.Metadata">
+            <summary>
+            Metadata.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSTrackOption.MuteType">
+            <summary>
+            Mute type.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.LSTrackOption.SetMeta(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Set option for the LSTrack metadata.
+            </summary>
+            <param name="metadata">LSTrack meta.</param>
+            <returns>TrackOption's instance for method chain.</returns>
+            <exception cref="T:System.ArgumentNullException">metadata is null.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.LSTrackOption.SetMuteType(com.ricoh.livestreaming.MuteType)">
+            <summary>
+            Set option for mute type option.
+            </summary>
+            <param name="muteType">mute type of LSTrack.</param>
+            <returns>TrackOption's instance for method chain.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.MessageBase">
+            <summary>
+            メッセージの基底クラス。
+            JSON変換処理を提供する。
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.MessageBase.ToJson">
+            <summary>
+            <seealso cref="M:com.ricoh.livestreaming.IMessage.ToJson"/>
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.MessageBase.SdpType">
+            <summary>
+            RTCSessionDescriptionのタイプ
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.MessageBase.CreateSessionDescription(com.ricoh.livestreaming.MessageBase.SdpType,System.String)">
+            <summary>
+            RTCSessionDescriptionを作成する。
+            </summary>
+            <param name="type">種類</param>
+            <param name="sdp">Session Description Protocol</param>
+            <returns>RTCSessionDescription</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.MessageBase.CreateIceCandidateInit(System.String,System.String,System.Nullable{System.Int32},System.String)">
+            <summary>
+            RTCIceCandidateInitを作成する。
+            </summary>
+            <param name="candidate">The ICE candidate-attribute</param>
+            <param name="sdpMid">The identification tag of the media stream</param>
+            <param name="sdpMLineIndex">The zero-based index of the m-line within the SDP of the media description</param>
+            <param name="usernameFragment">A DOMString containing a string which uniquely identifies the remote peer</param>
+            <returns>RTCIceCandidateInit</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SDKErrorEvent">
+            <summary>
+            SDKErrorEvent
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.SDKErrorEvent.Detail">
+            <summary>
+            Error detail.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SDKErrorEvent.#ctor(com.ricoh.livestreaming.ErrorDetail)">
+            <summary>
+            Create new SDKErrorEvent.
+            </summary>
+            <param name="detail"><see cref="T:com.ricoh.livestreaming.ErrorDetail"/></param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SDKErrorEvent.ToReportString">
+            <summary>
+            Get report string of error.
+            </summary>
+            <returns>report string of error.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SDKException">
+            <summary>
+            SDKException
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.SDKException.Detail">
+            <summary>
+            Error detail.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SDKException.#ctor(com.ricoh.livestreaming.ErrorDetail)">
+            <summary>
+            Create new SDKException.
+            </summary>
+            <param name="detail"><see cref="T:com.ricoh.livestreaming.ErrorDetail"/></param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SDKException.ToReportString">
+            <summary>
+            Get report string of error.
+            </summary>
+            <returns>report string of error.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.Stability">
+            <summary>
+            Enum of stability.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.Stability.IceStable">
+            <summary>
+            ICE is stable.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.Stability.IceUnstable">
+            <summary>
+            ICE is unstable.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.MuteType">
+            <summary>
+            Mute type.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.MuteType.Unmute">
+            <summary>
+            Unmute
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.MuteType.SoftMute">
+            <summary>
+            Soft mute
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.MuteType.HardMute">
+            <summary>
+            Hard mute
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.P2PAnswerMessage">
+            <summary>
+            P2P Answerのメッセージ
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.P2PIcecandidateMessage">
+            <summary>
+            P2P Icecandidateのメッセージ
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.P2POfferMessage">
+            <summary>
+            P2P Offerのメッセージ。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.PongMessage">
+            <summary>
+            Pongのメッセージ。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.ReceivingOption">
+            <summary>
+            Receiving Option.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.ReceivingOption.Enabled">
+            <summary>
+            Receive or not.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.ReceivingOption.#ctor(System.Boolean)">
+            <summary>
+            Create new receiving option.
+            </summary>
+            <param name="enabled">Receive or not.</param>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteTag.Source">
+            <summary>
+            この Tag の生成元。
+            実際に送受信する文字列を表す。
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteTag.SourceType">
+            <summary>
+            この Tag の生成元。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SendingOption">
+            <summary>
+            Sending Option.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.SendingOption.Video">
+            <summary>
+            Sending Video Options.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption)">
+            <summary>
+            Create new sending option.
+            </summary>
+            <param name="video">Sending Video Options.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="video"/>is null.</exception>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SendingVideoOption">
+            <summary>
+            Sending Video Options.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SendingVideoOption.VideoCodecType">
+            <summary>
+            Supported video codecs.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.SendingVideoOption.VideoCodecType.Vp8">
+            <summary>
+            VP8
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.SendingVideoOption.VideoCodecType.Vp9">
+            <summary>
+            VP9
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.SendingVideoOption.VideoCodecType.H264">
+            <summary>
+            H264
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SendingVideoOption.SendingPriority">
+            <summary>
+            Sending priority.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.SendingVideoOption.SendingPriority.Normal">
+            <summary>
+            "normal"
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.SendingVideoOption.SendingPriority.High">
+            <summary>
+            "high"
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.SendingVideoOption.Codec">
+            <summary>
+            Video codec.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.SendingVideoOption.Priority">
+            <summary>
+            Priority.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.SendingVideoOption.MaxBitrateKbps">
+            <summary>
+            Max bit rate.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SendingVideoOption.SetCodec(com.ricoh.livestreaming.SendingVideoOption.VideoCodecType)">
+            <summary>
+            Set option for video codec type.
+            </summary>
+            <param name="codec"></param>
+            <returns>SendingVideoOption's instance for method chain.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SendingVideoOption.SetPriority(com.ricoh.livestreaming.SendingVideoOption.SendingPriority)">
+            <summary>
+            Set option for sending priority.
+            </summary>
+            <param name="priority"></param>
+            <returns>SendingVideoOption's instance for method chain.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SendingVideoOption.SetMaxBitrateKbps(System.Int32)">
+            <summary>
+            Set option for max bit rate.
+            </summary>
+            <param name="maxBitrateKbps">max bit rate.</param>
+            <returns>SendingVideoOption's instance for method chain.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SFUAnswerMessage">
+            <summary>
+            SFU Answerのメッセージ。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SFUIcecandidateMessage">
+            <summary>
+            SFU Icecandidateのメッセージ
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.ConnectionState">
+            <summary>
+             State of the <see cref="T:com.ricoh.livestreaming.Client"/>.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.ConnectionState.Idle">
+            <summary>
+            The <see cref="T:com.ricoh.livestreaming.Client"/> is not connected, and ready to connect.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.ConnectionState.Connecting">
+            <summary>
+            The <see cref="T:com.ricoh.livestreaming.Client"/> is connecting to the server.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.ConnectionState.Open">
+            <summary>
+            The <see cref="T:com.ricoh.livestreaming.Client"/> is connected to the server.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.ConnectionState.Closing">
+            <summary>
+            The <see cref="T:com.ricoh.livestreaming.Client"/> is disconnecting from the server.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.ConnectionState.Closed">
+            <summary>
+            The <see cref="T:com.ricoh.livestreaming.Client"/> is disconnected from the server.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SFUUpdateTrackMessage">
+            <summary>
+            SFU UpdateTrackのメッセージ。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SourceType">
+            <summary>
+            Tagの生成元の種類
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.SourceType.SDK">
+            <summary>
+            アプリケーションフロントエンドで SDK が生成
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.SourceType.AppFront">
+            <summary>
+            アプリケーションフロントエンドでアプリ自身が生成
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.SourceType.AppBack">
+            <summary>
+            アプリケーションバックエンドでアプリ自身が生成。
+            サービスによって署名されているため、アプリのユーザが変更できないメタデータを送信することができる
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SourceTypeConverter">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.SourceType"/>を変換するクラス。
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SourceTypeConverter.Serialize(com.ricoh.livestreaming.SourceType)">
+            <summary>
+            送信元の種類を文字列に変換する。
+            </summary>
+            <param name="type">変換する値</param>
+            <returns>変換結果</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="type"/>がサポート外。</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SourceTypeConverter.Deserialize(System.String)">
+            <summary>
+            送信元の種類を表す文字列を送信元の種類に変換する。
+            </summary>
+            <param name="type">変換する値</param>
+            <returns>変換結果</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="type"/>がサポート外。</exception>
+        </member>
+        <member name="T:com.ricoh.livestreaming.Tag">
+            <summary>
+            Track や Connection に付与されるメタ情報を表す Tag の基本形。
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Tag.Name">
+            <summary>
+            Tag の名前
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Tag.Value">
+            <summary>
+            Tag と紐づけられた要素
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.TagContainsTagUses">
+            <summary>
+            Tag の用途を表すミックスイン要素を含むTag。
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.TagContainsTagUses.UseNotification">
+            <summary>
+            この Tag を Room に入っている別の Connection に通知するか
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.TagContainsTagUses.UseAnalysis">
+            <summary>
+            この Tag を課金または分析用途の集計で使うか
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalTag.Source">
+            <summary>
+            この Tag の生成元。
+            実際に送受信する文字列を表す。
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LocalTag.SourceType">
+            <summary>
+            この Tag の生成元。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SFUUpdateAnswerMessage">
+            <summary>
+            SFU UpdateAnswerのメッセージ。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.ByteArrayReceiver">
+            <summary>
+            Receiver for byte array stream.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.ByteArrayReceiver.Receive(System.IntPtr,System.IntPtr,com.ricoh.livestreaming.webrtc.VideoTrack)">
+            <summary>
+            Receive color and depth data.
+            </summary>
+            <param name="pColorArea">Color buffer.</param>
+            <param name="pDepthArea">Depth buffer.</param>
+            <param name="videoTrack">Video track.</param>
+            <returns>true is succeed.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.ByteArrayFunction">
+            <summary>
+            Class of Byte array function.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.ByteArrayFunction.#ctor(com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet)">
+            <summary>
+            Create new <see cref="T:com.ricoh.livestreaming.unity.ByteArrayFunction"/>.
+            </summary>
+            <param name="layout">Image layout parameter.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.ByteArrayFunction.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.ByteArrayFunction.CreateReceiver">
+            <summary>
+            Create Byte array receiver.
+            </summary>
+            <returns>Byte array receiver.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.ByteArrayFunction.CreateCapturer(System.Int32,System.Int32)">
+            <summary>
+            Create Byte array capturer.
+            </summary>
+            <param name="videoWidth">Video width.</param>
+            <param name="videoHeight">Video height.</param>
+            <returns>Byte array capturer.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout">
+            <summary>
+            Setting of Image layout.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.src_x">
+            <summary>
+            Source x position.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.src_y">
+            <summary>
+            Source y position.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.tex_w">
+            <summary>
+            Width of source buffer.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.tex_h">
+            <summary>
+            Height of source buffer.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.render_x">
+            <summary>
+            Destination x position.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.render_y">
+            <summary>
+            Destination y position.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.w">
+            <summary>
+            Width of write size.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.h">
+            <summary>
+            Height of write size.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet">
+            <summary>
+            Settings of Image layout.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.src_num">
+            <summary>
+            Number of the camera.
+            Must be set to a value of 5 or less.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color_area_w">
+            <summary>
+            Width size of color writing destination.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color_area_h">
+            <summary>
+            Height size of color writing destination.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_area_w">
+            <summary>
+            Width size of depth writing destination.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_area_h">
+            <summary>
+            Height size of depth writing destination.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_scale">
+            <summary>
+            Depth compression scale.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_min">
+            <summary>
+            Depth minimum value.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_max">
+            <summary>
+            Depth maximum value.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color">
+            <summary>
+            Color writing settings for each camera.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth">
+            <summary>
+            Depth writing settings for each camera.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.TotalWidth">
+            <summary>
+            Get total width.
+            </summary>
+            <returns>total width</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread">
+            <summary>
+            デバイスの状態の変更パラメータ、通知先にデバイスの状態の変更を通知するスレッド
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.queue">
+            <summary>
+            パラメータを格納するキュー
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.lockQueue">
+            <summary>
+            <see cref="F:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.queue"/>のロック用オブジェクト
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.setEvent">
+            <summary>
+            <see cref="F:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.queue"/>の追加をスレッドに通知するイベント
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.waitTime">
+            <summary>
+            通知先への通知するまでの待機時間(ms)。
+            すぐに通知を行うとwebrtcがデバイスの状態の変更を同期できないことがあるため、若干の待機時間を入れる。
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.Add(com.ricoh.livestreaming.unity.WindowProcedureHook.DeviceType)">
+            <summary>
+            <seealso cref="M:com.ricoh.livestreaming.unity.INotifyThread`1.Add(`0)"/>
+            </summary>
+            <param name="deviceType">変更のあったデバイスタイプ</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.AddListener(com.ricoh.livestreaming.unity.WindowProcedureHook.IListener)">
+            <summary>
+            <seealso cref="M:com.ricoh.livestreaming.unity.INotifyThread`1.AddListener(com.ricoh.livestreaming.unity.WindowProcedureHook.IListener)"/>
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.Start">
+            <summary>
+            <seealso cref="M:com.ricoh.livestreaming.unity.INotifyThread`1.Start"/>
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.Stop">
+            <summary>
+            <seealso cref="M:com.ricoh.livestreaming.unity.INotifyThread`1.Stop"/>
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.DeviceChangedNotifyThread.Dispose">
+            <summary>
+            スレッドの終了等のdispose処理を行う。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.INotifyThread`1">
+            <summary>
+            パラメータの追加（<see cref="M:com.ricoh.livestreaming.unity.INotifyThread`1.Add(`0)"/>）をトリガーに通知を行うスレッド。
+            </summary>
+            <typeparam name="T">パラメータの型</typeparam>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.INotifyThread`1.Add(`0)">
+            <summary>
+            パラメータを追加する。
+            </summary>
+            <param name="param">処理のためのパラメータ</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.INotifyThread`1.AddListener(com.ricoh.livestreaming.unity.WindowProcedureHook.IListener)">
+            <summary>
+            通知先を追加する
+            </summary>
+            <param name="listner">通知先</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.INotifyThread`1.Start">
+            <summary>
+            スレッドを開始する。
+            開始済みの場合は何もしない。
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.INotifyThread`1.Stop">
+            <summary>
+            スレッドを終了する。
+            開始されていない場合は何もしない。
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.UnityCameraCapturer">
+            <summary>
+            Unity Camera Capturer interface.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.unity.UnityCameraCapturer.NativeTexture">
+            <summary>
+            Unity camera texture native pointer.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.unity.UnityCameraCapturer.Width">
+            <summary>
+            Video width.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.unity.UnityCameraCapturer.Height">
+            <summary>
+            Video height.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.UnityCameraCapturer.#ctor(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            Create Unity camera capturer.
+            </summary>
+            <param name="pTexture">Unity camera texture native pointer.</param>
+            <param name="videoWidth">Video width.</param>
+            <param name="videoHeight">Video height.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.UnityCameraCapturer.OnRender">
+            <summary>
+            Notify render event to native code.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.UnityCameraCapturer.Release">
+            <summary>
+            Release Unity Camera Capturer.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.WindowProcedureHook">
+            <summary>
+            Hook the window procedure.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.WindowProcedureHook.DeviceType">
+            <summary>
+            Type of devices.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.WindowProcedureHook.DeviceType.VideoCapture">
+            <summary>
+            Video Capture device.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.WindowProcedureHook.DeviceType.Audio">
+            <summary>
+            Audio device.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.unity.WindowProcedureHook.DeviceType.Unknown">
+            <summary>
+            Other devices.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.WindowProcedureHook.IListener">
+            <summary>
+            Event Listener of <see cref="T:com.ricoh.livestreaming.unity.WindowProcedureHook"/>.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.WindowProcedureHook.IListener.OnDevicesChanged(com.ricoh.livestreaming.unity.WindowProcedureHook.DeviceType)">
+            <summary>
+            Notification that the devices connected to the system have changed.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.WindowProcedureHook.#ctor(System.IntPtr)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="handle">Window Handle</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.WindowProcedureHook.Term">
+            <summary>
+            Terminate of the window procedure hook.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.WindowProcedureHook.AddListener(com.ricoh.livestreaming.unity.WindowProcedureHook.IListener)">
+            <summary>
+            Add event listener
+            </summary>
+            <param name="listener">event listener</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.unity.UnityRenderer">
+            <summary>
+            Renderer for Unity Engine.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.UnityRenderer.#ctor">
+            <summary>
+            Create new <see cref="T:com.ricoh.livestreaming.unity.UnityRenderer"/>.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.unity.UnityRenderer.RenderToTexture(UnityEngine.Texture,com.ricoh.livestreaming.webrtc.VideoTrack)">
+            <summary>
+            Render video track to texture.
+            </summary>
+            <param name="texture">texture</param>
+            <param name="track">video track</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.UpdateConncetionMessage">
+            <summary>
+            UpdateConnection要求のメッセージ
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.util.Promise`1">
+            <summary>
+            非同期処理の完了待ちを行うためのクラス
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.util.Promise`1.Await(System.Action{System.Action{`0},System.Action{System.Exception}})">
+            <summary>
+            Taskの実行を待ち、コールバック結果を通知する
+            </summary>
+            <param name="callback">コールバック</param>
+            <returns></returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.util.Promise">
+            <summary>
+            非同期処理の完了待ちを行うためのクラス
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.util.Promise.Await(System.Action{System.Action,System.Action{System.Exception}})">
+            <summary>
+            Taskの実行を待ち、コールバック結果を通知する
+            </summary>
+            <param name="callback">コールバック</param>
+            <returns></returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.util.ExecutorService">
+            <summary>
+            別スレッドで処理を実行する機能を提供するクラス。
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.util.ExecutorService.Submit(System.Action)">
+            <summary>
+            処理を追加する。
+            処理は追加された順番で同期的に実行される。
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.ByteArrayCapturer">
+            <summary>
+            Byte array capturer interface.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Width">
+            <summary>
+            Video width.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Height">
+            <summary>
+            Video height.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Create Byte array capturer.
+            </summary>
+            <param name="videoWidth">Video width.</param>
+            <param name="videoHeight">Video height.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+            Render from byte array.
+            Compose three buffers and transmit to server.
+            </summary>
+            <param name="color0">Color buffer 0.</param>
+            <param name="color1">Color buffer 1.</param>
+            <param name="color2">Color buffer 2.</param>
+            <param name="depth0">Depth buffer 0.</param>
+            <param name="depth1">Depth buffer 1.</param>
+            <param name="depth2">Depth buffer 2.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+            Render from byte array.
+            Compose five buffers and transmit to server.
+            </summary>
+            <param name="color0">Color buffer 0.</param>
+            <param name="color1">Color buffer 1.</param>
+            <param name="color2">Color buffer 2.</param>
+            <param name="color3">Color buffer 3.</param>
+            <param name="color4">Color buffer 4.</param>
+            <param name="depth0">Depth buffer 0.</param>
+            <param name="depth1">Depth buffer 1.</param>
+            <param name="depth2">Depth buffer 2.</param>
+            <param name="depth3">Depth buffer 3.</param>
+            <param name="depth4">Depth buffer 4.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Release">
+            <summary>
+            Release Byte array capturer.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.IWebrtcWrapper">
+            <summary>
+            webrtc_wrapperを呼び出すインターフェース
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.MediaStream">
+            <summary>
+            C# wrapper for a C++ MediaStreamInterface
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.#ctor(System.String)">
+            <summary>
+            Create MediaStream. The media stream is newly created in the native layer.
+            </summary>
+            <param name="id">ID of media stream.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.#ctor(System.String,System.IntPtr)">
+            <summary>
+            Create MediaStream. Use the media stream that have already been created in the native layer.
+            </summary>
+            <param name="id">ID of media stream.</param>
+            <param name="nativeStream">Native pointer of media stream.</param>
+            <exception cref="T:System.ArgumentNullException">nativeStream is null.</exception>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.MediaStream.Id">
+            <summary>
+            Get ID of media stream.
+            </summary>
+            <returns>ID of media stream.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.AddTrack(com.ricoh.livestreaming.webrtc.AudioTrack)">
+            <summary>
+            Add audio track.
+            </summary>
+            <param name="track">Audio track.</param>
+            <returns>If true, success. If false, failure. </returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.AddTrack(com.ricoh.livestreaming.webrtc.VideoTrack)">
+            <summary>
+            Add vido track.
+            </summary>
+            <param name="track">Video track.</param>
+            <returns>If true, success. If false, failure. </returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.RemoveTrack(com.ricoh.livestreaming.webrtc.AudioTrack)">
+            <summary>
+            Remove audio track.
+            </summary>
+            <param name="track">Video track.</param>
+            <returns>If true, success. If false, failure. </returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.RemoveTrack(com.ricoh.livestreaming.webrtc.VideoTrack)">
+            <summary>
+            Remove vido track.
+            </summary>
+            <param name="track">Audio track.</param>
+            <returns>If true, success. If false, failure. </returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.GetAudioTracks">
+            <summary>
+            Get audio track list.
+            </summary>
+            <returns>Audio track list.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.GetVideoTracks">
+            <summary>
+            Get video track list.
+            </summary>
+            <returns>Video track list.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.MediaStreamConstraints">
+            <summary>
+            Configurations of required media kind ad <see cref="M:com.ricoh.livestreaming.Client.GetUserMedia(com.ricoh.livestreaming.webrtc.MediaStreamConstraints)"/>.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.MediaStreamConstraints.Capturer">
+            <summary>
+            Get video capturer.
+            </summary>
+            <returns>Video capturer.</returns>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.MediaStreamConstraints.ShouldCreateAudioStream">
+            <summary>
+            Get whether create audio stream.
+            </summary>
+            <returns>If true, create audio stream.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStreamConstraints.SetVideoCapturer(com.ricoh.livestreaming.webrtc.VideoCapturer)">
+            <summary>
+            Set video capturer.
+            </summary>
+            <param name="capturer">Video capturer.</param>
+            <returns>MediaStreamConstraints's instnce for method chain.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStreamConstraints.SetAudio(System.Boolean)">
+            <summary>
+            Set whether create audio stream.
+            </summary>
+            <param name="audio">If true, create audio stream.</param>
+            <returns>MediaStreamConstraints's instance for method chain.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.PeerConnection">
+            <summary>
+            PeerConnection
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.#ctor(com.ricoh.livestreaming.webrtc.PeerConnection.IObserver)">
+            <summary>
+            Create peer connection.
+            </summary>
+            <param name="observer"></param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.Dispose">
+            <summary>
+            Dispose peer connection.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.AddTrack(com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.String)">
+            <summary>
+            Add media stream track.
+            </summary>
+            <param name="mediaStreamTrack">MediaStreamTrack to add.</param>
+            <param name="localStreamId">Local stream ID.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the PeerConnection has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.SetTrack(System.IntPtr,System.IntPtr,com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType)">
+            <summary>
+            Replace media stream track.
+            </summary>
+            <param name="oldNativeTrack">Native pointer of old MediaStreamTrack before replacement.</param>
+            <param name="newNativeTrack">Native pointer of new MediaStreamTrack after replacement.</param>
+            <param name="trackType">The track type of the media stream track to be replaced.</param>
+            <returns>true is succeed.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.SetRemoteDescription(System.String,System.String,com.ricoh.livestreaming.webrtc.OnSetSessionSuccessDelegate,com.ricoh.livestreaming.webrtc.OnSetSessionFailureDelegate)">
+            <summary>
+            Set remote description.
+            </summary>
+            <param name="type">"answer" or "offer"</param>
+            <param name="sdp">SDP description.</param>
+            <param name="onSuccess">Callback of OnSetSessionSuccess.</param>
+            <param name="onFailure">Callback of OnSetSessionFailure.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the PeerConnection has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.SetLocalDescription(System.String,System.String,com.ricoh.livestreaming.webrtc.OnSetSessionSuccessDelegate,com.ricoh.livestreaming.webrtc.OnSetSessionFailureDelegate)">
+            <summary>
+            Set local description.
+            </summary>
+            <param name="type">"answer" or "offer"</param>
+            <param name="sdp">SDP description.</param>
+            <param name="onSuccess">Callback of OnSetSessionSuccess.</param>
+            <param name="onFailure">Callback of OnSetSessionFailure.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the PeerConnection has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.CreateOffer(com.ricoh.livestreaming.webrtc.OnCreateSessionSuccessDelegate,com.ricoh.livestreaming.webrtc.OnCreateSessionFailureDelegate)">
+            <summary>
+            Send CreateOffer.
+            </summary>
+            <param name="onSuccess">Callback of OnCreateSessionSuccess.</param>
+            <param name="onFailure">Callback of OnCreateSessionFailure.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the PeerConnection has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.CreateAnswer(com.ricoh.livestreaming.webrtc.OnCreateSessionSuccessDelegate,com.ricoh.livestreaming.webrtc.OnCreateSessionFailureDelegate)">
+            <summary>
+            Send CreateAnswer.
+            </summary>
+            <param name="onSuccess">Callback of OnCreateSessionSuccess.</param>
+            <param name="onFailure">Callback of OnCreateSessionFailure.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the PeerConnection has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.SetIceCandidate(System.String,System.Int32,System.String)">
+            <summary>
+            Set IceCandidate.
+            </summary>
+            <param name="sdpMid">sdpMid</param>
+            <param name="sdpMLineIndex">sdpMLineIndex</param>
+            <param name="candidate">candidate</param>
+            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the PeerConnection has been disposed.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.GetStats(com.ricoh.livestreaming.webrtc.OnStatsDeliveredDelegate)">
+            <summary>
+            Gets stats.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.PeerConnection.IObserver">
+            <summary>
+            PeerConnectionObserver Interface
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.VideoCapturerDeviceConfig">
+            <summary>
+            Video caputure device configurations.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoCapturerDeviceConfig.#ctor">
+            <summary>
+            Create empty configuration.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoCapturerDeviceConfig.#ctor(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create new configuration.
+            </summary>
+            <param name="deviceName">Device name of camera. If empty, default device is used.</param>
+            <param name="width">Capture width. If 0, default width of device setting is used.</param>
+            <param name="height">Capture height. If 0, default height of device setting is used.</param>
+            <param name="frameRate">Capture frame rate. If 0, default frame rate of device setting is used.</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.VideoDeviceCapturer">
+            <summary>
+            Device Camera Capturer interface.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.VideoDeviceCapturer.DeviceName">
+            <summary>
+            Device name of camera.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.VideoDeviceCapturer.Width">
+            <summary>
+            Capture width.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.VideoDeviceCapturer.Height">
+            <summary>
+            Capture height.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.VideoDeviceCapturer.FrameRate">
+            <summary>
+            Capture frame rate.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoDeviceCapturer.#ctor(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create Video device capturer.
+            </summary>
+            <param name="deviceName">Device name of camera.</param>
+            <param name="width">Capture width.</param>
+            <param name="height">Capture height.</param>
+            <param name="frameRate">Capture frame rate.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoDeviceCapturer.Release">
+            <summary>
+            Release Video Capturer.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.VideoCapturer">
+            <summary>
+            Video Capturer Interface.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.VideoCapturer.CapturerType">
+            <summary>
+            Type of Video Capturer.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.webrtc.VideoCapturer.CapturerType.Device">
+            <summary>
+            Capture video from device.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.webrtc.VideoCapturer.CapturerType.UnityCamera">
+            <summary>
+            Capture video from unity camera.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.webrtc.VideoCapturer.CapturerType.ByteArray">
+            <summary>
+            Create video frame from byte array.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.VideoCapturer.Type">
+            <summary>
+            Get type of Video Capturer.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoCapturer.#ctor(com.ricoh.livestreaming.webrtc.VideoCapturer.CapturerType)">
+            <summary>
+            Create new <see cref="T:com.ricoh.livestreaming.webrtc.VideoCapturer"/>.
+            </summary>
+            <param name="type">Type of Video Capturer.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoCapturer.Release">
+            <summary>
+            Release Video Capturer.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.AudioConfig">
+            <summary>
+            Audio device configurations.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.AudioConfig.#ctor">
+            <summary>
+            Create empty configuration.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.AudioConfig.#ctor(System.String)">
+            <summary>
+            Create new configuration.
+            </summary>
+            <param name="deviceName">Device name of audio. If empty, default device is used.</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.CodecUtil">
+            <summary>
+            Codec Utility class.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.CodecUtil.IsH264Supported">
+            <summary>
+            Return true if H264 codec is supported..
+            </summary>
+            <returns>true if H264 codec is supported.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.VideoCapturerDeviceCapability">
+            <summary>
+            Video Device Capability.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.VideoCapturerDeviceCapability.Width">
+            <summary>
+            Width
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.VideoCapturerDeviceCapability.Height">
+            <summary>
+            Height
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.VideoCapturerDeviceCapability.FrameRate">
+            <summary>
+            Frame rate
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.DeviceInfo">
+            <summary>
+            Device Information.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.DeviceInfo.DeviceName">
+            <summary>
+            Device name
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.DeviceInfo.UniqueName">
+            <summary>
+            Unique name
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.DeviceUtil">
+            <summary>
+            Device Utility class.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.DeviceUtil.GetAudioInputDeviceList">
+            <summary>
+            Get audio input device list.
+            </summary>
+            <returns>audio input device list.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.DeviceUtil.GetAudioOutputDeviceList">
+            <summary>
+            Get audio output device list.
+            </summary>
+            <returns>audio output device list.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.DeviceUtil.GetVideoCapturerDeviceList">
+            <summary>
+            Get video input device list.
+            </summary>
+            <returns>video input device list.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.DeviceUtil.GetVideoCapturerDeviceCapabilities(System.String)">
+            <summary>
+            Get capability list of video input device.
+            </summary>
+            <returns>capability list.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.RTCStats">
+            <summary>
+            RTC stats data.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.RTCStats.TimestampUs">
+            <summary>
+            Timestamp in microseconds.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.RTCStats.Type">
+            <summary>
+            Type of stats.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.RTCStats.Id">
+            <summary>
+            ID of stats.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.RTCStats.Members">
+            <summary>
+            Returns map of member names to values.
+            Removed "timestamp", "type", "id" from stats member.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.RTCStatsReport">
+            <summary>
+            RTC Stats Report data.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.RTCStatsReport.TimestampUs">
+            <summary>
+            Timestamp in microseconds.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.RTCStatsReport.Stats">
+            <summary>
+            Map of stats.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.AudioTrack">
+            <summary>
+            <para>Audio Track Interface.</para>
+            <para>AudioTrack is disposed inside the SDK after the <see cref="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{com.ricoh.livestreaming.webrtc.MediaStreamTrack})"/> is called.</para>
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.AudioTrack.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing">IDisposable.Disposeから呼ばれたときはtrue</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.AudioTrack.SetVolume(System.Double)">
+            <summary>
+            Set the volume.Volume is a gain value in the range 0 to 10.
+            </summary>
+            <param name="volume">Gain value in the range 0 to 10.</param>
+            <exception cref="T:System.ObjectDisposedException">Thrown when AudioTrack is already disposed.</exception>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.VideoTrack">
+            <summary>
+            <para>Video Track Interface.</para>
+            <para>VideoTrack is disposed inside the SDK after the <see cref="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{com.ricoh.livestreaming.webrtc.MediaStreamTrack})"/> is called.</para>
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.VideoTrack.IListener">
+            <summary>
+            Event Listener of <see cref="T:com.ricoh.livestreaming.webrtc.VideoTrack"/>.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoTrack.IListener.OnFrameSizeChanged(System.String,System.Int32,System.Int32)">
+            <summary>
+            Called when frame size changed.
+            </summary>
+            <param name="id">Track ID</param>
+            <param name="width">Frame width</param>
+            <param name="height">Frame height</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoTrack.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing">IDisposable.Disposeから呼ばれたときはtrue</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoTrack.AddSink">
+            <summary>
+            Register a video sink for this track.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoTrack.RemoveSink">
+            <summary>
+            Unregister a video sink for this track.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoTrack.GetFrameResolution(System.Int32@,System.Int32@)">
+            <summary>
+            Get video frame resolution.
+            </summary>
+            <param name="width">width</param>
+            <param name="height">height</param>
+            <returns>true is success.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.VideoTrack.SetEventListener(com.ricoh.livestreaming.webrtc.VideoTrack.IListener)">
+            <summary>
+            Set Event listener.
+            </summary>
+            <param name="listener">listener to set.</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.MediaStreamTrack">
+            <summary>
+            Track of media stream for RICOH Live Streaming.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType">
+            <summary>
+            Type of Track
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType.Video">
+            <summary>
+            VIDEO
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType.Audio">
+            <summary>
+            AUDIO
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStreamTrack.#ctor(com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType,System.IntPtr,System.String)">
+            <summary>
+            Create new <see cref="T:com.ricoh.livestreaming.webrtc.MediaStreamTrack"/>.
+            </summary>
+            <param name="type">Type of track</param>
+            <param name="nativeTrack">Native MediaStreamTrack pointer.</param>
+            <param name="id">id of track</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStreamTrack.SetEnabled(System.Boolean)">
+            <summary>
+            Enable or disable Track.
+            </summary>
+            <param name="isEnabled">true for enable track. false for disable Track.</param>
+            <returns>true for if track is successfully enabled or disabled, false otherwise.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStreamTrack.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStreamTrack.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing">Dispose中かどうか</param>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.MediaStreamTrack.Type">
+            <summary>
+            Get type of track.
+            </summary>
+            <returns>type of track.</returns>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.MediaStreamTrack.Id">
+            <summary>
+            Get id of track.
+            </summary>
+            <returns>id of track.</returns>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.MediaStreamTrack.NativeTrack">
+            <summary>
+            Get native MediaStream track.
+            </summary>
+            <returns>type of track.</returns>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.WebrtcLog">
+            <summary>
+            WebrtcLog
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.WebrtcLog.Create(System.String,System.String,System.UInt32)">
+            <summary>
+            Create new WebrtcLog and set configuration of webrtc log for native library.
+            </summary>
+            <param name="path">file path to write log</param>
+            <param name="prefix">log file name prefix</param>
+            <param name="size">max size of a log file</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.WebrtcLog.Destroy">
+            <summary>
+            Destroy WebrtcLog.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.WebrtcWrapper.SetInstance(com.ricoh.livestreaming.webrtc.IWebrtcWrapper)">
+            <summary>
+            テスト用のインスタンスをセットする
+            </summary>
+            <param name="wrapper"></param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.Client">
+            <summary>
+            Client class of RICOH Live Streaming API.
+            This class has a state. The state can be acquired with the <see cref="M:com.ricoh.livestreaming.Client.GetState"/> method. The following figure shows the state transition.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.#ctor">
+            <summary>
+            Create new <see cref="T:com.ricoh.livestreaming.Client"/>.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.GetUserMedia(com.ricoh.livestreaming.webrtc.MediaStreamConstraints)">
+            <summary>
+            Get media stream used by user.
+            </summary>
+            <param name="constrants">Kind of user media.</param>
+            <returns>Media stream.</returns>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called in the Closed state.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when failed to create media stream.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.Connect(System.String,System.String,com.ricoh.livestreaming.Option)">
+            <summary>
+            Start to connect to the server asynchronously. Video and Audio stream starts if the connection is established.
+            </summary>
+            <param name="clientId">Client ID.</param>
+            <param name="accessToken">AccessToken.</param>
+            <param name="option">Option for connection.</param>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than IDLE state.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="clientId"/> or <paramref name="accessToken"/>is null.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.Disconnect">
+            <summary>
+            Start to disconnect from the server asynchronously.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.GetState">
+            <summary>
+            Get current state of the <seealso cref="T:com.ricoh.livestreaming.Client"/>.
+            </summary>
+            <returns>Current state.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.UpdateMeta(System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Object})">
+            <summary>
+            Update the connection metadata.
+            <para>Specify only the key and value to be updated.</para>
+            <para>(Keys that have not been registered at the time of connection can't be added.)</para>
+            </summary>
+            <param name="meta">update metadata.</param>
+            <exception cref="T:System.ArgumentNullException">meta is null.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.UpdateTrackMeta(com.ricoh.livestreaming.LSTrack,System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Object})">
+            <summary>
+            Update the LSTrack metadata.
+            <para>Specify only the key and value to be updated.</para>
+            <para>(Keys that have not been registered at the time of connection can't be added.)</para>
+            </summary>
+            <param name="lsTrack"><see cref="T:com.ricoh.livestreaming.LSTrack"/></param>
+            <param name="meta">update metadata.</param>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when LSTrack not found on LocalLSTracks.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.SetEventListener(com.ricoh.livestreaming.IClientListener)">
+            <summary>
+            Set event listener.
+            </summary>
+            <param name="listener">Listener to set.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.GetStats">
+            <summary>
+            Get stats report data of peerConnections.
+            </summary>
+            <returns>key-value pairs. key is connectionId(If SFU connection, key is "sfu"). Value is stats report </returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.GetChannel">
+            <summary>
+            テスト用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.SetRemoteDescription(com.ricoh.livestreaming.webrtc.PeerConnection,System.String,System.String)">
+            <summary>
+            PeerConnectionにRemoteDescriptionを設定する
+            </summary>
+            <param name="peerConnection">PeerConnection</param>
+            <param name="type">設定するtype</param>
+            <param name="description">設定するdescription</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.Client.PeerConnectionObserver.InternalStability">
+            <summary>
+            Enum of Network Bandwidth Stability
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.Client.PeerConnectionObserver.InternalStability.Stable">
+            <summary>
+            <para>The network bandwidth is stable.</para>
+            <para>If the PeerConnectionState changes to "Connected" during "Unstable".</para>
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.Client.PeerConnectionObserver.InternalStability.Unstable">
+            <summary>
+            <para>Network bandwidth is unstable.</para>
+            <para>If the PeerConnectionState changes to "Disconnected" during "Stable".</para>
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.SetAudioInputDevice(System.String)">
+            <summary>
+            Set audio input device.
+            </summary>
+            <param name="deviceName">Device Name</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.SetAudioOutputDevice(System.String)">
+            <summary>
+            Set audio output device.
+            </summary>
+            <param name="deviceName">Device Name</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.ReplaceMediaStreamTrack(com.ricoh.livestreaming.LSTrack,com.ricoh.livestreaming.webrtc.MediaStreamTrack)">
+            <summary>
+            Replace the media stream on the LSTrack.
+            </summary>
+            <param name="lsTrack">Target LSTrack.</param>
+            <param name="mediaStreamTrack">New media stream.</param>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when failed to set track to RtpSender.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when targetTrack not found on replace Media Stream Track.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="lsTrack"/> or <paramref name="mediaStreamTrack"/>is null.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.ChangeMute(com.ricoh.livestreaming.LSTrack,com.ricoh.livestreaming.MuteType)">
+            <summary>
+            <para>Change mute type of LSTrack.</para>
+            <para>Does not support switching from SoftMute to HardMute or from HardMute to SoftMute.</para>
+            </summary>
+            <param name="lsTrack">Target LSTrack.</param>
+            <param name="nextMuteType">mute type.</param>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the track not found on replace Media Stream Track.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown in case of unsupported MuteType changes.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="lsTrack"/>is null.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.ReplaceAllPeerLocalTracks(System.IntPtr,System.IntPtr,com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType)">
+            <summary>
+            Replace media stream track in all peer connections.
+            </summary>
+            <param name="oldMediaStreamTrack">Old MediaStreamTrack before replacement.</param>
+            <param name="newMediaStreamTrack">New MediaStreamTrack after replacement.</param>
+            <param name="trackType">The track type of the media stream track to be replaced.</param>
+            <returns>
+            <para>Result of replace media stream track.</para>
+            <para>true if the replacement is successful or if there is no peer connection, false otherwise.</para>
+            <para>P2P peer connection exists only if other base is connected.</para>
+            </returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.HardMute(com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.Boolean)">
+            <summary>
+            Hardmute or unmute Media stream track.
+            </summary>
+            <param name="mediaStreamTrack">Media stream track to set hardmute or unmute.</param>
+            <param name="isTrackEnabled">If false, disable the mediaStreamTrack for hardmute. If true, set the mediaStreamTrack for unmute.</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.InternalError(System.Int32,System.Exception)">
+            <summary>
+            Internal SDK errors.
+            <para>61000 ~ : <see cref="T:com.ricoh.livestreaming.Client"/></para>
+            <para>61100 ~ : <see cref="T:com.ricoh.livestreaming.Client.SignalingChannelListener"/></para>
+            <para>61200 ~ : <see cref="T:com.ricoh.livestreaming.Client.SFUPeerConnectionObserver"/> and <see cref="T:com.ricoh.livestreaming.Client.P2PPeerConnectionObserver"/></para>
+            </summary>
+            <param name="code">Error code.</param>
+            <param name="detail">Error detail.</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.Option">
+            <summary>
+            Options for connection.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Option.SignalingURL">
+            <summary>
+            Signaling URL
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Option.LocalLSTracks">
+            <summary>
+            Initial local LSTrack list.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Option.Meta">
+            <summary>
+            Metadate for connection. key is metadate's name, value is metadate's value.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Option.EnableCpuOveruseDetection">
+            <summary>
+            Returns true if CpuOveruseDetection is enabled.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Option.SendingOption">
+            <summary>
+            Configurations for sending option.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Option.ReceivingOption">
+            <summary>
+            Configurations for receiving option.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Option.IceTransportPolicy">
+            <summary>
+            Configurations for Transport policies of the ICE candidates.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Option.SetSignalingURL(System.String)">
+            <summary>
+            Set option for signaling URL.
+            </summary>
+            <param name="signalingURL">Signaling URL.</param>
+            <returns>Option's instance for method chain.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Option.SetLocalLSTracks(System.Collections.Generic.List{com.ricoh.livestreaming.LSTrack})">
+            <summary>
+            Set option for the initial local LSTrack list.
+            </summary>
+            <param name="localLSTracks">Initial local LSTrack list.</param>
+            <returns>Option's instance for method chain.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Option.SetMeta(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Set option for the connection metadata.
+            </summary>
+            <param name="meta">Metadate for connection. key is metadate's name, value is metadate's value.</param>
+            <returns>Option's instance for method chain.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Option.SetEnableCpuOveruseDetection(System.Boolean)">
+            <summary>
+            Set option for cpu overuse detection option.
+            </summary>
+            <param name="enable">True for enabling cpu usage detection</param>
+            <returns>Option's instance for method chain.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Option.SetSendingOption(com.ricoh.livestreaming.SendingOption)">
+            <summary>
+            Set option for sending option.
+            </summary>
+            <param name="sendingOption">Sending Option.</param>
+            <returns>Option's instance for method chain.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="sendingOption"/>is null.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Option.SetReceivingOption(com.ricoh.livestreaming.ReceivingOption)">
+            <summary>
+            Set option for receiving option.
+            </summary>
+            <param name="receivingOption">Receiving Option.</param>
+            <returns>Option's instance for method chain.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="receivingOption"/>is null.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Option.SetIceTransportPolicy(com.ricoh.livestreaming.IceTransportPolicy)">
+            <summary>
+            <para>Set option for transport policies of the ICE candidates.</para>
+            <para>This option is applied when p2p connection only.</para>
+            </summary>
+            <param name="iceTransportPolicy">Transport policies of the ICE candidates.</param>
+            <returns>Option's instance for method chain.</returns>
+        </member>
+    </members>
+</doc>

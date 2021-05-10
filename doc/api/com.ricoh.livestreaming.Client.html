@@ -1,0 +1,706 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Client
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Client
+   ">
+    <meta name="generator" content="docfx 2.52.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="com.ricoh.livestreaming.Client">
+  
+  
+  <h1 id="com_ricoh_livestreaming_Client" data-uid="com.ricoh.livestreaming.Client" class="text-break">Class Client
+  </h1>
+  <div class="markdown level0 summary"><p>Client class of RICOH Live Streaming API.
+This class has a state. The state can be acquired with the <a class="xref" href="com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_GetState">GetState()</a> method. The following figure shows the state transition.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Client</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="com.ricoh.livestreaming.html">com.ricoh.livestreaming</a></h6>
+  <h6><strong>Assembly</strong>: ClientSDK.dll</h6>
+  <h5 id="com_ricoh_livestreaming_Client_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Client : IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="com_ricoh_livestreaming_Client__ctor_" data-uid="com.ricoh.livestreaming.Client.#ctor*"></a>
+  <h4 id="com_ricoh_livestreaming_Client__ctor" data-uid="com.ricoh.livestreaming.Client.#ctor">Client()</h4>
+  <div class="markdown level1 summary"><p>Create new <a class="xref" href="com.ricoh.livestreaming.Client.html">Client</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Client()</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_ChangeMute_" data-uid="com.ricoh.livestreaming.Client.ChangeMute*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_ChangeMute_com_ricoh_livestreaming_LSTrack_com_ricoh_livestreaming_MuteType_" data-uid="com.ricoh.livestreaming.Client.ChangeMute(com.ricoh.livestreaming.LSTrack,com.ricoh.livestreaming.MuteType)">ChangeMute(LSTrack, MuteType)</h4>
+  <div class="markdown level1 summary"><p>Change mute type of LSTrack.</p>
+<p>Does not support switching from SoftMute to HardMute or from HardMute to SoftMute.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ChangeMute(LSTrack lsTrack, MuteType nextMuteType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSTrack.html">LSTrack</a></td>
+        <td><span class="parametername">lsTrack</span></td>
+        <td><p>Target LSTrack.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.MuteType.html">MuteType</a></td>
+        <td><span class="parametername">nextMuteType</span></td>
+        <td><p>mute type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called other than Open state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the track not found on replace Media Stream Track.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown in case of unsupported MuteType changes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">lsTrack</code>is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_Connect_" data-uid="com.ricoh.livestreaming.Client.Connect*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_Connect_System_String_System_String_com_ricoh_livestreaming_Option_" data-uid="com.ricoh.livestreaming.Client.Connect(System.String,System.String,com.ricoh.livestreaming.Option)">Connect(String, String, Option)</h4>
+  <div class="markdown level1 summary"><p>Start to connect to the server asynchronously. Video and Audio stream starts if the connection is established.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Connect(string clientId, string accessToken, Option option)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">clientId</span></td>
+        <td><p>Client ID.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">accessToken</span></td>
+        <td><p>AccessToken.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.Option.html">Option</a></td>
+        <td><span class="parametername">option</span></td>
+        <td><p>Option for connection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called other than IDLE state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">clientId</code> or <code data-dev-comment-type="paramref" class="paramref">accessToken</code>is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_Disconnect_" data-uid="com.ricoh.livestreaming.Client.Disconnect*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_Disconnect" data-uid="com.ricoh.livestreaming.Client.Disconnect">Disconnect()</h4>
+  <div class="markdown level1 summary"><p>Start to disconnect from the server asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Disconnect()</code></pre>
+  </div>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_Dispose_" data-uid="com.ricoh.livestreaming.Client.Dispose*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_Dispose" data-uid="com.ricoh.livestreaming.Client.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Dispose</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_GetState_" data-uid="com.ricoh.livestreaming.Client.GetState*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_GetState" data-uid="com.ricoh.livestreaming.Client.GetState">GetState()</h4>
+  <div class="markdown level1 summary"><p>Get current state of the <a class="xref" href="com.ricoh.livestreaming.Client.html">Client</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConnectionState GetState()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.ConnectionState.html">ConnectionState</a></td>
+        <td><p>Current state.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_GetStats_" data-uid="com.ricoh.livestreaming.Client.GetStats*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_GetStats" data-uid="com.ricoh.livestreaming.Client.GetStats">GetStats()</h4>
+  <div class="markdown level1 summary"><p>Get stats report data of peerConnections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, RTCStatsReport&gt; GetStats()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="com.ricoh.livestreaming.webrtc.RTCStatsReport.html">RTCStatsReport</a>&gt;</td>
+        <td><p>key-value pairs. key is connectionId(If SFU connection, key is &quot;sfu&quot;). Value is stats report </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_GetUserMedia_" data-uid="com.ricoh.livestreaming.Client.GetUserMedia*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_GetUserMedia_com_ricoh_livestreaming_webrtc_MediaStreamConstraints_" data-uid="com.ricoh.livestreaming.Client.GetUserMedia(com.ricoh.livestreaming.webrtc.MediaStreamConstraints)">GetUserMedia(MediaStreamConstraints)</h4>
+  <div class="markdown level1 summary"><p>Get media stream used by user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MediaStream GetUserMedia(MediaStreamConstraints constrants)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStreamConstraints.html">MediaStreamConstraints</a></td>
+        <td><span class="parametername">constrants</span></td>
+        <td><p>Kind of user media.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStream.html">MediaStream</a></td>
+        <td><p>Media stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called in the Closed state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when failed to create media stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_ReplaceMediaStreamTrack_" data-uid="com.ricoh.livestreaming.Client.ReplaceMediaStreamTrack*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_ReplaceMediaStreamTrack_com_ricoh_livestreaming_LSTrack_com_ricoh_livestreaming_webrtc_MediaStreamTrack_" data-uid="com.ricoh.livestreaming.Client.ReplaceMediaStreamTrack(com.ricoh.livestreaming.LSTrack,com.ricoh.livestreaming.webrtc.MediaStreamTrack)">ReplaceMediaStreamTrack(LSTrack, MediaStreamTrack)</h4>
+  <div class="markdown level1 summary"><p>Replace the media stream on the LSTrack.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReplaceMediaStreamTrack(LSTrack lsTrack, MediaStreamTrack mediaStreamTrack)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSTrack.html">LSTrack</a></td>
+        <td><span class="parametername">lsTrack</span></td>
+        <td><p>Target LSTrack.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStreamTrack.html">MediaStreamTrack</a></td>
+        <td><span class="parametername">mediaStreamTrack</span></td>
+        <td><p>New media stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called other than Open state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when failed to set track to RtpSender.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when targetTrack not found on replace Media Stream Track.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">lsTrack</code> or <code data-dev-comment-type="paramref" class="paramref">mediaStreamTrack</code>is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_SetAudioInputDevice_" data-uid="com.ricoh.livestreaming.Client.SetAudioInputDevice*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_SetAudioInputDevice_System_String_" data-uid="com.ricoh.livestreaming.Client.SetAudioInputDevice(System.String)">SetAudioInputDevice(String)</h4>
+  <div class="markdown level1 summary"><p>Set audio input device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAudioInputDevice(string deviceName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">deviceName</span></td>
+        <td><p>Device Name</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_SetAudioOutputDevice_" data-uid="com.ricoh.livestreaming.Client.SetAudioOutputDevice*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_SetAudioOutputDevice_System_String_" data-uid="com.ricoh.livestreaming.Client.SetAudioOutputDevice(System.String)">SetAudioOutputDevice(String)</h4>
+  <div class="markdown level1 summary"><p>Set audio output device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAudioOutputDevice(string deviceName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">deviceName</span></td>
+        <td><p>Device Name</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_SetEventListener_" data-uid="com.ricoh.livestreaming.Client.SetEventListener*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_SetEventListener_com_ricoh_livestreaming_IClientListener_" data-uid="com.ricoh.livestreaming.Client.SetEventListener(com.ricoh.livestreaming.IClientListener)">SetEventListener(IClientListener)</h4>
+  <div class="markdown level1 summary"><p>Set event listener.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEventListener(IClientListener listener)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.IClientListener.html">IClientListener</a></td>
+        <td><span class="parametername">listener</span></td>
+        <td><p>Listener to set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_UpdateMeta_" data-uid="com.ricoh.livestreaming.Client.UpdateMeta*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_UpdateMeta_System_Collections_ObjectModel_ReadOnlyDictionary_System_String_System_Object__" data-uid="com.ricoh.livestreaming.Client.UpdateMeta(System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Object})">UpdateMeta(ReadOnlyDictionary&lt;String, Object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Update the connection metadata.
+<p>Specify only the key and value to be updated.</p>
+<p>(Keys that have not been registered at the time of connection can&apos;t be added.)</p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateMeta(ReadOnlyDictionary&lt;string, object&gt; meta)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">meta</span></td>
+        <td><p>update metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>meta is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called other than Open state.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_Client_UpdateTrackMeta_" data-uid="com.ricoh.livestreaming.Client.UpdateTrackMeta*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_UpdateTrackMeta_com_ricoh_livestreaming_LSTrack_System_Collections_ObjectModel_ReadOnlyDictionary_System_String_System_Object__" data-uid="com.ricoh.livestreaming.Client.UpdateTrackMeta(com.ricoh.livestreaming.LSTrack,System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Object})">UpdateTrackMeta(LSTrack, ReadOnlyDictionary&lt;String, Object&gt;)</h4>
+  <div class="markdown level1 summary"><p>Update the LSTrack metadata.
+<p>Specify only the key and value to be updated.</p>
+<p>(Keys that have not been registered at the time of connection can&apos;t be added.)</p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateTrackMeta(LSTrack lsTrack, ReadOnlyDictionary&lt;string, object&gt; meta)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSTrack.html">LSTrack</a></td>
+        <td><span class="parametername">lsTrack</span></td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSTrack.html">LSTrack</a></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">meta</span></td>
+        <td><p>update metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called other than Open state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when LSTrack not found on LocalLSTracks.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

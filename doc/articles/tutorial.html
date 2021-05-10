@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#12481;&#12517;&#12540;&#12488;&#12522;&#12450;&#12523; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#12481;&#12517;&#12540;&#12488;&#12522;&#12450;&#12523; ">
+    <meta name="generator" content="docfx 2.52.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="チュートリアル">チュートリアル</h1>
+
+<p>この文書では RICOH Live Streaming Client SDK for Windowsの利用方法を最小限のコードで説明します。</p>
+<h2 id="sdkの利用">SDKの利用</h2>
+<p>以下のライブラリを <code>Assets/Plugins/x86_64/</code> にコピーする</p>
+<ul>
+<li>ClientSDK.dll</li>
+<li>webrtc_wrapper.dll</li>
+<li>log4net.dll<ul>
+<li><a href="https://logging.apache.org/log4net/license.html">ライセンス</a></li>
+</ul>
+</li>
+<li>Newtonsoft.Json.dll<ul>
+<li><a href="https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md">ライセンス</a></li>
+</ul>
+</li>
+<li>websocket-sharp.dll<ul>
+<li><a href="https://raw.githubusercontent.com/sta/websocket-sharp/master/LICENSE.txt">ライセンス</a> </li>
+</ul>
+</li>
+</ul>
+<p><code>Build Settings &gt; Player Settings &gt; Other Settings</code> の <code>Api Compatibility Level</code> を <code>.NET 4.x</code> に設定する</p>
+<h2 id="接続">接続</h2>
+<pre><code class="lang-C#">// (1) Clientインスタンスの作成
+Client client = new Client();
+
+// (2) リスナーの作成
+private class ClientListener : IClientListener
+{
+    public void OnOpen()
+    {
+        // (7) 接続成功
+    }
+
+    public void OnConnecting()
+    {
+        // (6) 接続中
+    }
+    ...
+}
+
+// (3) リスナーの登録
+client.SetEventListener(new ClientListener());
+
+// (4) RoomSpecの生成
+var roomSpec = new RoomSpec(RoomSpec.Type.Sfu);
+
+// (5) Access Tokenの生成
+var accessToken = JwtAccessToken.CreateAccessToken(
+    ClientSecret,
+    roomId,
+    roomSpec);
+
+// (6) Media Streamの生成
+var constraints = new MediaStreamConstraints()
+    .SetVideoCapturer(new VideoDeviceCapturer(DeviceName, Width, Height, FrameRate))
+    .SetAudio(true);
+
+var stream = client.GetUserMedia(constraints);
+
+// (7) Audio/Video Trackの追加
+var tracks = new List&lt;Track&gt;();
+foreach (var track in stream.GetAudioTracks())
+{
+    tracks.Add(new Track(track, stream, new Dictionary&lt;string, object&gt;()));
+}
+foreach (var track in stream.GetVideoTracks())
+{
+    tracks.Add(new Track(track, stream, new Dictionary&lt;string, object&gt;()));
+}
+
+// (8) 送信Optionの設定
+var sendingVideoOption = new SendingVideoOption()
+    .SetCodec(videoCodec)
+    .SetPriority(SendingVideoOption.SendingPriority.Normal)
+    .SetMaxBitrateKbps(20000);
+
+// (9) 接続Optionの設定
+var option = new Option()
+    .SetLocalTracks(tracks)
+    .SetSendingOption(new SendingOption(sendingVideoOption))
+    .SetReceivingOption(new ReceivingOption(true));
+
+// (10) 接続
+client.Connect(ClientId, accessToken, option);
+</code></pre><ul>
+<li>映像の送信を行う場合は、<code>MediaStreamConstraints</code>の<code>SetVideoCapturer</code>に以下のいずれかを指定します<ul>
+<li>VideoDeviceCapturer : カメラ映像の送信</li>
+<li>UnityCameraCapturer : Unityカメラからの映像の送信</li>
+<li>ByteArrayCapturer : カラーバッファ、深度バッファを合成した画像の送信</li>
+</ul>
+</li>
+<li><code>SetVideoCapturer</code>が未設定の場合は、映像の送信を行いません</li>
+<li><p>オーディオを使用する場合は<code>MediaStreamConstraints</code>の<code>SetAudio</code>に<code>true</code>を指定します</p>
+</li>
+<li><p><code>Client#Connect</code>の<code>option</code>には以下の指定が可能です</p>
+<ul>
+<li>ビデオのコーデック<ul>
+<li><code>H.264</code>はNVDIAのエンコーダ/デコーダのみ対応しています<ul>
+<li>H.264が利用可能かどうかは<code>CodecUtil.IsH264Supported()</code>で確認できます</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>送信優先度（Normal/High）</li>
+<li>配信の合計ビットレート</li>
+<li>映像の受信をするかどうか</li>
+</ul>
+</li>
+</ul>
+<h2 id="切断">切断</h2>
+<pre><code class="lang-C#">private class ClientListener : IClientListener
+{
+    public void OnClosing()
+    {
+        // (2) 切断中
+    }
+
+    public void OnClosed()
+    {
+        // (3) 切断完了
+    }
+    ...
+}
+
+// (1) 切断
+client.Disconnect()
+</code></pre><h2 id="映像データの描画">映像データの描画</h2>
+<pre><code class="lang-C#">// (1) UnityRendererインスタンスの作成
+UnityRenderer renderer = new UnityRenderer();
+
+private class ClientListener : IClientListener
+{
+    public void OnAddLocalTrack(MediaStreamTrack track, MediaStream stream)
+    {
+        // (3) 自拠点のTrackが追加された
+        if (track is VideoTrack) {
+            localVideoTrack = (VideoTrack)track;
+            // (4) Videoフレームの受信開始
+            localVideoTrack.AddSink();
+            // (5) VideoTrackリスナーの登録
+            localVideoTrack.SetEventListener(new VideoTrackListener())
+        }
+    }
+
+    public void OnAddRemoteTrack(string connectionId, MediaStream stream, MediaStreamTrack track, Dictionary&lt;string, object&gt; metadata)
+    {
+        // (3&#39;) 相手拠点のTrackが追加された
+        if (track is VideoTrack) {
+            remoteVideoTrack = (VideoTrack)track;
+            // (4&#39;) Videoフレームの受信開始
+            remoteVideoTrack.AddSink();
+            // (5&#39;) VideoTrackリスナーの登録
+            remoteVideoTrack.SetEventListener(new VideoTrackListener())
+        }
+    }
+
+    public void OnRemoveRemoteConnection(string connectionId, Dictionary&lt;string, object&gt; metadata)
+    {
+        // (8) 相手拠点のConnectionが切断された
+    }
+
+    ...
+}
+
+// (2) VideoTrackリスナーの作成
+private class VideoTrackListener : VideoTrack.IListener
+{
+    public void OnFrameSizeChanged(string id, int width, int height)
+    {
+        // (7) 受信した映像のサイズが変更された
+    }
+}
+
+// (6) Textureへの描画
+renderer.RenderToTexture(localTexture, localVideoTrack);
+renderer.RenderToTexture(remoteTexture, remoteVideoTrack);
+</code></pre><ul>
+<li>自拠点のTrackが追加された場合は<code>OnAddLocalTrack</code>、相手拠点のTrack追加された場合は<code>OnAddRemoteTrack</code>イベントが発生します<ul>
+<li>このイベントはオーディオトラック、ビデオトラックの追加でイベントが発生します</li>
+<li><code>AddShink</code>を呼ぶことで、フレームデータの取得が開始されます</li>
+</ul>
+</li>
+<li>Textureへの映像データの書き込みは<code>RenderToTexture</code>で行います<ul>
+<li><code>RenderToTexture</code>はUnityのライフサイクル<code>OnUpdate</code>で呼ぶ必要があります</li>
+<li>Textureの領域はアプリ側で確保・解放する必要があります</li>
+</ul>
+</li>
+<li>受信した映像のサイズが変更された場合、<code>VideoTrack.IListener.OnFrameSizeChanged</code>イベントが発生します</li>
+<li>相手拠点のConnectionが切断された場合、<code>OnRemoveRemoteConnection</code>イベントが発生します</li>
+</ul>
+<h2 id="デバイス一覧の取得">デバイス一覧の取得</h2>
+<pre><code class="lang-C#">// オーディオ入力デバイスリストの取得
+List&lt;DeviceInfo&gt; inputDeviceList = DeviceUtil.GetAudioInputDeviceList();
+
+// オーディオ出力デバイスリストの取得
+List&lt;DeviceInfo&gt; outputDeviceList = DeviceUtil.GetAudioOutputDeviceList();
+
+// ビデオ入力デバイスリストの取得
+List&lt;DeviceInfo&gt; outputDeviceList = DeviceUtil.GetVideoCapturerDeviceList();
+
+// ビデオ入力デバイスのCapabilityリストの取得
+List&lt;VideoCapturerDeviceCapability&gt; capabilityList = DeviceUtil.GetVideoCapturerDeviceCapabilities(deviceName);
+</code></pre><h2 id="使用デバイスの設定">使用デバイスの設定</h2>
+<pre><code class="lang-C#">// オーディオ入力デバイスの設定
+client.SetAudioInputDevice(deviceName);
+
+// オーディオ出力デバイスの設定
+client.SetAudioOutputDevice(deviceName);
+
+// ビデオ入力デバイス、解像度、フレームレートの変更（※接続成功後に適用可能）
+client.SetVideoCaputurerDevice(deviceName, width, height, frameRate);
+</code></pre><p>デバイスの設定は接続前、接続後両方可能です</p>
+<h2 id="デバイスの状態変更の検知">デバイスの状態変更の検知</h2>
+<pre><code class="lang-C#">// (1) WindowHandleの取得
+var hWnd = FindWindow(null, Application.productName)
+
+// (2) WindowProcedureHookインスタンスの生成
+var windowProcedureHook = new WindowProcedureHook(hWnd)
+
+// (3) リスナーの作成
+private class WindowProcedureHookListener : WindowProcedureHook.IListener
+{
+    public void OnDevicesChanged(WindowProcedureHook.DeviceType type)
+    {
+        // (5) デバイスの状態が変更（接続、切断）された
+    }
+    ...
+}
+
+// (4) リスナーの登録
+windowProcedureHook.AddListener(new WindowProcedureHookListener());
+</code></pre><h2 id="合成映像フレームの送受信">合成映像フレームの送受信</h2>
+<pre><code class="lang-C#">// (1) 初期化
+ByteArrayFunction function = new ByteArrayFunction(imageLayoutSet);
+
+// (2) Capturerの生成
+ByteArrayCapturer byteArrayCapturer = function.CreateCapturer(videoWidth, videoHeight);
+
+// (3) Receiverの生成
+ByteArrayReceiver byteArrayReceiver = function.CreateReceiver();
+
+// (4) connect
+client.Connect(ClientId, accessToken, option);
+
+// (5) 合成映像フレームの送信
+byteArrayCapturer.RenderByteArray(
+    color0, color1, color2,
+    depth0, depth1, depth2);
+
+// (6) 合成映像フレームの受信
+byteArrayReceiver.Receive(pColor, pDepth, videoTrack);
+
+// (7) 終了処理
+function.Dispose();
+</code></pre><ul>
+<li>(1) で合成画像のレイアウト情報を渡します</li>
+<li>(2) では送信する合成画像フレームの幅、高さを設定します</li>
+<li>(4) で設定する<code>option</code>の内容は、<a href="#接続">接続</a>を参考にしてください</li>
+<li>(5) で渡されたColorバッファとDepthバッファを合成したものをYUVデータ化し、サーバに送信します<ul>
+<li>Colorデータ、Depthデータは(1)で渡されたレイアウト情報をもとに配置します</li>
+</ul>
+</li>
+<li>(6) で合成された映像をColorデータとDepthデータに分解し、それぞれをバッファにコピーしたものを返します<ul>
+<li>受信したフレームのColorデータ、Depthデータの配置情報は(1)で渡されたレイアウト情報をもとに計算します</li>
+</ul>
+</li>
+</ul>
+<h2 id="unitycameraの送信">UnityCameraの送信</h2>
+<pre><code class="lang-C#">
+// (1) UnityCameraの準備
+var texture = new RenderTexture(VIDEO_WIDTH, VIDEO_HEIGHT, 0, RenderTextureFormat.BGRA32);
+captureCamera.targetTexture = texture;
+captureCamera.enabled = true;
+
+// (2) Capturerの生成
+IntPtr captureCameraTexture = captureCamera.targetTexture.GetNativeTexturePtr();
+unityCameraCapturer = new UnityCameraCapturer(captureCameraTexture, VIDEO_WIDTH, VIDEO_HEIGHT);
+
+// (3) connect
+client.Connect(ClientId, accessToken, option);
+
+// コルーチン処理(MonoBehaviour.Start内で登録)
+IEnumerator Render()
+{
+    while (true)
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (CConnectionState.Open == client.GetState())
+        {
+            // (4) Unityカメラの映像を送信する
+            unityCameraCapturer?.OnRender();
+        }
+    }
+}
+
+</code></pre><h2 id="ログファイルの保存">ログファイルの保存</h2>
+<p>RICOH Live Streaming Client SDK for Windowsでは、SDKログ、WebRTCのネイティブログの2種類のログが存在します</p>
+<h3 id="sdkログ">SDKログ</h3>
+<ul>
+<li>ログ出力には <a href="https://logging.apache.org/log4net/">log4net</a> を使用します</li>
+<li>ログ出力のために、アプリ起動直後<code>[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]</code>でconfigファイルを読み込む必要があります<ul>
+<li>configファイルの読み込み方法についてはサンプルアプリの<code>BootStrap.cs</code>を参考にしてください</li>
+</ul>
+</li>
+</ul>
+<h3 id="webrtcのネイティブログ">WebRTCのネイティブログ</h3>
+<ul>
+<li>以下でファイルの保存場所、最大サイズ、ログファイルのPrefixが設定できます</li>
+</ul>
+<pre><code class="lang-C#">client.SetConfigWebrtcLog(path, prefix, size);
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
