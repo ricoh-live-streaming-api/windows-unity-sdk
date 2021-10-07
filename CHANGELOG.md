@@ -1,4 +1,32 @@
 # CHANGELOG
+## v1.1.4
+* SDK修正
+  * `SFU::PreAnswer` 対応
+    * これに伴い以下のエラーコードを修正（エラーメッセージは変更なし）
+      * 旧45207 => 新45605
+      * 旧45216 => 新45614
+  * Connect メッセージ の `SDKInfo` の `platform` を `windows` に変更
+  * OnClosed 受信時に Closed 状態へ遷移せず Disconnect が完了しない問題の修正
+  * P2P および P2PTurn にて接続時、AutioTrack と VideoTrack の MediaStream が異なる問題の修正
+  * ネットワーク切断から一定時間（10数秒～60秒程度）経過後に `IClientListener#OnClosed` を通知するように修正。
+
+* サンプルアプリ修正
+  * Unityを LTS 2020.3.14f1 にバージョンアップ
+
+## v1.1.0
+* API変更
+  * `MediaStreamTrack#SetEnabled(Boolean)` を public に変更
+  * `ByteArrayFunction`、`ByteArrayCapturer`、`ByteArrayReceiver` をSDK外から不可視に変更
+
+* SDK修正
+  * サンプルアプリの CapabilityDropdown の表示内容が重複する問題を修正
+  * `Client` クラスのインスタンスが生成前に `DeviceUtil` クラスのメソッド呼び出しを行った場合にアプリがクラッシュする問題を修正
+  * P2P、P2PTurnで接続時に `Client#UpdateMeta` にて ConnectionMeta の更新が行えるように修正
+    * これに伴い以下のエラーコードを削除
+      * 45003
+
+* サンプルアプリ修正
+  * サンプルシーン `ByteArraySender` を削除
 
 ## v1.0.0
 * API変更

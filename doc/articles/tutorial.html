@@ -88,7 +88,12 @@
 </ul>
 </li>
 </ul>
-<p><code>Build Settings &gt; Player Settings &gt; Other Settings</code> の <code>Api Compatibility Level</code> を <code>.NET 4.x</code> に設定する</p>
+<p>Unityで下記の設定を行う<br><code>Build Settings &gt; Player Settings &gt; Other Settings</code> の <code>Api Compatibility Level</code> を <code>.NET 4.x</code> に設定する</p>
+<p>webrtc_wrapper.dll のロードに失敗する場合</p>
+<ol>
+<li><code>Project</code>ウィンドウ の <code>Assets\Plugins\x86_64\webrtc_wrapper.dll</code> を選択</li>
+<li><code>Inspector</code>ウィンドウ の <code>Plugin load settings</code> の <code>Load on startup</code>チェックボックスをONに設定する</li>
+</ol>
 <h2 id="接続">接続</h2>
 <pre><code class="lang-C#">// (1) Clientインスタンスの作成
 Client client = new Client();
@@ -156,7 +161,6 @@ client.Connect(ClientId, accessToken, option);
 <li>映像の送信を行う場合は、<code>MediaStreamConstraints</code>の<code>SetVideoCapturer</code>に以下のいずれかを指定します<ul>
 <li>VideoDeviceCapturer : カメラ映像の送信</li>
 <li>UnityCameraCapturer : Unityカメラからの映像の送信</li>
-<li>ByteArrayCapturer : カラーバッファ、深度バッファを合成した画像の送信</li>
 </ul>
 </li>
 <li><code>SetVideoCapturer</code>が未設定の場合は、映像の送信を行いません</li>
@@ -299,43 +303,7 @@ private class WindowProcedureHookListener : WindowProcedureHook.IListener
 
 // (4) リスナーの登録
 windowProcedureHook.AddListener(new WindowProcedureHookListener());
-</code></pre><h2 id="合成映像フレームの送受信">合成映像フレームの送受信</h2>
-<pre><code class="lang-C#">// (1) 初期化
-ByteArrayFunction function = new ByteArrayFunction(imageLayoutSet);
-
-// (2) Capturerの生成
-ByteArrayCapturer byteArrayCapturer = function.CreateCapturer(videoWidth, videoHeight);
-
-// (3) Receiverの生成
-ByteArrayReceiver byteArrayReceiver = function.CreateReceiver();
-
-// (4) connect
-client.Connect(ClientId, accessToken, option);
-
-// (5) 合成映像フレームの送信
-byteArrayCapturer.RenderByteArray(
-    color0, color1, color2,
-    depth0, depth1, depth2);
-
-// (6) 合成映像フレームの受信
-byteArrayReceiver.Receive(pColor, pDepth, videoTrack);
-
-// (7) 終了処理
-function.Dispose();
-</code></pre><ul>
-<li>(1) で合成画像のレイアウト情報を渡します</li>
-<li>(2) では送信する合成画像フレームの幅、高さを設定します</li>
-<li>(4) で設定する<code>option</code>の内容は、<a href="#接続">接続</a>を参考にしてください</li>
-<li>(5) で渡されたColorバッファとDepthバッファを合成したものをYUVデータ化し、サーバに送信します<ul>
-<li>Colorデータ、Depthデータは(1)で渡されたレイアウト情報をもとに配置します</li>
-</ul>
-</li>
-<li>(6) で合成された映像をColorデータとDepthデータに分解し、それぞれをバッファにコピーしたものを返します<ul>
-<li>受信したフレームのColorデータ、Depthデータの配置情報は(1)で渡されたレイアウト情報をもとに計算します</li>
-</ul>
-</li>
-</ul>
-<h2 id="unitycameraの送信">UnityCameraの送信</h2>
+</code></pre><h2 id="unitycameraの送信">UnityCameraの送信</h2>
 <pre><code class="lang-C#">
 // (1) UnityCameraの準備
 var texture = new RenderTexture(VIDEO_WIDTH, VIDEO_HEIGHT, 0, RenderTextureFormat.BGRA32);

@@ -1142,216 +1142,6 @@ references:
   commentId: N:com.ricoh.livestreaming.unity
   fullName: com.ricoh.livestreaming.unity
   nameWithType: com.ricoh.livestreaming.unity
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction
-  name: ByteArrayFunction
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html
-  commentId: T:com.ricoh.livestreaming.unity.ByteArrayFunction
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction
-  nameWithType: ByteArrayFunction
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.#ctor(com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet)
-  name: ByteArrayFunction(ByteArrayFunction.ImageLayoutSet)
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html#com_ricoh_livestreaming_unity_ByteArrayFunction__ctor_com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_
-  commentId: M:com.ricoh.livestreaming.unity.ByteArrayFunction.#ctor(com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet)
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ByteArrayFunction(com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet)
-  nameWithType: ByteArrayFunction.ByteArrayFunction(ByteArrayFunction.ImageLayoutSet)
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.#ctor*
-  name: ByteArrayFunction
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html#com_ricoh_livestreaming_unity_ByteArrayFunction__ctor_
-  commentId: Overload:com.ricoh.livestreaming.unity.ByteArrayFunction.#ctor
-  isSpec: "True"
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ByteArrayFunction
-  nameWithType: ByteArrayFunction.ByteArrayFunction
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.CreateCapturer(System.Int32,System.Int32)
-  name: CreateCapturer(Int32, Int32)
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html#com_ricoh_livestreaming_unity_ByteArrayFunction_CreateCapturer_System_Int32_System_Int32_
-  commentId: M:com.ricoh.livestreaming.unity.ByteArrayFunction.CreateCapturer(System.Int32,System.Int32)
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.CreateCapturer(System.Int32, System.Int32)
-  nameWithType: ByteArrayFunction.CreateCapturer(Int32, Int32)
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.CreateCapturer*
-  name: CreateCapturer
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html#com_ricoh_livestreaming_unity_ByteArrayFunction_CreateCapturer_
-  commentId: Overload:com.ricoh.livestreaming.unity.ByteArrayFunction.CreateCapturer
-  isSpec: "True"
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.CreateCapturer
-  nameWithType: ByteArrayFunction.CreateCapturer
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.CreateReceiver
-  name: CreateReceiver()
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html#com_ricoh_livestreaming_unity_ByteArrayFunction_CreateReceiver
-  commentId: M:com.ricoh.livestreaming.unity.ByteArrayFunction.CreateReceiver
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.CreateReceiver()
-  nameWithType: ByteArrayFunction.CreateReceiver()
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.CreateReceiver*
-  name: CreateReceiver
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html#com_ricoh_livestreaming_unity_ByteArrayFunction_CreateReceiver_
-  commentId: Overload:com.ricoh.livestreaming.unity.ByteArrayFunction.CreateReceiver
-  isSpec: "True"
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.CreateReceiver
-  nameWithType: ByteArrayFunction.CreateReceiver
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.Dispose
-  name: Dispose()
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html#com_ricoh_livestreaming_unity_ByteArrayFunction_Dispose
-  commentId: M:com.ricoh.livestreaming.unity.ByteArrayFunction.Dispose
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.Dispose()
-  nameWithType: ByteArrayFunction.Dispose()
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.Dispose*
-  name: Dispose
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.html#com_ricoh_livestreaming_unity_ByteArrayFunction_Dispose_
-  commentId: Overload:com.ricoh.livestreaming.unity.ByteArrayFunction.Dispose
-  isSpec: "True"
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.Dispose
-  nameWithType: ByteArrayFunction.Dispose
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout
-  name: ByteArrayFunction.ImageLayout
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html
-  commentId: T:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout
-  nameWithType: ByteArrayFunction.ImageLayout
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.h
-  name: h
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayout_h
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.h
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.h
-  nameWithType: ByteArrayFunction.ImageLayout.h
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.render_x
-  name: render_x
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayout_render_x
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.render_x
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.render_x
-  nameWithType: ByteArrayFunction.ImageLayout.render_x
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.render_y
-  name: render_y
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayout_render_y
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.render_y
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.render_y
-  nameWithType: ByteArrayFunction.ImageLayout.render_y
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.src_x
-  name: src_x
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayout_src_x
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.src_x
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.src_x
-  nameWithType: ByteArrayFunction.ImageLayout.src_x
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.src_y
-  name: src_y
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayout_src_y
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.src_y
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.src_y
-  nameWithType: ByteArrayFunction.ImageLayout.src_y
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.tex_h
-  name: tex_h
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayout_tex_h
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.tex_h
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.tex_h
-  nameWithType: ByteArrayFunction.ImageLayout.tex_h
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.tex_w
-  name: tex_w
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayout_tex_w
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.tex_w
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.tex_w
-  nameWithType: ByteArrayFunction.ImageLayout.tex_w
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.w
-  name: w
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayout_w
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.w
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayout.w
-  nameWithType: ByteArrayFunction.ImageLayout.w
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet
-  name: ByteArrayFunction.ImageLayoutSet
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html
-  commentId: T:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet
-  nameWithType: ByteArrayFunction.ImageLayoutSet
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color
-  name: color
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_color
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color
-  nameWithType: ByteArrayFunction.ImageLayoutSet.color
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color_area_h
-  name: color_area_h
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_color_area_h
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color_area_h
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color_area_h
-  nameWithType: ByteArrayFunction.ImageLayoutSet.color_area_h
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color_area_w
-  name: color_area_w
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_color_area_w
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color_area_w
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.color_area_w
-  nameWithType: ByteArrayFunction.ImageLayoutSet.color_area_w
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth
-  name: depth
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_depth
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth
-  nameWithType: ByteArrayFunction.ImageLayoutSet.depth
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_area_h
-  name: depth_area_h
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_depth_area_h
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_area_h
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_area_h
-  nameWithType: ByteArrayFunction.ImageLayoutSet.depth_area_h
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_area_w
-  name: depth_area_w
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_depth_area_w
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_area_w
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_area_w
-  nameWithType: ByteArrayFunction.ImageLayoutSet.depth_area_w
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_max
-  name: depth_max
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_depth_max
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_max
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_max
-  nameWithType: ByteArrayFunction.ImageLayoutSet.depth_max
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_min
-  name: depth_min
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_depth_min
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_min
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_min
-  nameWithType: ByteArrayFunction.ImageLayoutSet.depth_min
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_scale
-  name: depth_scale
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_depth_scale
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_scale
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.depth_scale
-  nameWithType: ByteArrayFunction.ImageLayoutSet.depth_scale
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.src_num
-  name: src_num
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_src_num
-  commentId: F:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.src_num
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.src_num
-  nameWithType: ByteArrayFunction.ImageLayoutSet.src_num
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.TotalWidth
-  name: TotalWidth()
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_TotalWidth
-  commentId: M:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.TotalWidth
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.TotalWidth()
-  nameWithType: ByteArrayFunction.ImageLayoutSet.TotalWidth()
-- uid: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.TotalWidth*
-  name: TotalWidth
-  href: api/com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.html#com_ricoh_livestreaming_unity_ByteArrayFunction_ImageLayoutSet_TotalWidth_
-  commentId: Overload:com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.TotalWidth
-  isSpec: "True"
-  fullName: com.ricoh.livestreaming.unity.ByteArrayFunction.ImageLayoutSet.TotalWidth
-  nameWithType: ByteArrayFunction.ImageLayoutSet.TotalWidth
-- uid: com.ricoh.livestreaming.unity.ByteArrayReceiver
-  name: ByteArrayReceiver
-  href: api/com.ricoh.livestreaming.unity.ByteArrayReceiver.html
-  commentId: T:com.ricoh.livestreaming.unity.ByteArrayReceiver
-  fullName: com.ricoh.livestreaming.unity.ByteArrayReceiver
-  nameWithType: ByteArrayReceiver
-- uid: com.ricoh.livestreaming.unity.ByteArrayReceiver.Receive(System.IntPtr,System.IntPtr,com.ricoh.livestreaming.webrtc.VideoTrack)
-  name: Receive(IntPtr, IntPtr, VideoTrack)
-  href: api/com.ricoh.livestreaming.unity.ByteArrayReceiver.html#com_ricoh_livestreaming_unity_ByteArrayReceiver_Receive_System_IntPtr_System_IntPtr_com_ricoh_livestreaming_webrtc_VideoTrack_
-  commentId: M:com.ricoh.livestreaming.unity.ByteArrayReceiver.Receive(System.IntPtr,System.IntPtr,com.ricoh.livestreaming.webrtc.VideoTrack)
-  fullName: com.ricoh.livestreaming.unity.ByteArrayReceiver.Receive(System.IntPtr, System.IntPtr, com.ricoh.livestreaming.webrtc.VideoTrack)
-  nameWithType: ByteArrayReceiver.Receive(IntPtr, IntPtr, VideoTrack)
-- uid: com.ricoh.livestreaming.unity.ByteArrayReceiver.Receive*
-  name: Receive
-  href: api/com.ricoh.livestreaming.unity.ByteArrayReceiver.html#com_ricoh_livestreaming_unity_ByteArrayReceiver_Receive_
-  commentId: Overload:com.ricoh.livestreaming.unity.ByteArrayReceiver.Receive
-  isSpec: "True"
-  fullName: com.ricoh.livestreaming.unity.ByteArrayReceiver.Receive
-  nameWithType: ByteArrayReceiver.Receive
 - uid: com.ricoh.livestreaming.unity.UnityCameraCapturer
   name: UnityCameraCapturer
   href: api/com.ricoh.livestreaming.unity.UnityCameraCapturer.html
@@ -1555,50 +1345,6 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.webrtc.AudioTrack.SetVolume
   nameWithType: AudioTrack.SetVolume
-- uid: com.ricoh.livestreaming.webrtc.ByteArrayCapturer
-  name: ByteArrayCapturer
-  href: api/com.ricoh.livestreaming.webrtc.ByteArrayCapturer.html
-  commentId: T:com.ricoh.livestreaming.webrtc.ByteArrayCapturer
-  fullName: com.ricoh.livestreaming.webrtc.ByteArrayCapturer
-  nameWithType: ByteArrayCapturer
-- uid: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Release
-  name: Release()
-  href: api/com.ricoh.livestreaming.webrtc.ByteArrayCapturer.html#com_ricoh_livestreaming_webrtc_ByteArrayCapturer_Release
-  commentId: M:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Release
-  fullName: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Release()
-  nameWithType: ByteArrayCapturer.Release()
-- uid: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Release*
-  name: Release
-  href: api/com.ricoh.livestreaming.webrtc.ByteArrayCapturer.html#com_ricoh_livestreaming_webrtc_ByteArrayCapturer_Release_
-  commentId: Overload:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Release
-  isSpec: "True"
-  fullName: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.Release
-  nameWithType: ByteArrayCapturer.Release
-- uid: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])
-  name: RenderByteArray(Byte[], Byte[], Byte[], Byte[], Byte[], Byte[])
-  href: api/com.ricoh.livestreaming.webrtc.ByteArrayCapturer.html#com_ricoh_livestreaming_webrtc_ByteArrayCapturer_RenderByteArray_System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___
-  commentId: M:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])
-  name.vb: RenderByteArray(Byte(), Byte(), Byte(), Byte(), Byte(), Byte())
-  fullName: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte[], System.Byte[], System.Byte[], System.Byte[], System.Byte[], System.Byte[])
-  fullName.vb: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte(), System.Byte(), System.Byte(), System.Byte(), System.Byte(), System.Byte())
-  nameWithType: ByteArrayCapturer.RenderByteArray(Byte[], Byte[], Byte[], Byte[], Byte[], Byte[])
-  nameWithType.vb: ByteArrayCapturer.RenderByteArray(Byte(), Byte(), Byte(), Byte(), Byte(), Byte())
-- uid: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])
-  name: RenderByteArray(Byte[], Byte[], Byte[], Byte[], Byte[], Byte[], Byte[], Byte[], Byte[], Byte[])
-  href: api/com.ricoh.livestreaming.webrtc.ByteArrayCapturer.html#com_ricoh_livestreaming_webrtc_ByteArrayCapturer_RenderByteArray_System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___
-  commentId: M:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])
-  name.vb: RenderByteArray(Byte(), Byte(), Byte(), Byte(), Byte(), Byte(), Byte(), Byte(), Byte(), Byte())
-  fullName: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte[], System.Byte[], System.Byte[], System.Byte[], System.Byte[], System.Byte[], System.Byte[], System.Byte[], System.Byte[], System.Byte[])
-  fullName.vb: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray(System.Byte(), System.Byte(), System.Byte(), System.Byte(), System.Byte(), System.Byte(), System.Byte(), System.Byte(), System.Byte(), System.Byte())
-  nameWithType: ByteArrayCapturer.RenderByteArray(Byte[], Byte[], Byte[], Byte[], Byte[], Byte[], Byte[], Byte[], Byte[], Byte[])
-  nameWithType.vb: ByteArrayCapturer.RenderByteArray(Byte(), Byte(), Byte(), Byte(), Byte(), Byte(), Byte(), Byte(), Byte(), Byte())
-- uid: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray*
-  name: RenderByteArray
-  href: api/com.ricoh.livestreaming.webrtc.ByteArrayCapturer.html#com_ricoh_livestreaming_webrtc_ByteArrayCapturer_RenderByteArray_
-  commentId: Overload:com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray
-  isSpec: "True"
-  fullName: com.ricoh.livestreaming.webrtc.ByteArrayCapturer.RenderByteArray
-  nameWithType: ByteArrayCapturer.RenderByteArray
 - uid: com.ricoh.livestreaming.webrtc.CodecUtil
   name: CodecUtil
   href: api/com.ricoh.livestreaming.webrtc.CodecUtil.html
@@ -1875,6 +1621,19 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.webrtc.MediaStreamTrack.Id
   nameWithType: MediaStreamTrack.Id
+- uid: com.ricoh.livestreaming.webrtc.MediaStreamTrack.SetEnabled(System.Boolean)
+  name: SetEnabled(Boolean)
+  href: api/com.ricoh.livestreaming.webrtc.MediaStreamTrack.html#com_ricoh_livestreaming_webrtc_MediaStreamTrack_SetEnabled_System_Boolean_
+  commentId: M:com.ricoh.livestreaming.webrtc.MediaStreamTrack.SetEnabled(System.Boolean)
+  fullName: com.ricoh.livestreaming.webrtc.MediaStreamTrack.SetEnabled(System.Boolean)
+  nameWithType: MediaStreamTrack.SetEnabled(Boolean)
+- uid: com.ricoh.livestreaming.webrtc.MediaStreamTrack.SetEnabled*
+  name: SetEnabled
+  href: api/com.ricoh.livestreaming.webrtc.MediaStreamTrack.html#com_ricoh_livestreaming_webrtc_MediaStreamTrack_SetEnabled_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.MediaStreamTrack.SetEnabled
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.MediaStreamTrack.SetEnabled
+  nameWithType: MediaStreamTrack.SetEnabled
 - uid: com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType
   name: MediaStreamTrack.TrackType
   href: api/com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType.html

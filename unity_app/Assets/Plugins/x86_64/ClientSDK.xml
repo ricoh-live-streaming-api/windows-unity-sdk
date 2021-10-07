@@ -418,6 +418,11 @@
             </summary>
             <returns>report string of error.</returns>
         </member>
+        <member name="T:com.ricoh.livestreaming.SFUPreAnswerMessage">
+            <summary>
+            SFU PreAnswerのメッセージ。
+            </summary>
+        </member>
         <member name="T:com.ricoh.livestreaming.Stability">
             <summary>
             Enum of stability.
