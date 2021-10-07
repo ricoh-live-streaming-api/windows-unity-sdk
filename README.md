@@ -1,7 +1,7 @@
 # RICOH Live Streaming Client SDK for Windows
 
 株式会社リコーが提供するRICOH Live Streaming Serviceを利用するためのRICOH Live Streaming Client SDK for Windowsです。
-現在このSDKは正式版ではなくβ版として提供しています。使用にあたってはソフトウェア使用許諾契約書の第１０条を特に注意してご確認ください。
+使用にあたってはソフトウェア使用許諾契約書の第１０条を特に注意してご確認ください。
 
 RICOH Live Streaming Serviceは、映像/音声などのメディアデータやテキストデータなどを
 複数の拠点間で双方向かつリアルタイムにやりとりできるプラットフォームです。
