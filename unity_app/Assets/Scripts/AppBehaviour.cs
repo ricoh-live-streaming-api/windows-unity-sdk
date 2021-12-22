@@ -35,7 +35,6 @@ public class AppBehaviour : BehaviorBase
     private Dictionary<string, RemoteView> remoteTracks = new Dictionary<string, RemoteView>();
     private Dictionary<string, VideoFrameSize> updateFrameSizeMap = new Dictionary<string, VideoFrameSize>();
     private Dictionary<string, AudioTrack> remoteAudioTracks = new Dictionary<string, AudioTrack>();
-    private ConnectionState connectionState;
 
     private IntPtr hWnd;    // own window handle
     private VideoDeviceCapturer videoDeviceCapturer;
@@ -104,7 +103,7 @@ public class AppBehaviour : BehaviorBase
     // Update is called once per frame
     void Update()
     {
-        lock (lockObject)
+        lock (frameLockObject)
         {
             if (updateFrameSizeMap.Count != 0)
             {
@@ -154,25 +153,6 @@ public class AppBehaviour : BehaviorBase
                 cappellaRenderer.RenderToTexture(image.texture, RenderLocalVideoTrack);
             }
         }
-
-        ConnectionState state = client.GetState();
-        if (state != this.connectionState)
-        {
-            var button = connectButton.GetComponent<Button>();
-            switch (state)
-            {
-                case ConnectionState.Idle:
-                    button.GetComponentInChildren<Text>().text = "Connect";
-                    button.interactable = true;
-                    break;
-                case ConnectionState.Open:
-                    button.GetComponentInChildren<Text>().text = "Disconnect";
-                    button.interactable = true;
-                    break;
-            }
-
-            this.connectionState = state;
-        }
     }
 
     public void OnApplicationFinishButtonClick()
@@ -188,18 +168,14 @@ public class AppBehaviour : BehaviorBase
     {
         Logger.Debug("OnConnectButtonClick()");
 
-        var button = connectButton.GetComponent<Button>();
-
         if (client.GetState() == ConnectionState.Idle)
         {
-            button.GetComponentInChildren<Text>().text = "Connecting…";
-            button.interactable = false;
+            SetConnectButtonText("Connecting...", false);
             Connect();
         }
         else
         {
-            button.GetComponentInChildren<Text>().text = "Disconnecting…";
-            button.interactable = false;
+            SetConnectButtonText("Disconnecting...", false);
             Disconnect();
         }
     }
@@ -219,12 +195,22 @@ public class AppBehaviour : BehaviorBase
         client.SetAudioOutputDevice(audioOutputDropdown.DeviceName);
     }
 
+    protected override void SetConnectButtonText(string buttonText, bool interactable)
+    {
+        UnityUIContext.Post(__ =>
+        {
+            var button = connectButton.GetComponent<Button>();
+            button.GetComponentInChildren<Text>().text = buttonText;
+            button.interactable = interactable;
+        }, null);
+    }
+
     private void Connect()
     {
         string roomId = roomIDEdit.text;
         var task = Task.Run(() =>
         {
-            lock (lockObject)
+            lock (clientLockObject)
             {
                 try
                 {
@@ -299,12 +285,11 @@ public class AppBehaviour : BehaviorBase
                 catch (Exception e)
                 {
                     Logger.Error("Failed to Connect.", e);
-                    UnityUIContext.Post(__ =>
-                    {
-                        var button = connectButton.GetComponent<UnityEngine.UI.Button>();
-                        button.GetComponentInChildren<Text>().text = "Connect";
-                        button.interactable = true;
-                    }, null);
+                    SetConnectButtonText("Connect", true);
+
+                    // VideoDeviceCapturerをReleaseしないと再Connect時にGetUserMediaが失敗する
+                    videoDeviceCapturer?.Release();
+                    localLSTracks.Clear();
                 }
             }
         });
@@ -314,7 +299,7 @@ public class AppBehaviour : BehaviorBase
     {
         var task = Task.Run(() =>
         {
-            lock (lockObject)
+            lock (clientLockObject)
             {
                 try
                 {
@@ -324,12 +309,7 @@ public class AppBehaviour : BehaviorBase
                 catch (Exception e)
                 {
                     Logger.Error("Failed to Disconnect.", e);
-                    UnityUIContext.Post(__ =>
-                    {
-                        var button = connectButton.GetComponent<UnityEngine.UI.Button>();
-                        button.GetComponentInChildren<Text>().text = "Connect";
-                        button.interactable = true;
-                    }, null);
+                    SetConnectButtonText("Connect", true);
                 }
             }
         });
@@ -369,7 +349,14 @@ public class AppBehaviour : BehaviorBase
                 // すでにconnectionIdと紐づいたViewがある場合は破棄する
                 RemoveRemoteTrackByConnectionId(connectionId);
 
-                var remoteView = new RemoteView(connectionId, videoTrack, content, stream.Id, metadata);
+                var remoteView = new RemoteView(connectionId, videoTrack, content, stream.Id, metadata)
+                {
+                    OnVideoReceiveToggleChangedAction = appBehaviour.OnVideoRequirementChanged
+                };
+
+                // SFU のみ Video 受信選択用 UI を表示
+                remoteView.SetVideoReceiveEnabled(appBehaviour.roomTypeDropdown.RoomType == RoomSpec.Type.Sfu);
+
                 appBehaviour.remoteTracks.Add(videoTrack.Id, remoteView);
 
                 // 同じStreamIDのAudioTrackを探す。
@@ -444,7 +431,7 @@ public class AppBehaviour : BehaviorBase
 
         public void OnFrameSizeChanged(string id, int width, int height)
         {
-            lock (lockObject)
+            lock (frameLockObject)
             {
                 Logger.Info(String.Format("OnFrameSizeChanged(id={0} width={1} height={2})", id, width, height));
                 app.updateFrameSizeMap.Add(id, new VideoFrameSize(width, height));

@@ -49,6 +49,51 @@
             </summary>
             <returns>report string of error.</returns>
         </member>
+        <member name="T:com.ricoh.livestreaming.IceServersProtocol">
+            <summary>
+            TURN protocols to be used for ICE Servers.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.IceServersProtocol.All">
+            <summary>
+            Use all connection modes.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.IceServersProtocol.Udp">
+            <summary>
+            Use UDP only.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.IceServersProtocol.Tcp">
+            <summary>
+            Use TCP only.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.IceServersProtocol.Tls">
+            <summary>
+            Use TLS only.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.SFUUpdateConnectOptionsMessage">
+            <summary>
+            SFU UpdateConnectOptions.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.VideoRequirement">
+            <summary>
+            Whether or not to require video.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.VideoRequirement.Required">
+            <summary>
+            Video required.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.VideoRequirement.Unrequired">
+            <summary>
+            Video unrequired.
+            </summary>
+        </member>
         <member name="T:com.ricoh.livestreaming.ErrorType">
             <summary>
             Enum of error type of SDK
@@ -1754,10 +1799,25 @@
             </summary>
             <param name="wrapper"></param>
         </member>
+        <member name="P:com.ricoh.livestreaming.SignalingChannel.IsClosing">
+            <summary>
+            true : Close()を呼び出し後, false : Open()を呼び出し後
+            </summary>
+        </member>
         <member name="T:com.ricoh.livestreaming.Client">
             <summary>
             Client class of RICOH Live Streaming API.
             This class has a state. The state can be acquired with the <see cref="M:com.ricoh.livestreaming.Client.GetState"/> method. The following figure shows the state transition.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Client.RemoteTrackMetadataInfo.ReservedRemoteTagList">
+            <summary>
+            OnAddTrack 前に通知された OnUpdateRemoteTrack の RemoteTag を退避
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.Client.RemoteTrackMetadataInfo.IsTrackAdded">
+            <summary>
+            OnAddTrack したかどうか
             </summary>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.#ctor">
@@ -1777,7 +1837,10 @@
             <param name="constrants">Kind of user media.</param>
             <returns>Media stream.</returns>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called in the Closed state.</exception>
-            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when failed to create media stream.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">
+            <para>Thrown when failed to create media stream.</para>
+            <para>For example, if the method is called with <see cref="T:com.ricoh.livestreaming.webrtc.VideoDeviceCapturer"/> already created.</para>
+            </exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.Connect(System.String,System.String,com.ricoh.livestreaming.Option)">
             <summary>
@@ -1819,7 +1882,20 @@
             <param name="lsTrack"><see cref="T:com.ricoh.livestreaming.LSTrack"/></param>
             <param name="meta">update metadata.</param>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called with a RoomSpecType other than SFU.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when LSTrack not found on LocalLSTracks.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.ChangeMediaRequirements(System.String,com.ricoh.livestreaming.VideoRequirement)">
+            <summary>
+            <para>Change the requirements of the Media for the specified connection partner.</para>  
+            <para>The server decides how or whether to send the Media based on this specification.</para>
+            </summary>
+            <param name="connectionId">Connection ID of the connection partner.</param>
+            <param name="videoRequirement">Whether or not to require video.</param>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called with a RoomSpecType other than SFU.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called with Option.ReceivingOption.Enabled set to false.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when a VideoTrack with the "connectionId" cannot be found in RemoteTracks.</exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.SetEventListener(com.ricoh.livestreaming.IClientListener)">
             <summary>
@@ -1969,6 +2045,11 @@
             Configurations for Transport policies of the ICE candidates.
             </summary>
         </member>
+        <member name="P:com.ricoh.livestreaming.Option.IceServersProtocol">
+            <summary>
+            Configurations for TURN protocols to be used for ICE Servers.
+            </summary>
+        </member>
         <member name="M:com.ricoh.livestreaming.Option.SetSignalingURL(System.String)">
             <summary>
             Set option for signaling URL.
@@ -1989,6 +2070,7 @@
             </summary>
             <param name="meta">Metadate for connection. key is metadate's name, value is metadate's value.</param>
             <returns>Option's instance for method chain.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="meta"/>is null.</exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Option.SetEnableCpuOveruseDetection(System.Boolean)">
             <summary>
@@ -2019,6 +2101,13 @@
             <para>This option is applied when p2p connection only.</para>
             </summary>
             <param name="iceTransportPolicy">Transport policies of the ICE candidates.</param>
+            <returns>Option's instance for method chain.</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Option.SetIceServersProtocol(com.ricoh.livestreaming.IceServersProtocol)">
+            <summary>
+            Set option for TURN protocols to be used for ICE Servers.
+            </summary>
+            <param name="iceServersProtocol">TURN protocols to be used for ICE Servers.</param>
             <returns>Option's instance for method chain.</returns>
         </member>
     </members>

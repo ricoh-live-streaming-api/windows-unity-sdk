@@ -26,8 +26,6 @@ public class Watch : BehaviorBase
     private Dictionary<string, object> remoteVideoTrackMetadata;
     private VideoFrameSize updateFrameSize = null;
 
-    private ConnectionState connectionState;
-
     private IntPtr hWnd;    // own window handle
 
     [DllImport("user32.dll")]
@@ -83,7 +81,7 @@ public class Watch : BehaviorBase
     // Update is called once per frame
     void Update()
     {
-        lock (lockObject)
+        lock (frameLockObject)
         {
             if (updateFrameSize != null)
             {
@@ -103,25 +101,6 @@ public class Watch : BehaviorBase
                 cappellaRenderer.RenderToTexture(image.texture, renderRemoteVideoTrack);
             }
         }
-
-        ConnectionState state = client.GetState();
-        if (state != connectionState)
-        {
-            var button = connectButton.GetComponent<UnityEngine.UI.Button>();
-            switch (state)
-            {
-                case ConnectionState.Idle:
-                    button.GetComponentInChildren<Text>().text = "Connect";
-                    button.interactable = true;
-                    break;
-                case ConnectionState.Open:
-                    button.GetComponentInChildren<Text>().text = "Disconnect";
-                    button.interactable = true;
-                    break;
-            }
-
-            connectionState = state;
-        }
     }
 
     public void OnApplicationFinishButtonClick()
@@ -137,18 +116,14 @@ public class Watch : BehaviorBase
     {
         Logger.Debug("OnConnectButtonClick()");
 
-        var button = connectButton.GetComponent<UnityEngine.UI.Button>();
-
         if (client.GetState() == ConnectionState.Idle)
         {
-            button.GetComponentInChildren<Text>().text = "Connecting…";
-            button.interactable = false;
+            SetConnectButtonText("Connecting...", false);
             Connect();
         }
         else
         {
-            button.GetComponentInChildren<Text>().text = "Disconnecting…";
-            button.interactable = false;
+            SetConnectButtonText("Disconnecting...", false);
             Disconnect();
         }
     }
@@ -157,6 +132,16 @@ public class Watch : BehaviorBase
     {
         // Input/Output device selector setting.
         audioOutputDropdown.Initialize(OnAudioOutputDropdownValueChanged);
+    }
+
+    protected override void SetConnectButtonText(string buttonText, bool interactable)
+    {
+        UnityUIContext.Post(__ =>
+        {
+            var button = connectButton.GetComponent<Button>();
+            button.GetComponentInChildren<Text>().text = buttonText;
+            button.interactable = interactable;
+        }, null);
     }
 
     protected override void SetDevice(Client client)
@@ -169,7 +154,7 @@ public class Watch : BehaviorBase
         string roomId = roomIDEdit.text;
         var task = Task.Run(() =>
         {
-            lock (lockObject)
+            lock (clientLockObject)
             {
                 try
                 {
@@ -218,13 +203,7 @@ public class Watch : BehaviorBase
                 catch (Exception e)
                 {
                     Logger.Error("Failed to Connect.", e);
-                    UnityUIContext.Post(__ =>
-                    {
-                        var button = connectButton.GetComponent<UnityEngine.UI.Button>();
-                        button.GetComponentInChildren<Text>().text = "Connect";
-                        button.interactable = true;
-                    }, null);
-
+                    SetConnectButtonText("Connect", true);
                 }
             }
         });
@@ -234,7 +213,7 @@ public class Watch : BehaviorBase
     {
         var task = Task.Run(() =>
         {
-            lock (lockObject)
+            lock (clientLockObject)
             {
                 try
                 {
@@ -244,12 +223,7 @@ public class Watch : BehaviorBase
                 catch (Exception e)
                 {
                     Logger.Error("Failed to Disconnect.", e);
-                    UnityUIContext.Post(__ =>
-                    {
-                        var button = connectButton.GetComponent<UnityEngine.UI.Button>();
-                        button.GetComponentInChildren<Text>().text = "Connect";
-                        button.interactable = true;
-                    }, null);
+                    SetConnectButtonText("Connect", true);
                 }
             }
         });
@@ -298,7 +272,7 @@ public class Watch : BehaviorBase
 
         public void OnFrameSizeChanged(string id, int width, int height)
         {
-            lock (lockObject)
+            lock (frameLockObject)
             {
                 Logger.Info(String.Format("OnFrameSizeChanged(id={0} width={1} height={2})", id, width, height));
                 (app as Watch).updateFrameSize = new VideoFrameSize(width, height);

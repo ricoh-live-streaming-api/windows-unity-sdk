@@ -1,4 +1,22 @@
 # CHANGELOG
+## v1.2.0
+* API変更
+  * ChangeMediaRequirementsで対向connectionごとにvideoを受信するか指定できるようにした  
+  * OptionのIceServersProtocolでTURNサーバに接続する際にどのトランスポートプロトコルで接続するか指定できるようにした。この属性で"tls"を指定してTCP443ポートの強制が可能になり、他のトランスポートプロトコルを使ってパフォーマンス最適化する余地を犠牲にして、ファイヤーウォールやプロキシを通過する確率を上げることができる
+
+* SDK修正
+  * 特定のタイミングでchangeMute、updateTrackMetaを実行した場合に対向connectionに内容が通知されない不具合を修正
+  * 要求されたRoomSpecに対応するSFUまたはTURNが一時的にクラウド上に存在しない場合に専用のエラーコード53806を追加
+  * 依存するlibwebrtcのバージョンを m89.4389.5.5 から m93.4577.8 に変更
+  * LAN ケーブルを抜いた状態で Disconnect を実施するとフリーズする問題の修正
+  * Option#SetMeta(Dictionary<string, object> meta) の引数が null の場合、ArgumentNullException が発生することをAPI仕様書に明記
+
+* サンプルアプリ修正
+  * Video の選択受信用のチェックボックスを追加（SampleScene）
+  * Connect で Exception が発生した際の回復処理を追加（SampleScene）
+  * 5拠点目以降の映像が表示されない問題の修正（SampleScene, UnityCamera）
+  * Update メソッドでの排他制御が原因でフリーズする問題の修正（SampleScene, UnityCamera, Watch）
+
 ## v1.1.4
 * SDK修正
   * `SFU::PreAnswer` 対応

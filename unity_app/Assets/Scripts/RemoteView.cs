@@ -15,7 +15,9 @@ public class RemoteView
     public Dictionary<string, object> Metadata { get; private set; }
     private AudioTrack _audioTrack;
     private readonly Slider slider;
+    private readonly Toggle videoReceiveToggle;
     private static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    public Action<string, bool> OnVideoReceiveToggleChangedAction;
 
     public RemoteView(string connectionId, VideoTrack videoTrack, GameObject content, string streamId, Dictionary<string, object> metadata)
     {
@@ -35,6 +37,9 @@ public class RemoteView
         {
             slider = null;
         }
+
+        videoReceiveToggle = _content.transform.Find("VideoReceiveToggle")?.GetComponentInChildren<Toggle>();
+        videoReceiveToggle?.onValueChanged.AddListener(OnVideoReceiveToggleChanged);
     }
 
     public GameObject GetContent()
@@ -90,6 +95,15 @@ public class RemoteView
     }
 
     /// <summary>
+    /// VideoReceiveToggle の表示・非表示を切り替える
+    /// </summary>
+    /// <param name="enabled">true : 表示, false : 非表示</param>
+    public void SetVideoReceiveEnabled(bool enabled)
+    {
+        videoReceiveToggle?.gameObject.SetActive(enabled);
+    }
+
+    /// <summary>
     /// PodUIかどうか
     /// </summary>
     public bool IsPod
@@ -108,7 +122,6 @@ public class RemoteView
         }
     }
 
-
     private void VolumeSlderValueChanged()
     {
         if (_audioTrack != null)
@@ -123,6 +136,10 @@ public class RemoteView
                 Logger.Warn("Failed to SetVolume().", e);
             }
         }
+    }
 
+    private void OnVideoReceiveToggleChanged(bool isOn)
+    {
+        OnVideoReceiveToggleChangedAction?.Invoke(_connectionId, isOn);
     }
 }

@@ -15,7 +15,8 @@ public abstract class BehaviorBase : MonoBehaviour
     public VideoTrack RenderLocalVideoTrack { get; protected set; }
     public bool HasLocalVideoTrack { get; protected set; } = true;
 
-    protected static readonly object lockObject = new object();
+    protected static readonly object frameLockObject = new object();
+    protected static readonly object clientLockObject = new object();
     protected static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     protected Client client;
@@ -129,6 +130,29 @@ public abstract class BehaviorBase : MonoBehaviour
     }
 
     /// <summary>
+    /// VideoRequirement変更イベント
+    /// </summary>
+    /// <param name="connectionId">Videoを要求するリモートトラックのコネクションID</param>
+    /// <param name="isVideoReceive">true : Videoを要求する, false : Videoを要求しない</param>
+    public virtual void OnVideoRequirementChanged(string connectionId, bool isVideoReceive)
+    {
+        try
+        {
+            client.ChangeMediaRequirements(
+                connectionId,
+                isVideoReceive ? VideoRequirement.Required : VideoRequirement.Unrequired);
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to ChangeMediaRequirements. code={e.Detail.Code}", e);
+        }
+        catch (Exception e)
+        {
+            Logger.Error("Failed to ChangeMediaRequirements.", e);
+        }
+    }
+
+    /// <summary>
     /// アプリ終了時に呼び出されるUnityのコールバック
     /// </summary>
     public virtual void OnApplicationQuit()
@@ -165,6 +189,13 @@ public abstract class BehaviorBase : MonoBehaviour
     /// <param name="client">デバイスに紐づけるクライアント</param>
     protected abstract void SetDevice(Client client);
 
+    /// <summary>
+    /// Connect ボタンに表示する文字列を設定する
+    /// </summary>
+    /// <param name="buttonText">表示文字列</param>
+    /// <param name="interactable">true : ボタン操作可, false : ボタン操作不可</param>
+    protected abstract void SetConnectButtonText(string buttonText, bool interactable);
+
     protected abstract class ClientListenerBase : IClientListener
     {
         protected readonly BehaviorBase app;
@@ -182,7 +213,7 @@ public abstract class BehaviorBase : MonoBehaviour
 
             app.UnityUIContext.Post(__ =>
             {
-                lock (lockObject)
+                lock (frameLockObject)
                 {
                     if (app.HasLocalVideoTrack && mediaStreamTrack is VideoTrack videoTrack)
                     {
@@ -213,7 +244,7 @@ public abstract class BehaviorBase : MonoBehaviour
 
             app.UnityUIContext.Post(__ =>
             {
-                lock (lockObject)
+                lock (frameLockObject)
                 {
                     AddRemoteTrack(connectionId, stream, mediaStreamTrack, metadata);
                 }
@@ -225,7 +256,7 @@ public abstract class BehaviorBase : MonoBehaviour
 
             app.UnityUIContext.Post(__ =>
             {
-                lock (lockObject)
+                lock (clientLockObject)
                 {
                     if (statsOutpuTimer != null)
                     {
@@ -248,13 +279,16 @@ public abstract class BehaviorBase : MonoBehaviour
                     app.InitializeClient(this);
                 }
             }, null);
+
+            app.SetConnectButtonText("Connect", true);
         }
         public virtual void OnClosing()
         {
             Logger.Debug("OnClosing()");
+            app.SetConnectButtonText("Disconnecting...", false);
             app.UnityUIContext.Post(__ =>
             {
-                lock (lockObject)
+                lock (frameLockObject)
                 {
                     ClearRemoteTracks();
                 }
@@ -278,7 +312,7 @@ public abstract class BehaviorBase : MonoBehaviour
                 // starts logging stats.
                 TimerCallback rtcStatLog = state =>
                 {
-                    lock (lockObject)
+                    lock (clientLockObject)
                     {
                         if ((app.client != null) && (app.StatsLogger != null))
                         {
@@ -292,6 +326,7 @@ public abstract class BehaviorBase : MonoBehaviour
                 };
                 statsOutpuTimer = new System.Threading.Timer(rtcStatLog, null, 500, 1000);
             }, null);
+            app.SetConnectButtonText("Disconnect", true);
         }
 
         public virtual void OnRemoveRemoteConnection(string connectionId, Dictionary<string, object> metadata, List<MediaStreamTrack> mediaStreamTracks)
@@ -312,7 +347,7 @@ public abstract class BehaviorBase : MonoBehaviour
 
             app.UnityUIContext.Post(__ =>
             {
-                lock (lockObject)
+                lock (frameLockObject)
                 {
                     RemoveRemoteTrackByConnectionId(connectionId);
                 }

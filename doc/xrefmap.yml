@@ -26,6 +26,19 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.Client.Client
   nameWithType: Client.Client
+- uid: com.ricoh.livestreaming.Client.ChangeMediaRequirements(System.String,com.ricoh.livestreaming.VideoRequirement)
+  name: ChangeMediaRequirements(String, VideoRequirement)
+  href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_ChangeMediaRequirements_System_String_com_ricoh_livestreaming_VideoRequirement_
+  commentId: M:com.ricoh.livestreaming.Client.ChangeMediaRequirements(System.String,com.ricoh.livestreaming.VideoRequirement)
+  fullName: com.ricoh.livestreaming.Client.ChangeMediaRequirements(System.String, com.ricoh.livestreaming.VideoRequirement)
+  nameWithType: Client.ChangeMediaRequirements(String, VideoRequirement)
+- uid: com.ricoh.livestreaming.Client.ChangeMediaRequirements*
+  name: ChangeMediaRequirements
+  href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_ChangeMediaRequirements_
+  commentId: Overload:com.ricoh.livestreaming.Client.ChangeMediaRequirements
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.Client.ChangeMediaRequirements
+  nameWithType: Client.ChangeMediaRequirements
 - uid: com.ricoh.livestreaming.Client.ChangeMute(com.ricoh.livestreaming.LSTrack,com.ricoh.livestreaming.MuteType)
   name: ChangeMute(LSTrack, MuteType)
   href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_ChangeMute_com_ricoh_livestreaming_LSTrack_com_ricoh_livestreaming_MuteType_
@@ -306,6 +319,36 @@ references:
   commentId: F:com.ricoh.livestreaming.ErrorType.UnexpectedError
   fullName: com.ricoh.livestreaming.ErrorType.UnexpectedError
   nameWithType: ErrorType.UnexpectedError
+- uid: com.ricoh.livestreaming.IceServersProtocol
+  name: IceServersProtocol
+  href: api/com.ricoh.livestreaming.IceServersProtocol.html
+  commentId: T:com.ricoh.livestreaming.IceServersProtocol
+  fullName: com.ricoh.livestreaming.IceServersProtocol
+  nameWithType: IceServersProtocol
+- uid: com.ricoh.livestreaming.IceServersProtocol.All
+  name: All
+  href: api/com.ricoh.livestreaming.IceServersProtocol.html#com_ricoh_livestreaming_IceServersProtocol_All
+  commentId: F:com.ricoh.livestreaming.IceServersProtocol.All
+  fullName: com.ricoh.livestreaming.IceServersProtocol.All
+  nameWithType: IceServersProtocol.All
+- uid: com.ricoh.livestreaming.IceServersProtocol.Tcp
+  name: Tcp
+  href: api/com.ricoh.livestreaming.IceServersProtocol.html#com_ricoh_livestreaming_IceServersProtocol_Tcp
+  commentId: F:com.ricoh.livestreaming.IceServersProtocol.Tcp
+  fullName: com.ricoh.livestreaming.IceServersProtocol.Tcp
+  nameWithType: IceServersProtocol.Tcp
+- uid: com.ricoh.livestreaming.IceServersProtocol.Tls
+  name: Tls
+  href: api/com.ricoh.livestreaming.IceServersProtocol.html#com_ricoh_livestreaming_IceServersProtocol_Tls
+  commentId: F:com.ricoh.livestreaming.IceServersProtocol.Tls
+  fullName: com.ricoh.livestreaming.IceServersProtocol.Tls
+  nameWithType: IceServersProtocol.Tls
+- uid: com.ricoh.livestreaming.IceServersProtocol.Udp
+  name: Udp
+  href: api/com.ricoh.livestreaming.IceServersProtocol.html#com_ricoh_livestreaming_IceServersProtocol_Udp
+  commentId: F:com.ricoh.livestreaming.IceServersProtocol.Udp
+  fullName: com.ricoh.livestreaming.IceServersProtocol.Udp
+  nameWithType: IceServersProtocol.Udp
 - uid: com.ricoh.livestreaming.IceTransportPolicy
   name: IceTransportPolicy
   href: api/com.ricoh.livestreaming.IceTransportPolicy.html
@@ -689,6 +732,19 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.Option.EnableCpuOveruseDetection
   nameWithType: Option.EnableCpuOveruseDetection
+- uid: com.ricoh.livestreaming.Option.IceServersProtocol
+  name: IceServersProtocol
+  href: api/com.ricoh.livestreaming.Option.html#com_ricoh_livestreaming_Option_IceServersProtocol
+  commentId: P:com.ricoh.livestreaming.Option.IceServersProtocol
+  fullName: com.ricoh.livestreaming.Option.IceServersProtocol
+  nameWithType: Option.IceServersProtocol
+- uid: com.ricoh.livestreaming.Option.IceServersProtocol*
+  name: IceServersProtocol
+  href: api/com.ricoh.livestreaming.Option.html#com_ricoh_livestreaming_Option_IceServersProtocol_
+  commentId: Overload:com.ricoh.livestreaming.Option.IceServersProtocol
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.Option.IceServersProtocol
+  nameWithType: Option.IceServersProtocol
 - uid: com.ricoh.livestreaming.Option.IceTransportPolicy
   name: IceTransportPolicy
   href: api/com.ricoh.livestreaming.Option.html#com_ricoh_livestreaming_Option_IceTransportPolicy
@@ -767,6 +823,19 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.Option.SetEnableCpuOveruseDetection
   nameWithType: Option.SetEnableCpuOveruseDetection
+- uid: com.ricoh.livestreaming.Option.SetIceServersProtocol(com.ricoh.livestreaming.IceServersProtocol)
+  name: SetIceServersProtocol(IceServersProtocol)
+  href: api/com.ricoh.livestreaming.Option.html#com_ricoh_livestreaming_Option_SetIceServersProtocol_com_ricoh_livestreaming_IceServersProtocol_
+  commentId: M:com.ricoh.livestreaming.Option.SetIceServersProtocol(com.ricoh.livestreaming.IceServersProtocol)
+  fullName: com.ricoh.livestreaming.Option.SetIceServersProtocol(com.ricoh.livestreaming.IceServersProtocol)
+  nameWithType: Option.SetIceServersProtocol(IceServersProtocol)
+- uid: com.ricoh.livestreaming.Option.SetIceServersProtocol*
+  name: SetIceServersProtocol
+  href: api/com.ricoh.livestreaming.Option.html#com_ricoh_livestreaming_Option_SetIceServersProtocol_
+  commentId: Overload:com.ricoh.livestreaming.Option.SetIceServersProtocol
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.Option.SetIceServersProtocol
+  nameWithType: Option.SetIceServersProtocol
 - uid: com.ricoh.livestreaming.Option.SetIceTransportPolicy(com.ricoh.livestreaming.IceTransportPolicy)
   name: SetIceTransportPolicy(IceTransportPolicy)
   href: api/com.ricoh.livestreaming.Option.html#com_ricoh_livestreaming_Option_SetIceTransportPolicy_com_ricoh_livestreaming_IceTransportPolicy_
@@ -1307,6 +1376,24 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.unity.WindowProcedureHook.Term
   nameWithType: WindowProcedureHook.Term
+- uid: com.ricoh.livestreaming.VideoRequirement
+  name: VideoRequirement
+  href: api/com.ricoh.livestreaming.VideoRequirement.html
+  commentId: T:com.ricoh.livestreaming.VideoRequirement
+  fullName: com.ricoh.livestreaming.VideoRequirement
+  nameWithType: VideoRequirement
+- uid: com.ricoh.livestreaming.VideoRequirement.Required
+  name: Required
+  href: api/com.ricoh.livestreaming.VideoRequirement.html#com_ricoh_livestreaming_VideoRequirement_Required
+  commentId: F:com.ricoh.livestreaming.VideoRequirement.Required
+  fullName: com.ricoh.livestreaming.VideoRequirement.Required
+  nameWithType: VideoRequirement.Required
+- uid: com.ricoh.livestreaming.VideoRequirement.Unrequired
+  name: Unrequired
+  href: api/com.ricoh.livestreaming.VideoRequirement.html#com_ricoh_livestreaming_VideoRequirement_Unrequired
+  commentId: F:com.ricoh.livestreaming.VideoRequirement.Unrequired
+  fullName: com.ricoh.livestreaming.VideoRequirement.Unrequired
+  nameWithType: VideoRequirement.Unrequired
 - uid: com.ricoh.livestreaming.webrtc
   name: com.ricoh.livestreaming.webrtc
   href: api/com.ricoh.livestreaming.webrtc.html

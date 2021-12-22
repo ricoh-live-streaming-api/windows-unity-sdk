@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum SourceType
+    <title>Enum VideoRequirement
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum SourceType
+    <meta name="title" content="Enum VideoRequirement
    ">
     <meta name="generator" content="docfx 2.52.0.0">
     
@@ -68,19 +68,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="com.ricoh.livestreaming.SourceType">
+            <article class="content wrap" id="_content" data-uid="com.ricoh.livestreaming.VideoRequirement">
   
   
-  <h1 id="com_ricoh_livestreaming_SourceType" data-uid="com.ricoh.livestreaming.SourceType" class="text-break">Enum SourceType
+  <h1 id="com_ricoh_livestreaming_VideoRequirement" data-uid="com.ricoh.livestreaming.VideoRequirement" class="text-break">Enum VideoRequirement
   </h1>
-  <div class="markdown level0 summary"><p>Tagの生成元の種類</p>
+  <div class="markdown level0 summary"><p>Whether or not to require video.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="com.ricoh.livestreaming.html">com.ricoh.livestreaming</a></h6>
   <h6><strong>Assembly</strong>: ClientSDK.dll</h6>
-  <h5 id="com_ricoh_livestreaming_SourceType_syntax">Syntax</h5>
+  <h5 id="com_ricoh_livestreaming_VideoRequirement_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum SourceType</code></pre>
+    <pre><code class="lang-csharp hljs">public enum VideoRequirement</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -93,19 +93,13 @@
     <thead>
     <tbody>
       <tr>
-        <td id="com_ricoh_livestreaming_SourceType_AppBack">AppBack</td>
-        <td><p>アプリケーションバックエンドでアプリ自身が生成。
-サービスによって署名されているため、アプリのユーザが変更できないメタデータを送信することができる</p>
+        <td id="com_ricoh_livestreaming_VideoRequirement_Required">Required</td>
+        <td><p>Video required.</p>
 </td>
       </tr>
       <tr>
-        <td id="com_ricoh_livestreaming_SourceType_AppFront">AppFront</td>
-        <td><p>アプリケーションフロントエンドでアプリ自身が生成</p>
-</td>
-      </tr>
-      <tr>
-        <td id="com_ricoh_livestreaming_SourceType_SDK">SDK</td>
-        <td><p>アプリケーションフロントエンドで SDK が生成</p>
+        <td id="com_ricoh_livestreaming_VideoRequirement_Unrequired">Unrequired</td>
+        <td><p>Video unrequired.</p>
 </td>
       </tr>
     </tbody>

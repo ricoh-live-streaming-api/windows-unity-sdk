@@ -35,8 +35,6 @@ public class UnityCamera : BehaviorBase
     private Vector2 remoteViewOriginalSize;
     private Vector2 localViewOriginalSize;
 
-    private ConnectionState connectionState;
-
     private UnityCameraCapturer unityCameraCapturer;
     protected override VideoCapturer VideoCapturer
     {
@@ -175,27 +173,6 @@ public class UnityCamera : BehaviorBase
             var image = localRenderTarget.GetComponent<RawImage>();
             cappellaRenderer.RenderToTexture(image.texture, RenderLocalVideoTrack);
         }
-
-        ConnectionState state = client.GetState();
-
-        if (state != connectionState)
-        {
-            switch (state)
-            {
-                case ConnectionState.Idle:
-                    connectButton.GetComponentInChildren<Text>().text = "Connect";
-                    connectButton.interactable = true;
-                    break;
-                case ConnectionState.Open:
-                    connectButton.GetComponentInChildren<Text>().text = "Disconnect";
-                    connectButton.interactable = true;
-                    break;
-                case ConnectionState.Closing:
-                    break;
-            }
-
-            connectionState = state;
-        }
     }
 
     public void OnApplicationFinishButtonClick()
@@ -210,18 +187,15 @@ public class UnityCamera : BehaviorBase
     public void OnClickConnectButton()
     {
         Logger.Debug("OnConnectButtonClick()");
-        UnityEngine.Debug.Log("OnConnectButtonClick()");
-
-        connectButton.interactable = false;
 
         if (client.GetState() == ConnectionState.Idle)
         {
-            connectButton.GetComponentInChildren<Text>().text = "Connecting…";
+            SetConnectButtonText("Connecting...", false);
             Connect();
         }
         else
         {
-            connectButton.GetComponentInChildren<Text>().text = "Disconnecting…";
+            SetConnectButtonText("Disconnecting...", false);
             Disconnect();
         }
     }
@@ -237,6 +211,16 @@ public class UnityCamera : BehaviorBase
     {
         client.SetAudioInputDevice(audioInputDropdown.DeviceName);
         client.SetAudioOutputDevice(audioOutputDropdown.DeviceName);
+    }
+
+    protected override void SetConnectButtonText(string buttonText, bool interactable)
+    {
+        UnityUIContext.Post(__ =>
+        {
+            var button = connectButton.GetComponent<Button>();
+            button.GetComponentInChildren<Text>().text = buttonText;
+            button.interactable = interactable;
+        }, null);
     }
 
     private void Connect()
@@ -316,13 +300,7 @@ public class UnityCamera : BehaviorBase
             catch (Exception e)
             {
                 Logger.Error("Failed to Connect.", e);
-
-                UnityUIContext.Post(__ =>
-                {
-                    connectButton.GetComponentInChildren<Text>().text = "Connect";
-                    connectButton.interactable = true;
-                }
-                , null);
+                SetConnectButtonText("Connect", true);
             }
         }
         );
@@ -340,15 +318,8 @@ public class UnityCamera : BehaviorBase
             catch (Exception e)
             {
                 Logger.Error("Failed to Disconnect.", e);
-
-                UnityUIContext.Post(__ =>
-                {
-                    connectButton.GetComponentInChildren<Text>().text = "Connect";
-                    connectButton.interactable = true;
-                }
-                , null);
+                SetConnectButtonText("Connect", true);
             }
-
         }
        );
     }

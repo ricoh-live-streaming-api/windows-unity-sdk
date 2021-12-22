@@ -133,6 +133,72 @@ This class has a state. The state can be acquired with the <a class="xref" href=
   </h3>
   
   
+  <a id="com_ricoh_livestreaming_Client_ChangeMediaRequirements_" data-uid="com.ricoh.livestreaming.Client.ChangeMediaRequirements*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_ChangeMediaRequirements_System_String_com_ricoh_livestreaming_VideoRequirement_" data-uid="com.ricoh.livestreaming.Client.ChangeMediaRequirements(System.String,com.ricoh.livestreaming.VideoRequirement)">ChangeMediaRequirements(String, VideoRequirement)</h4>
+  <div class="markdown level1 summary"><p>Change the requirements of the Media for the specified connection partner.</p><br><p>The server decides how or whether to send the Media based on this specification.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ChangeMediaRequirements(string connectionId, VideoRequirement videoRequirement)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">connectionId</span></td>
+        <td><p>Connection ID of the connection partner.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.VideoRequirement.html">VideoRequirement</a></td>
+        <td><span class="parametername">videoRequirement</span></td>
+        <td><p>Whether or not to require video.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called other than Open state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called with a RoomSpecType other than SFU.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called with Option.ReceivingOption.Enabled set to false.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when a VideoTrack with the &quot;connectionId&quot; cannot be found in RemoteTracks.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="com_ricoh_livestreaming_Client_ChangeMute_" data-uid="com.ricoh.livestreaming.Client.ChangeMute*"></a>
   <h4 id="com_ricoh_livestreaming_Client_ChangeMute_com_ricoh_livestreaming_LSTrack_com_ricoh_livestreaming_MuteType_" data-uid="com.ricoh.livestreaming.Client.ChangeMute(com.ricoh.livestreaming.LSTrack,com.ricoh.livestreaming.MuteType)">ChangeMute(LSTrack, MuteType)</h4>
   <div class="markdown level1 summary"><p>Change mute type of LSTrack.</p>
@@ -398,6 +464,7 @@ This class has a state. The state can be acquired with the <a class="xref" href=
       <tr>
         <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
         <td><p>Thrown when failed to create media stream.</p>
+<p>For example, if the method is called with <a class="xref" href="com.ricoh.livestreaming.webrtc.VideoDeviceCapturer.html">VideoDeviceCapturer</a> already created.</p>
 </td>
       </tr>
     </tbody>
@@ -655,6 +722,11 @@ This class has a state. The state can be acquired with the <a class="xref" href=
       <tr>
         <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
         <td><p>Thrown when the method was called other than Open state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called with a RoomSpecType other than SFU.</p>
 </td>
       </tr>
       <tr>

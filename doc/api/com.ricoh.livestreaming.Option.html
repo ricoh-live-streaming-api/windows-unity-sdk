@@ -141,6 +141,32 @@
   </table>
   
   
+  <a id="com_ricoh_livestreaming_Option_IceServersProtocol_" data-uid="com.ricoh.livestreaming.Option.IceServersProtocol*"></a>
+  <h4 id="com_ricoh_livestreaming_Option_IceServersProtocol" data-uid="com.ricoh.livestreaming.Option.IceServersProtocol">IceServersProtocol</h4>
+  <div class="markdown level1 summary"><p>Configurations for TURN protocols to be used for ICE Servers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IceServersProtocol? IceServersProtocol { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="com.ricoh.livestreaming.IceServersProtocol.html">IceServersProtocol</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="com_ricoh_livestreaming_Option_IceTransportPolicy_" data-uid="com.ricoh.livestreaming.Option.IceTransportPolicy*"></a>
   <h4 id="com_ricoh_livestreaming_Option_IceTransportPolicy" data-uid="com.ricoh.livestreaming.Option.IceTransportPolicy">IceTransportPolicy</h4>
   <div class="markdown level1 summary"><p>Configurations for Transport policies of the ICE candidates.</p>
@@ -344,6 +370,51 @@
   </table>
   
   
+  <a id="com_ricoh_livestreaming_Option_SetIceServersProtocol_" data-uid="com.ricoh.livestreaming.Option.SetIceServersProtocol*"></a>
+  <h4 id="com_ricoh_livestreaming_Option_SetIceServersProtocol_com_ricoh_livestreaming_IceServersProtocol_" data-uid="com.ricoh.livestreaming.Option.SetIceServersProtocol(com.ricoh.livestreaming.IceServersProtocol)">SetIceServersProtocol(IceServersProtocol)</h4>
+  <div class="markdown level1 summary"><p>Set option for TURN protocols to be used for ICE Servers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Option SetIceServersProtocol(IceServersProtocol iceServersProtocol)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.IceServersProtocol.html">IceServersProtocol</a></td>
+        <td><span class="parametername">iceServersProtocol</span></td>
+        <td><p>TURN protocols to be used for ICE Servers.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.Option.html">Option</a></td>
+        <td><p>Option&apos;s instance for method chain.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="com_ricoh_livestreaming_Option_SetIceTransportPolicy_" data-uid="com.ricoh.livestreaming.Option.SetIceTransportPolicy*"></a>
   <h4 id="com_ricoh_livestreaming_Option_SetIceTransportPolicy_com_ricoh_livestreaming_IceTransportPolicy_" data-uid="com.ricoh.livestreaming.Option.SetIceTransportPolicy(com.ricoh.livestreaming.IceTransportPolicy)">SetIceTransportPolicy(IceTransportPolicy)</h4>
   <div class="markdown level1 summary"><p>Set option for transport policies of the ICE candidates.</p>
@@ -474,6 +545,22 @@
       <tr>
         <td><a class="xref" href="com.ricoh.livestreaming.Option.html">Option</a></td>
         <td><p>Option&apos;s instance for method chain.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">meta</code>is null.</p>
 </td>
       </tr>
     </tbody>
