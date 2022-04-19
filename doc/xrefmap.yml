@@ -52,6 +52,19 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.Client.ChangeMute
   nameWithType: Client.ChangeMute
+- uid: com.ricoh.livestreaming.Client.ChangeVideoSendBitrate(System.Int32)
+  name: ChangeVideoSendBitrate(Int32)
+  href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_ChangeVideoSendBitrate_System_Int32_
+  commentId: M:com.ricoh.livestreaming.Client.ChangeVideoSendBitrate(System.Int32)
+  fullName: com.ricoh.livestreaming.Client.ChangeVideoSendBitrate(System.Int32)
+  nameWithType: Client.ChangeVideoSendBitrate(Int32)
+- uid: com.ricoh.livestreaming.Client.ChangeVideoSendBitrate*
+  name: ChangeVideoSendBitrate
+  href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_ChangeVideoSendBitrate_
+  commentId: Overload:com.ricoh.livestreaming.Client.ChangeVideoSendBitrate
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.Client.ChangeVideoSendBitrate
+  nameWithType: Client.ChangeVideoSendBitrate
 - uid: com.ricoh.livestreaming.Client.Connect(System.String,System.String,com.ricoh.livestreaming.Option)
   name: Connect(String, String, Option)
   href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_Connect_System_String_System_String_com_ricoh_livestreaming_Option_
@@ -1035,12 +1048,12 @@ references:
   commentId: T:com.ricoh.livestreaming.SendingOption
   fullName: com.ricoh.livestreaming.SendingOption
   nameWithType: SendingOption
-- uid: com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption)
-  name: SendingOption(SendingVideoOption)
-  href: api/com.ricoh.livestreaming.SendingOption.html#com_ricoh_livestreaming_SendingOption__ctor_com_ricoh_livestreaming_SendingVideoOption_
-  commentId: M:com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption)
-  fullName: com.ricoh.livestreaming.SendingOption.SendingOption(com.ricoh.livestreaming.SendingVideoOption)
-  nameWithType: SendingOption.SendingOption(SendingVideoOption)
+- uid: com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption,System.Boolean)
+  name: SendingOption(SendingVideoOption, Boolean)
+  href: api/com.ricoh.livestreaming.SendingOption.html#com_ricoh_livestreaming_SendingOption__ctor_com_ricoh_livestreaming_SendingVideoOption_System_Boolean_
+  commentId: M:com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption,System.Boolean)
+  fullName: com.ricoh.livestreaming.SendingOption.SendingOption(com.ricoh.livestreaming.SendingVideoOption, System.Boolean)
+  nameWithType: SendingOption.SendingOption(SendingVideoOption, Boolean)
 - uid: com.ricoh.livestreaming.SendingOption.#ctor*
   name: SendingOption
   href: api/com.ricoh.livestreaming.SendingOption.html#com_ricoh_livestreaming_SendingOption__ctor_
@@ -1048,6 +1061,19 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.SendingOption.SendingOption
   nameWithType: SendingOption.SendingOption
+- uid: com.ricoh.livestreaming.SendingOption.Enabled
+  name: Enabled
+  href: api/com.ricoh.livestreaming.SendingOption.html#com_ricoh_livestreaming_SendingOption_Enabled
+  commentId: P:com.ricoh.livestreaming.SendingOption.Enabled
+  fullName: com.ricoh.livestreaming.SendingOption.Enabled
+  nameWithType: SendingOption.Enabled
+- uid: com.ricoh.livestreaming.SendingOption.Enabled*
+  name: Enabled
+  href: api/com.ricoh.livestreaming.SendingOption.html#com_ricoh_livestreaming_SendingOption_Enabled_
+  commentId: Overload:com.ricoh.livestreaming.SendingOption.Enabled
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.SendingOption.Enabled
+  nameWithType: SendingOption.Enabled
 - uid: com.ricoh.livestreaming.SendingOption.Video
   name: Video
   href: api/com.ricoh.livestreaming.SendingOption.html#com_ricoh_livestreaming_SendingOption_Video

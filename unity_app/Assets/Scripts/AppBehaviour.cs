@@ -3,6 +3,7 @@ using com.ricoh.livestreaming.unity;
 using com.ricoh.livestreaming.webrtc;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ public class AppBehaviour : BehaviorBase
 
     public GameObject connectButton;
     public InputField roomIDEdit;
+    public InputField bitrateEdit;
+    public Button bitrateButton;
 
     public DropdownVideoCapturer videoCapturerDropdown;
     public DropdownCapability capabilityDropdown;
@@ -28,6 +31,8 @@ public class AppBehaviour : BehaviorBase
     public DropdownMuteType micMuteDropdown;
     public DropdownMuteType videoMuteDropdown;
     public DropdownRoomType roomTypeDropdown;
+    public DropdownVideoCodecType videoCodecDropdown;
+    public DropdownSendReceive sendReceiveDropdown;
     public Button deviceDropdownRefreshButton;
 
     private UnityRenderer cappellaRenderer;
@@ -38,10 +43,12 @@ public class AppBehaviour : BehaviorBase
 
     private IntPtr hWnd;    // own window handle
     private VideoDeviceCapturer videoDeviceCapturer;
-    protected override VideoCapturer VideoCapturer
-    {
-        get { return videoDeviceCapturer; }
-    }
+    protected override VideoCapturer VideoCapturer => videoDeviceCapturer;
+    protected override RoomSpec.Type RoomType => roomTypeDropdown.RoomType;
+    protected override int MaxBitrateKbps => int.TryParse(bitrateEdit.text, out int bitrate) ? bitrate : 500;
+    private SendingVideoOption.VideoCodecType VideoCodecType => videoCodecDropdown.Type;
+    private bool IsSendingEnabled => sendReceiveDropdown.IsSendingEnabled;
+    private bool IsReceivingEnabled => sendReceiveDropdown.IsReceivingEnabled;
 
     [DllImport("user32.dll")]
     public static extern IntPtr FindWindow(string lpszClass, string lpszTitle);
@@ -62,8 +69,9 @@ public class AppBehaviour : BehaviorBase
             UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.Abort);
         }
 
-        // Set RoomType dropdown.
         roomTypeDropdown.Initialize();
+        videoCodecDropdown.Initialize();
+        sendReceiveDropdown.Initialize();
     }
 
     // Start is called before the first frame update
@@ -89,6 +97,9 @@ public class AppBehaviour : BehaviorBase
         // set previous value of RoomID
         // (get from Secrets when not saved)
         roomIDEdit.text = (string.IsNullOrEmpty(userData.RoomID) ? Secrets.GetInstance().RoomId : userData.RoomID);
+
+        // Set max send bitrate of video. 
+        bitrateEdit.text = Secrets.GetInstance().VideoBitrate.ToString();
 
         HasLocalVideoTrack = true;
         InitializeClient(new ClientListener(this));
@@ -216,83 +227,83 @@ public class AppBehaviour : BehaviorBase
                 {
                     bool isH264Supported = CodecUtil.IsH264Supported();
                     Logger.Debug("IsH264Supported = " + isH264Supported);
-                    var videoCodec = isH264Supported ? SendingVideoOption.VideoCodecType.H264 : SendingVideoOption.VideoCodecType.Vp8;
 
-                    var roomSpec = new RoomSpec(roomTypeDropdown.RoomType);
+                    var roomSpec = new RoomSpec(RoomType);
 
                     var accessToken = JwtAccessToken.CreateAccessToken(
                         Secrets.GetInstance().ClientSecret,
                         roomId,
                         roomSpec);
 
-                    videoDeviceCapturer = new VideoDeviceCapturer(
-                        capabilityDropdown.DeviceName,
-                        capabilityDropdown.Width,
-                        capabilityDropdown.Height,
-                        capabilityDropdown.FrameRate);
-
-                    var tags = new Dictionary<string, object>()
-                    {
-                        { "sample", "sampleValue" }
-                    };
-
-                    var audioMeta = new Dictionary<string, object>()
-                    {
-                        { "metasample", "win_audio" }
-                    };
-
-                    var videoMeta = new Dictionary<string, object>()
-                    {
-                        { "metasample", "win_video" }
-                    };
-
-                    var constraints = new MediaStreamConstraints()
-                        .SetVideoCapturer(videoDeviceCapturer)
-                        .SetAudio(audioInputDropdown.Exists | audioOutputDropdown.Exists);
-
-                    var stream = client.GetUserMedia(constraints);
-
-                    localLSTracks.Clear();
-                    foreach (var track in stream.GetAudioTracks())
-                    {
-                        var trackOption = new LSTrackOption()
-                            .SetMeta(audioMeta)
-                            .SetMuteType(micMuteDropdown.MuteType);
-
-                        localLSTracks.Add(new LSTrack(track, stream, trackOption));
-                    }
-                    foreach (var track in stream.GetVideoTracks())
-                    {
-                        var trackOption = new LSTrackOption()
-                            .SetMeta(videoMeta)
-                            .SetMuteType(videoMuteDropdown.MuteType);
-
-                        localLSTracks.Add(new LSTrack(track, stream, trackOption));
-                    }
-
                     var sendingVideoOption = new SendingVideoOption()
-                        .SetCodec(videoCodec)
-                        .SetMaxBitrateKbps(Secrets.GetInstance().VideoBitrate);
+                        .SetCodec(VideoCodecType)
+                        .SetMaxBitrateKbps(MaxBitrateKbps);
 
                     var option = new Option()
-                        .SetLocalLSTracks(localLSTracks)
-                        .SetMeta(tags)
-                        .SetSendingOption(new SendingOption(sendingVideoOption));
+                        .SetMeta(ConnectionMetadata)
+                        .SetSendingOption(new SendingOption(sendingVideoOption, IsSendingEnabled))
+                        .SetReceivingOption(new ReceivingOption(IsReceivingEnabled));
+
+                    if (IsSendingEnabled)
+                    {
+                        videoDeviceCapturer = new VideoDeviceCapturer(
+                            capabilityDropdown.DeviceName,
+                            capabilityDropdown.Width,
+                            capabilityDropdown.Height,
+                            capabilityDropdown.FrameRate);
+
+                        var constraints = new MediaStreamConstraints()
+                            .SetVideoCapturer(videoDeviceCapturer)
+                            .SetAudio(audioInputDropdown.Exists | audioOutputDropdown.Exists);
+
+                        var stream = client.GetUserMedia(constraints);
+
+                        localLSTracks.Clear();
+
+                        foreach (var track in stream.GetAudioTracks())
+                        {
+                            var trackOption = new LSTrackOption()
+                                .SetMeta(AudioTrackMetadata)
+                                .SetMuteType(micMuteDropdown.MuteType);
+
+                            localLSTracks.Add(new LSTrack(track, stream, trackOption));
+                        }
+
+                        foreach (var track in stream.GetVideoTracks())
+                        {
+                            var trackOption = new LSTrackOption()
+                                .SetMeta(VideoTrackMetadata)
+                                .SetMuteType(videoMuteDropdown.MuteType);
+
+                            localLSTracks.Add(new LSTrack(track, stream, trackOption));
+                        }
+
+                        option.SetLocalLSTracks(localLSTracks);
+                    }
 
                     client.Connect(Secrets.GetInstance().ClientId, accessToken, option);
                     userData.RoomID = roomId;
                 }
+                catch (SDKException e)
+                {
+                    Logger.Error($"Failed to Connect. code={e.Detail.Code}", e);
+                    ErrorHandling();
+                }
                 catch (Exception e)
                 {
                     Logger.Error("Failed to Connect.", e);
-                    SetConnectButtonText("Connect", true);
-
-                    // VideoDeviceCapturerをReleaseしないと再Connect時にGetUserMediaが失敗する
-                    videoDeviceCapturer?.Release();
-                    localLSTracks.Clear();
+                    ErrorHandling();
                 }
             }
         });
+
+        void ErrorHandling()
+        {
+            SetConnectButtonText("Connect", true);
+            // VideoDeviceCapturerをReleaseしないと再Connect時にGetUserMediaが失敗する
+            videoDeviceCapturer?.Release();
+            localLSTracks.Clear();
+        }
     }
 
     private void Disconnect()
@@ -355,7 +366,7 @@ public class AppBehaviour : BehaviorBase
                 };
 
                 // SFU のみ Video 受信選択用 UI を表示
-                remoteView.SetVideoReceiveEnabled(appBehaviour.roomTypeDropdown.RoomType == RoomSpec.Type.Sfu);
+                remoteView.SetVideoReceiveEnabled(appBehaviour.RoomType == RoomSpec.Type.Sfu);
 
                 appBehaviour.remoteTracks.Add(videoTrack.Id, remoteView);
 
@@ -453,14 +464,7 @@ public class AppBehaviour : BehaviorBase
             return;
         }
 
-        var track = localLSTracks.Find(item => item.MediaStreamTrack.Type == MediaStreamTrack.TrackType.Video);
-        if (track == null)
-        {
-            Logger.Info("Not found video track");
-            return;
-        }
-
-        videoDeviceCapturer.Release();
+        videoDeviceCapturer?.Release();
 
         videoDeviceCapturer = new VideoDeviceCapturer(deviceName, width, height, frameRate);
 
@@ -471,13 +475,65 @@ public class AppBehaviour : BehaviorBase
         {
             var stream = client.GetUserMedia(constraints);
             var videoTrack = stream.GetVideoTracks()[0];
-            client.ReplaceMediaStreamTrack(track, videoTrack);
+            client.ReplaceMediaStreamTrack(
+                GetLSTrack(MediaStreamTrack.TrackType.Video),
+                videoTrack);
             videoTrack.AddSink();
             RenderLocalVideoTrack = videoTrack;
         }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to ReplaceMediaStreamTrack. code={e.Detail.Code}", e);
+            videoDeviceCapturer?.Release();
+        }
         catch (Exception e)
         {
-            Logger.Error("Failed to replace media stream.", e);
+            Logger.Error("Failed to ReplaceMediaStreamTrack.", e);
+            videoDeviceCapturer?.Release();
+        }
+    }
+
+    public void OnUpdateConnectMetaButtonClick()
+    {
+        try
+        {
+            client.UpdateMeta(new ReadOnlyDictionary<string, object>(ConnectionMetadata));
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to UpdateMeta. code={e.Detail.Code}", e);
+        }
+        catch (Exception e)
+        {
+            Logger.Error("Failed to UpdateMeta.", e);
+        }
+    }
+
+    public void OnUpdateAudioTrackMetaButtonClick()
+    {
+        try
+        {
+            client.UpdateTrackMeta(
+                GetLSTrack(MediaStreamTrack.TrackType.Audio),
+                new ReadOnlyDictionary<string, object>(AudioTrackMetadata));
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to UpdateTrackMeta. code={e.Detail.Code}", e);
+        }
+    }
+
+    public void OnUpdateVideoTrackMetaButtonClick()
+    {
+        try
+        {
+            client.UpdateTrackMeta(
+                GetLSTrack(MediaStreamTrack.TrackType.Video),
+                new ReadOnlyDictionary<string, object>(VideoTrackMetadata));
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to UpdateTrackMeta. code={e.Detail.Code}", e);
         }
     }
 

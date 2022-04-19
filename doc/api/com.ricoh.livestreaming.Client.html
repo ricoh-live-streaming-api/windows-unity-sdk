@@ -266,6 +266,57 @@ This class has a state. The state can be acquired with the <a class="xref" href=
   </table>
   
   
+  <a id="com_ricoh_livestreaming_Client_ChangeVideoSendBitrate_" data-uid="com.ricoh.livestreaming.Client.ChangeVideoSendBitrate*"></a>
+  <h4 id="com_ricoh_livestreaming_Client_ChangeVideoSendBitrate_System_Int32_" data-uid="com.ricoh.livestreaming.Client.ChangeVideoSendBitrate(System.Int32)">ChangeVideoSendBitrate(Int32)</h4>
+  <div class="markdown level1 summary"><p>Change the send bit rate of Video.</p>
+<p>It cannot be set to a value larger than the value specified at the time of connect (default value if not specified).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ChangeVideoSendBitrate(int maxBitrateKbps)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxBitrateKbps</span></td>
+        <td><p>Send bit rate after the change.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called other than Open state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.SDKException.html">SDKException</a></td>
+        <td><p>Thrown when the method was called with a RoomSpecType other than SFU.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="com_ricoh_livestreaming_Client_Connect_" data-uid="com.ricoh.livestreaming.Client.Connect*"></a>
   <h4 id="com_ricoh_livestreaming_Client_Connect_System_String_System_String_com_ricoh_livestreaming_Option_" data-uid="com.ricoh.livestreaming.Client.Connect(System.String,System.String,com.ricoh.livestreaming.Option)">Connect(String, String, Option)</h4>
   <div class="markdown level1 summary"><p>Start to connect to the server asynchronously. Video and Audio stream starts if the connection is established.</p>

@@ -174,28 +174,13 @@ public class Watch : BehaviorBase
                         { "sample", "sampleValue" }
                     };
 
-                    var constraints = new MediaStreamConstraints()
-                        .SetAudio(audioOutputDropdown.Exists);
-
-                    var stream = client.GetUserMedia(constraints);
-
-                    var tracks = new List<LSTrack>();
-                    foreach (var track in stream.GetAudioTracks())
-                    {
-                        var trackOption = new LSTrackOption()
-                            .SetMuteType(MuteType.Unmute);
-
-                        tracks.Add(new LSTrack(track, stream, trackOption));
-                    }
-
                     var sendingVideoOption = new SendingVideoOption()
                         .SetCodec(videoCodec)
                         .SetMaxBitrateKbps(Secrets.GetInstance().VideoBitrate);
 
                     var option = new Option()
-                        .SetLocalLSTracks(tracks)
                         .SetMeta(tags)
-                        .SetSendingOption(new SendingOption(sendingVideoOption));
+                        .SetSendingOption(new SendingOption(sendingVideoOption, false));
 
                     client.Connect(Secrets.GetInstance().ClientId, accessToken, option);
                     userData.RoomID = roomId;

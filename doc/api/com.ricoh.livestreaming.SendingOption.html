@@ -116,13 +116,13 @@
   
   
   <a id="com_ricoh_livestreaming_SendingOption__ctor_" data-uid="com.ricoh.livestreaming.SendingOption.#ctor*"></a>
-  <h4 id="com_ricoh_livestreaming_SendingOption__ctor_com_ricoh_livestreaming_SendingVideoOption_" data-uid="com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption)">SendingOption(SendingVideoOption)</h4>
+  <h4 id="com_ricoh_livestreaming_SendingOption__ctor_com_ricoh_livestreaming_SendingVideoOption_System_Boolean_" data-uid="com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption,System.Boolean)">SendingOption(SendingVideoOption, Boolean)</h4>
   <div class="markdown level1 summary"><p>Create new sending option.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SendingOption(SendingVideoOption video)</code></pre>
+    <pre><code class="lang-csharp hljs">public SendingOption(SendingVideoOption video, bool enabled = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -138,6 +138,12 @@
         <td><a class="xref" href="com.ricoh.livestreaming.SendingVideoOption.html">SendingVideoOption</a></td>
         <td><span class="parametername">video</span></td>
         <td><p>Sending Video Options.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">enabled</span></td>
+        <td><p>Send or not.</p>
 </td>
       </tr>
     </tbody>
@@ -160,6 +166,33 @@
   </table>
   <h3 id="properties">Properties
   </h3>
+  
+  
+  <a id="com_ricoh_livestreaming_SendingOption_Enabled_" data-uid="com.ricoh.livestreaming.SendingOption.Enabled*"></a>
+  <h4 id="com_ricoh_livestreaming_SendingOption_Enabled" data-uid="com.ricoh.livestreaming.SendingOption.Enabled">Enabled</h4>
+  <div class="markdown level1 summary"><p>Send or not.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enabled&quot;)]
+public bool Enabled { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="com_ricoh_livestreaming_SendingOption_Video_" data-uid="com.ricoh.livestreaming.SendingOption.Video*"></a>

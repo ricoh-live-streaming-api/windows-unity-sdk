@@ -560,11 +560,17 @@
             Sending Video Options.
             </summary>
         </member>
-        <member name="M:com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption)">
+        <member name="P:com.ricoh.livestreaming.SendingOption.Enabled">
+            <summary>
+            Send or not.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SendingOption.#ctor(com.ricoh.livestreaming.SendingVideoOption,System.Boolean)">
             <summary>
             Create new sending option.
             </summary>
             <param name="video">Sending Video Options.</param>
+            <param name="enabled">Send or not.</param>
             <exception cref="T:System.ArgumentNullException"><paramref name="video"/>is null.</exception>
         </member>
         <member name="T:com.ricoh.livestreaming.SendingVideoOption">
@@ -1333,7 +1339,7 @@
             <summary>
             Create peer connection.
             </summary>
-            <param name="observer"></param>
+            <param name="observer">The argument "observer" is disposed at the same time as this class.</param>
         </member>
         <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.Dispose">
             <summary>
@@ -1897,6 +1903,15 @@
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called with Option.ReceivingOption.Enabled set to false.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when a VideoTrack with the "connectionId" cannot be found in RemoteTracks.</exception>
         </member>
+        <member name="M:com.ricoh.livestreaming.Client.ChangeVideoSendBitrate(System.Int32)">
+            <summary>
+            <para>Change the send bit rate of Video.</para>
+            <para>It cannot be set to a value larger than the value specified at the time of connect (default value if not specified).</para>
+            </summary>
+            <param name="maxBitrateKbps">Send bit rate after the change.</param>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called with a RoomSpecType other than SFU.</exception>
+        </member>
         <member name="M:com.ricoh.livestreaming.Client.SetEventListener(com.ricoh.livestreaming.IClientListener)">
             <summary>
             Set event listener.
@@ -1922,6 +1937,11 @@
             <param name="peerConnection">PeerConnection</param>
             <param name="type">設定するtype</param>
             <param name="description">設定するdescription</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.Client.PeerConnectionObserver.IceConnectionState">
+            <summary>
+            https://www.w3.org/TR/webrtc/#rtciceconnectionstate-enum
+            </summary>
         </member>
         <member name="T:com.ricoh.livestreaming.Client.PeerConnectionObserver.InternalStability">
             <summary>

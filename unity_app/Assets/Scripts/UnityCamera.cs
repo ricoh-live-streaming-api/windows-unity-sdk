@@ -245,22 +245,6 @@ public class UnityCamera : BehaviorBase
                     roomId,
                     roomSpec);
 
-                // mode unitycamera
-                var tags = new Dictionary<string, object>()
-                {
-                    { "sample", "sampleValue" }
-                };
-
-                var audioMeta = new Dictionary<string, object>()
-                {
-                    { "metasample", "win_audio" }
-                };
-
-                var videoMeta = new Dictionary<string, object>()
-                {
-                    { "metasample", "unity_camera" }
-                };
-
                 var constraints = new MediaStreamConstraints()
                     .SetVideoCapturer(unityCameraCapturer)
                     .SetAudio(audioInputDropdown.Exists | audioOutputDropdown.Exists);
@@ -271,7 +255,7 @@ public class UnityCamera : BehaviorBase
                 foreach (var track in stream.GetAudioTracks())
                 {
                     var trackOption = new LSTrackOption()
-                        .SetMeta(audioMeta)
+                        .SetMeta(AudioTrackMetadata)
                         .SetMuteType(micMuteDropdown.MuteType);
 
                     localLSTracks.Add(new LSTrack(track, stream, trackOption));
@@ -279,7 +263,7 @@ public class UnityCamera : BehaviorBase
                 foreach (var track in stream.GetVideoTracks())
                 {
                     var trackOption = new LSTrackOption()
-                        .SetMeta(videoMeta)
+                        .SetMeta(VideoTrackMetadata)
                         .SetMuteType(videoMuteDropdown.MuteType);
 
                     localLSTracks.Add(new LSTrack(track, stream, trackOption));
@@ -291,7 +275,7 @@ public class UnityCamera : BehaviorBase
 
                 var option = new Option()
                     .SetLocalLSTracks(localLSTracks)
-                    .SetMeta(tags)
+                    .SetMeta(ConnectionMetadata)
                     .SetSendingOption(new SendingOption(sendingVideoOption));
 
                 client.Connect(Secrets.GetInstance().ClientId, accessToken, option);

@@ -15,6 +15,10 @@ public abstract class BehaviorBase : MonoBehaviour
     public VideoTrack RenderLocalVideoTrack { get; protected set; }
     public bool HasLocalVideoTrack { get; protected set; } = true;
 
+    public virtual Dictionary<string, object> ConnectionMetadata { get; protected set; } = new Dictionary<string, object>() { { "connection_metadata_sample", "connection_metadata_default" } };
+    public virtual Dictionary<string, object> AudioTrackMetadata { get; protected set; } = new Dictionary<string, object>() { { "audio_track_metadata_sample", "audio_track_metadata_default" } };
+    public virtual Dictionary<string, object> VideoTrackMetadata { get; protected set; } = new Dictionary<string, object>() { { "video_track_metadata_sample", "video_track_metadata_default" } };
+
     protected static readonly object frameLockObject = new object();
     protected static readonly object clientLockObject = new object();
     protected static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -22,6 +26,8 @@ public abstract class BehaviorBase : MonoBehaviour
     protected Client client;
     protected string logFilePath;
     protected virtual VideoCapturer VideoCapturer { get; }
+    protected virtual RoomSpec.Type RoomType { get; }
+    protected virtual int MaxBitrateKbps { get; }
     protected List<LSTrack> localLSTracks = new List<LSTrack>();
     protected UserData userData;
     protected string userDataFilePath;
@@ -61,24 +67,24 @@ public abstract class BehaviorBase : MonoBehaviour
             return;
         }
 
-        var track = localLSTracks.Find(item => item.MediaStreamTrack.Type == MediaStreamTrack.TrackType.Audio);
-        if (track == null)
-        {
-            Logger.Info("Not found audio track");
-            return;
-        }
-
         var constraints = new MediaStreamConstraints()
             .SetAudio(true);
 
         try
         {
             var stream = client.GetUserMedia(constraints);
-            client.ReplaceMediaStreamTrack(track, stream.GetAudioTracks()[0]);
+
+            client.ReplaceMediaStreamTrack(
+                GetLSTrack(MediaStreamTrack.TrackType.Audio),
+                stream.GetAudioTracks()[0]);
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to ReplaceMediaStreamTrack. code={e.Detail.Code}", e);
         }
         catch (Exception e)
         {
-            Logger.Error("Failed to replace media stream.", e);
+            Logger.Error("Failed to ReplaceMediaStreamTrack.", e);
         }
     }
 
@@ -122,10 +128,17 @@ public abstract class BehaviorBase : MonoBehaviour
     /// <param name="trackType">Mute対象の<see cref="MediaStreamTrack.TrackType"/></param>
     private void ChangeMute(MuteType muteType, MediaStreamTrack.TrackType trackType)
     {
-        var track = localLSTracks.Find(item => item.MediaStreamTrack.Type == trackType);
-        if (track != null)
+        try
         {
-            client?.ChangeMute(track, muteType);
+            client?.ChangeMute(GetLSTrack(trackType), muteType);
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to ChangeMute. code={e.Detail.Code}", e);
+        }
+        catch (Exception e)
+        {
+            Logger.Error("Failed to ChangeMute.", e);
         }
     }
 
@@ -153,6 +166,28 @@ public abstract class BehaviorBase : MonoBehaviour
     }
 
     /// <summary>
+    /// Video送信ビットレートの変更イベント
+    /// </summary>
+    public virtual void OnVideoSendBitrateChanged()
+    {
+        try
+        {
+            if (RoomType == RoomSpec.Type.Sfu && client.GetState() == ConnectionState.Open)
+            {
+                client.ChangeVideoSendBitrate(MaxBitrateKbps);
+            }
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to OnVideoSendBitrateChanged. code={e.Detail.Code}", e);
+        }
+        catch (Exception e)
+        {
+            Logger.Error("Failed to OnVideoSendBitrateChanged.", e);
+        }
+    }
+
+    /// <summary>
     /// アプリ終了時に呼び出されるUnityのコールバック
     /// </summary>
     public virtual void OnApplicationQuit()
@@ -175,6 +210,16 @@ public abstract class BehaviorBase : MonoBehaviour
         }).Wait(100);
         client.Dispose();
         client = null;
+    }
+
+    /// <summary>
+    /// <see cref="localLSTracks"/> から指定する TrackType の LSTrack を取得する
+    /// </summary>
+    /// <param name="trackType"><see cref="MediaStreamTrack.TrackType"/></param>
+    /// <returns>成功 : <see cref="LSTrack"/>, 失敗 : null</returns>
+    protected LSTrack GetLSTrack(MediaStreamTrack.TrackType trackType)
+    {
+        return localLSTracks.Find(item => item.MediaStreamTrack.Type == trackType);
     }
 
     /// <summary>
