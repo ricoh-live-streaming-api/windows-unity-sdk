@@ -1,4 +1,23 @@
 # CHANGELOG
+## v1.3.0
+* API変更
+  * changeVideoSendBitrateで接続中に映像送信ビットレートを変更できるようにした
+  * (dev環境のみ提供のβ機能)ConnectOptionのsending.enabledでクライアントの送信機能を無効にできるようにした。同一Room中に大量に送信機能が有効なクライアントが存在する場合、クライアントに大きな処理負荷や遅延が発生してしまうが、このオプションで低減することができる
+
+* SDK修正
+  * Connect と同時に Audio の Softmute を行った場合、Unmute 後に音声が出ない問題を修正
+  * IceConnectionTimeoutエラーを通知
+  * closing/closed状態で発生するInternalErrorをListenerへ通知しないように修正
+
+* サンプルアプリ修正
+  * Watch を受信専用モードに変更
+  * SampleScene で UI から下記が行えるように変更
+    * 送信ビットレート指定/変更
+    * VideoCodec (H264/VP8/VP9)
+    * Send/Receive (送受信/送信のみ/受信のみ)
+    * Connection Metadata 実施
+    * Audio/Video Track Metadata 実施
+
 ## v1.2.0
 * API変更
   * ChangeMediaRequirementsで対向connectionごとにvideoを受信するか指定できるようにした  
