@@ -65,6 +65,19 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.Client.ChangeVideoSendBitrate
   nameWithType: Client.ChangeVideoSendBitrate
+- uid: com.ricoh.livestreaming.Client.ChangeVideoSendFramerate(System.Double)
+  name: ChangeVideoSendFramerate(Double)
+  href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_ChangeVideoSendFramerate_System_Double_
+  commentId: M:com.ricoh.livestreaming.Client.ChangeVideoSendFramerate(System.Double)
+  fullName: com.ricoh.livestreaming.Client.ChangeVideoSendFramerate(System.Double)
+  nameWithType: Client.ChangeVideoSendFramerate(Double)
+- uid: com.ricoh.livestreaming.Client.ChangeVideoSendFramerate*
+  name: ChangeVideoSendFramerate
+  href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_ChangeVideoSendFramerate_
+  commentId: Overload:com.ricoh.livestreaming.Client.ChangeVideoSendFramerate
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.Client.ChangeVideoSendFramerate
+  nameWithType: Client.ChangeVideoSendFramerate
 - uid: com.ricoh.livestreaming.Client.Connect(System.String,System.String,com.ricoh.livestreaming.Option)
   name: Connect(String, String, Option)
   href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_Connect_System_String_System_String_com_ricoh_livestreaming_Option_

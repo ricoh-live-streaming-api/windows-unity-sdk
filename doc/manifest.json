@@ -12,7 +12,7 @@
           "hash": "13O+H7gt0wAyFgSkMTpdhw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "wLBQqg7lBGcbZgsdX6F5Fg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "MxlDn+sce7rvG9JqCoTNXA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -63,7 +63,7 @@
           "hash": "dCuYmh4vyuvZQvx5FSLurA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
       "output": {
         ".html": {
           "relative_path": "api/com.ricoh.livestreaming.Client.html",
-          "hash": "ULNBCHGtBXh7QuYdX06gtQ=="
+          "hash": "cRpZbbcyiV8Ca10yPFUVjg=="
         }
       },
       "is_incremental": false,
@@ -634,25 +634,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 0
+          "skipped_file_count": 4
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 45,
-          "skipped_file_count": 0
+          "skipped_file_count": 3
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -665,8 +663,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

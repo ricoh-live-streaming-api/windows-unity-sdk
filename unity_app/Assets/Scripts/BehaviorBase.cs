@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class BehaviorBase : MonoBehaviour
 {
@@ -172,10 +173,7 @@ public abstract class BehaviorBase : MonoBehaviour
     {
         try
         {
-            if (RoomType == RoomSpec.Type.Sfu && client.GetState() == ConnectionState.Open)
-            {
-                client.ChangeVideoSendBitrate(MaxBitrateKbps);
-            }
+            client.ChangeVideoSendBitrate(MaxBitrateKbps);
         }
         catch (SDKException e)
         {
@@ -184,6 +182,22 @@ public abstract class BehaviorBase : MonoBehaviour
         catch (Exception e)
         {
             Logger.Error("Failed to OnVideoSendBitrateChanged.", e);
+        }
+    }
+
+    public virtual void OnVideoSendFramerateChanged(Text maxFramerate)
+    {
+        try
+        {
+            client.ChangeVideoSendFramerate(Convert.ToInt32(maxFramerate.text));
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to OnVideoSendFramerateChanged. code={e.Detail.Code}", e);
+        }
+        catch (Exception e)
+        {
+            Logger.Error("Failed to OnVideoSendFramerateChanged.", e);
         }
     }
 

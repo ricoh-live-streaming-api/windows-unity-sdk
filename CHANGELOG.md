@@ -1,4 +1,17 @@
 # CHANGELOG
+## v1.4.0
+
+* API変更
+  * 送信映像フレームレートを送信中に変更できる [Client#ChangeVideoSendFramerate(double maxFramerate)](https://api.livestreaming.ricoh/document/ricoh-live-streaming-client-sdk-api-%E5%A4%96%E9%83%A8%E4%BB%95%E6%A7%98/#changeVideoSendFramerate) を追加
+  * (2022/06/29より本番環境で利用可能になりました)ConnectOptionのsending.enabledでクライアントの送信機能を無効にできるようにした。同一Room中に大量に送信機能が有効なクライアントが存在する場合、クライアントに大きな処理負荷や遅延が発生してしまうが、このオプションで低減することができる
+
+* SDK修正
+  * UnsupportedRoomSpecTypeOnChangeVideoSendBitrate のエラーコードを修正
+    * 誤 45014 => 正 45018
+
+* サンプルアプリ修正
+  * Video Send Framerate 変更用のUIを追加（SampleScene）
+
 ## v1.3.0
 * API変更
   * changeVideoSendBitrateで接続中に映像送信ビットレートを変更できるようにした

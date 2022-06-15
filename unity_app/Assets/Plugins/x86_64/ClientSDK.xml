@@ -1363,6 +1363,13 @@
             <param name="trackType">The track type of the media stream track to be replaced.</param>
             <returns>true is succeed.</returns>
         </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.SetVideoMaxFramerate(System.Double)">
+            <summary>
+            Specifies the maximum framerate in fps for video.
+            </summary>
+            <param name="maxFramerate">maximum framerate.</param>
+            <returns>true is succeed.</returns>
+        </member>
         <member name="M:com.ricoh.livestreaming.webrtc.PeerConnection.SetRemoteDescription(System.String,System.String,com.ricoh.livestreaming.webrtc.OnSetSessionSuccessDelegate,com.ricoh.livestreaming.webrtc.OnSetSessionFailureDelegate)">
             <summary>
             Set remote description.
@@ -1994,6 +2001,14 @@
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the track not found on replace Media Stream Track.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown in case of unsupported MuteType changes.</exception>
             <exception cref="T:System.ArgumentNullException"><paramref name="lsTrack"/>is null.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.ChangeVideoSendFramerate(System.Double)">
+            <summary>
+            Change the transmission frame rate of video.
+            </summary>
+            <param name="maxFramerate">Upper limit of transmission frame rate.</param>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">The maxFramerate is out of the specified range.</exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.ReplaceAllPeerLocalTracks(System.IntPtr,System.IntPtr,com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType)">
             <summary>
