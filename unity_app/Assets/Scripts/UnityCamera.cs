@@ -1,4 +1,7 @@
-﻿using com.ricoh.livestreaming;
+﻿/*
+ * Copyright 2022 RICOH Company, Ltd. All rights reserved.
+ */
+using com.ricoh.livestreaming;
 using com.ricoh.livestreaming.unity;
 using com.ricoh.livestreaming.webrtc;
 using System;
@@ -238,7 +241,7 @@ public class UnityCamera : BehaviorBase
                 Logger.Debug("IsH264Supported = " + isH264Supported);
                 var videoCodec = isH264Supported ? SendingVideoOption.VideoCodecType.H264 : SendingVideoOption.VideoCodecType.Vp8;
 
-                var roomSpec = new RoomSpec(roomTypeDropdown.RoomType);
+                var roomSpec = new RoomSpec(roomTypeDropdown.Type);
 
                 var accessToken = JwtAccessToken.CreateAccessToken(
                     Secrets.GetInstance().ClientSecret,
@@ -256,7 +259,7 @@ public class UnityCamera : BehaviorBase
                 {
                     var trackOption = new LSTrackOption()
                         .SetMeta(AudioTrackMetadata)
-                        .SetMuteType(micMuteDropdown.MuteType);
+                        .SetMuteType(micMuteDropdown.Type);
 
                     localLSTracks.Add(new LSTrack(track, stream, trackOption));
                 }
@@ -264,7 +267,7 @@ public class UnityCamera : BehaviorBase
                 {
                     var trackOption = new LSTrackOption()
                         .SetMeta(VideoTrackMetadata)
-                        .SetMuteType(videoMuteDropdown.MuteType);
+                        .SetMuteType(videoMuteDropdown.Type);
 
                     localLSTracks.Add(new LSTrack(track, stream, trackOption));
                 }
@@ -398,6 +401,7 @@ public class UnityCamera : BehaviorBase
                 var remoteView = unityCamera.remoteTracks[trackId];
                 if (remoteView.GetConnectionId() == connectionId)
                 {
+                    remoteView.GetVideoTrack().RemoveSink();
                     MonoBehaviour.Destroy(remoteView.GetTexture());
                     unityCamera.RemoveRemoteView(trackId);
                     break;

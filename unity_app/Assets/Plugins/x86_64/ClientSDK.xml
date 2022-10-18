@@ -74,6 +74,213 @@
             Use TLS only.
             </summary>
         </member>
+        <member name="T:com.ricoh.livestreaming.LSAddLocalTrackEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnAddLocalTrack(com.ricoh.livestreaming.LSAddLocalTrackEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddLocalTrackEvent.MediaStreamTrack">
+            <summary>
+            Added local track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddLocalTrackEvent.Stream">
+            <summary>
+            Added local stream.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSAddRemoteConnectionEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnAddRemoteConnection(com.ricoh.livestreaming.LSAddRemoteConnectionEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddRemoteConnectionEvent.ConnectionId">
+            <summary>
+            ID of the added remote connection.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddRemoteConnectionEvent.Metadata">
+            <summary>
+            Metadata of the added remote connection.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSAddRemoteTrackEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnAddRemoteTrack(com.ricoh.livestreaming.LSAddRemoteTrackEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddRemoteTrackEvent.ConnectionId">
+            <summary>
+            Connection ID of the added remote track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddRemoteTrackEvent.Stream">
+            <summary>
+            Added remote stream.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddRemoteTrackEvent.MediaStreamTrack">
+            <summary>
+            Added remote track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddRemoteTrackEvent.Metadata">
+            <summary>
+            Metadata of the added remote track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSAddRemoteTrackEvent.MuteType">
+            <summary>
+            Mute type of the added remote track.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSChangeStabilityEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnChangeStability(com.ricoh.livestreaming.LSChangeStabilityEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSChangeStabilityEvent.ConnectionId">
+            <summary>
+            ID with changes in communication stability.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSChangeStabilityEvent.Stability">
+            <summary>
+            Communication stability.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSCloseEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnClosed(com.ricoh.livestreaming.LSCloseEvent)"/> events.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSClosingEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnClosing(com.ricoh.livestreaming.LSClosingEvent)"/> events.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSConnectingEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnConnecting(com.ricoh.livestreaming.LSConnectingEvent)"/> events.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSOpenEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnOpen(com.ricoh.livestreaming.LSOpenEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSOpenEvent.AccessTokenJson">
+            <summary>
+            Json of the AccessToken specified when connecting.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent.ConnectionId">
+            <summary>
+            ID of the removed remote connection.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent.Metadata">
+            <summary>
+            Metadata of the removed remote connection.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent.MediaStreamTracks">
+            <summary>
+            List of media stream tracks for removed remote connection.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSUpdateMuteEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnUpdateMute(com.ricoh.livestreaming.LSUpdateMuteEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateMuteEvent.ConnectionId">
+            <summary>
+            ID of the updated remote connection.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateMuteEvent.Stream">
+            <summary>
+            Updated remote stream.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateMuteEvent.MediaStreamTrack">
+            <summary>
+            Updated remote track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateMuteEvent.MuteType">
+            <summary>
+            New mute state.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSUpdateRemoteConnectionEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnUpdateRemoteConnection(com.ricoh.livestreaming.LSUpdateRemoteConnectionEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateRemoteConnectionEvent.ConnectionId">
+            <summary>
+            ID of the updated remote connection.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateRemoteConnectionEvent.Metadata">
+            <summary>
+            Metadata of the updated remote connection.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LSUpdateRemoteTrackEvent">
+            <summary>
+            Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnUpdateRemoteTrack(com.ricoh.livestreaming.LSUpdateRemoteTrackEvent)"/> events.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateRemoteTrackEvent.ConnectionId">
+            <summary>
+            ID of the updated remote connection.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateRemoteTrackEvent.Stream">
+            <summary>
+            Updated remote stream.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateRemoteTrackEvent.MediaStreamTrack">
+            <summary>
+            Updated remote track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LSUpdateRemoteTrackEvent.Metadata">
+            <summary>
+            Metadata of the updated remote track.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.ReservedTasks.IsCompleted">
+            <summary>
+            保留中の全 Task を取り出したかどうか
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.ReservedTasks.Set(System.String,System.Threading.Tasks.Task)">
+            <summary>
+            保留する Task を登録する<br/>
+            IsCompleted = false の場合のみ登録可能
+            </summary>
+            <param name="key">Task を識別するためのユニークなキー</param>
+            <param name="task">保留する Task</param>
+            <returns>true : 登録成功、false : 登録失敗(IsCompleted = true で登録しようとした)</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.ReservedTasks.Get">
+            <summary>
+            保留中の Task を取り出す<br/>
+            IsCompleted = true を設定するためには、null が返却されるまで呼び出し続ける必要がある<br/>
+            取り出す Task の順序は登録順とは限らない
+            </summary>
+            <returns>取り出した Task、取り出す Task がなくなった場合は、IsCompleted = true を設定し null を返却</returns>
+        </member>
         <member name="T:com.ricoh.livestreaming.SFUUpdateConnectOptionsMessage">
             <summary>
             SFU UpdateConnectOptions.
@@ -157,57 +364,53 @@
             Event Listener of <see cref="T:com.ricoh.livestreaming.Client"/>.
             </summary>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnConnecting">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnConnecting(com.ricoh.livestreaming.LSConnectingEvent)">
             <summary>
             Called when the <see cref="T:com.ricoh.livestreaming.Client"/> start to connect to the server.
             </summary>
+            <param name="lSConnectingEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnOpen">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnOpen(com.ricoh.livestreaming.LSOpenEvent)">
             <summary>
             Called when the <see cref="T:com.ricoh.livestreaming.Client"/> is connected to the server.
             </summary>
+            <param name="lSOpenEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnClosing">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnClosing(com.ricoh.livestreaming.LSClosingEvent)">
             <summary>
             Called when the <see cref="T:com.ricoh.livestreaming.Client"/> start to disconnect from the server.
             </summary>
+            <param name="lSClosingEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnClosed">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnClosed(com.ricoh.livestreaming.LSCloseEvent)">
             <summary>
             Called when the <see cref="T:com.ricoh.livestreaming.Client"/> is disconnected from the server.
             </summary>
+            <param name="lSCloseEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddLocalTrack(com.ricoh.livestreaming.webrtc.MediaStreamTrack,com.ricoh.livestreaming.webrtc.MediaStream)">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddLocalTrack(com.ricoh.livestreaming.LSAddLocalTrackEvent)">
             <summary>
             Called when new local track added.
             </summary>
-            <param name="mediaStreamTrack">Added local track.</param>
-            <param name="stream">Added local stream.</param>
+            <param name="lSAddLocalTrackEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddRemoteTrack(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.Collections.Generic.Dictionary{System.String,System.Object},com.ricoh.livestreaming.MuteType)">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddRemoteTrack(com.ricoh.livestreaming.LSAddRemoteTrackEvent)">
             <summary>
             Called when new remote track added.
             </summary>
-            <param name="connectionId">Connection ID.</param>
-            <param name="stream">Added remote stream.</param>
-            <param name="mediaStreamTrack">Added remote track.</param>
-            <param name="metadata">Metadata of track.</param>
-            <param name="muteType">Mute type of track.</param>
+            <param name="lSAddRemoteTrackEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnAddRemoteConnection(com.ricoh.livestreaming.LSAddRemoteConnectionEvent)">
             <summary>
             Called when remote connection added.
             </summary>
-            <param name="connectionId">connection id</param>
-            <param name="metadata">Metadata of track.</param>
+            <param name="lSAddRemoteConnectionEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{com.ricoh.livestreaming.webrtc.MediaStreamTrack})">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent)">
             <summary>
             Called when remote connection removed.
             </summary>
-            <param name="connectionId">Connection ID.</param>
-            <param name="metadata">Metadata of track.</param>
-            <param name="mediaStreamTracks">List of media stream track.</param>
+            <param name="lSRemoveRemoteConnectionEvent"></param>
         </member>
         <member name="M:com.ricoh.livestreaming.IClientListener.OnError(com.ricoh.livestreaming.SDKErrorEvent)">
             <summary>
@@ -215,37 +418,29 @@
             </summary>
             <param name="errorEvent"><see cref="T:com.ricoh.livestreaming.SDKErrorEvent"/></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateRemoteConnection(com.ricoh.livestreaming.LSUpdateRemoteConnectionEvent)">
             <summary>
             Called when update metadata of remote connection
             </summary>
-            <param name="connectionId">updated connection id</param>
-            <param name="metadata">new metadata of remote connection</param>
+            <param name="lSUpdateRemoteConnectionEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateRemoteTrack(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateRemoteTrack(com.ricoh.livestreaming.LSUpdateRemoteTrackEvent)">
             <summary>
             Called when remote track updated.
             </summary>
-            <param name="connectionId">Connection ID.</param>
-            <param name="stream">Updated remote stream.</param>
-            <param name="mediaStreamTrack">Updated remote track.</param>
-            <param name="metadata">Metadata of track.</param>
+            <param name="lSUpdateRemoteTrackEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateMute(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,com.ricoh.livestreaming.MuteType)">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnUpdateMute(com.ricoh.livestreaming.LSUpdateMuteEvent)">
             <summary>
             Called when remote track mute state updated.
             </summary>
-            <param name="connectionId">Connection ID.</param>
-            <param name="stream">Updated remote stream.</param>
-            <param name="mediaStreamTrack">Updated remote track.</param>
-            <param name="muteType">new mute state.</param>
+            <param name="lSUpdateMuteEvent"></param>
         </member>
-        <member name="M:com.ricoh.livestreaming.IClientListener.OnChangeStability(System.String,com.ricoh.livestreaming.Stability)">
+        <member name="M:com.ricoh.livestreaming.IClientListener.OnChangeStability(com.ricoh.livestreaming.LSChangeStabilityEvent)">
             <summary>
             Called when stability of the connection changed.
             </summary>
-            <param name="connectionId">Connection ID.</param>
-            <param name="stability">Stability.</param>
+            <param name="lSChangeStabilityEvent"></param>
         </member>
         <member name="T:com.ricoh.livestreaming.LocalLSTrack">
             <summary>
@@ -1659,7 +1854,7 @@
         <member name="T:com.ricoh.livestreaming.webrtc.AudioTrack">
             <summary>
             <para>Audio Track Interface.</para>
-            <para>AudioTrack is disposed inside the SDK after the <see cref="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{com.ricoh.livestreaming.webrtc.MediaStreamTrack})"/> is called.</para>
+            <para>AudioTrack is disposed inside the SDK after the <see cref="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent)"/> is called.</para>
             </summary>
         </member>
         <member name="M:com.ricoh.livestreaming.webrtc.AudioTrack.Dispose(System.Boolean)">
@@ -1678,7 +1873,7 @@
         <member name="T:com.ricoh.livestreaming.webrtc.VideoTrack">
             <summary>
             <para>Video Track Interface.</para>
-            <para>VideoTrack is disposed inside the SDK after the <see cref="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{com.ricoh.livestreaming.webrtc.MediaStreamTrack})"/> is called.</para>
+            <para>VideoTrack is disposed inside the SDK after the <see cref="M:com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent)"/> is called.</para>
             </summary>
         </member>
         <member name="T:com.ricoh.livestreaming.webrtc.VideoTrack.IListener">
@@ -1812,6 +2007,40 @@
             </summary>
             <param name="wrapper"></param>
         </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.WebrtcWrapperFactory">
+            <summary>
+            IWebrtcWrapperの実体を作成するFactoryクラス
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.WebrtcWrapperFactory.GetInstanceDelegate">
+            <summary>
+            インスタンス生成を外部に委譲するためのDelegate
+            </summary>
+            <returns>IWebrtcWrapperの実体</returns>
+        </member>
+        <member name="F:com.ricoh.livestreaming.webrtc.WebrtcWrapperFactory.getInstance">
+            <summary>
+            Factoryで使用するインスタンス生成Delegate
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.WebrtcWrapperFactory.#cctor">
+            <summary>
+            Staticコンストラクタ
+            </summary>
+            <remarks>デフォルトで<see cref="M:com.ricoh.livestreaming.webrtc.WebrtcWrapper.GetInstance"/>を使用するように設定</remarks>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.WebrtcWrapperFactory.Switch(com.ricoh.livestreaming.webrtc.WebrtcWrapperFactory.GetInstanceDelegate)">
+            <summary>
+            インスタンス生成Delegateを切り替える
+            </summary>
+            <param name="getInstanceDelegate">Factoryで使用したいインスタンス生成Delegate</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.WebrtcWrapperFactory.GetInstance">
+            <summary>
+            IWebrtcWrapperのインスタンスを取得する
+            </summary>
+            <returns>IWebrtcWrapperのインスタンス</returns>
+        </member>
         <member name="P:com.ricoh.livestreaming.SignalingChannel.IsClosing">
             <summary>
             true : Close()を呼び出し後, false : Open()を呼び出し後
@@ -1863,7 +2092,7 @@
             <param name="accessToken">AccessToken.</param>
             <param name="option">Option for connection.</param>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than IDLE state.</exception>
-            <exception cref="T:System.ArgumentNullException"><paramref name="clientId"/> or <paramref name="accessToken"/>is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="clientId"/> or <paramref name="accessToken"/> is null.</exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.Disconnect">
             <summary>
@@ -1897,6 +2126,7 @@
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called with a RoomSpecType other than SFU.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when LSTrack not found on LocalLSTracks.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="lsTrack"/> is null.</exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.ChangeMediaRequirements(System.String,com.ricoh.livestreaming.VideoRequirement)">
             <summary>
@@ -1988,7 +2218,7 @@
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when failed to set track to RtpSender.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when targetTrack not found on replace Media Stream Track.</exception>
-            <exception cref="T:System.ArgumentNullException"><paramref name="lsTrack"/> or <paramref name="mediaStreamTrack"/>is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="lsTrack"/> or <paramref name="mediaStreamTrack"/> is null.</exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.ChangeMute(com.ricoh.livestreaming.LSTrack,com.ricoh.livestreaming.MuteType)">
             <summary>
@@ -2000,7 +2230,7 @@
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the track not found on replace Media Stream Track.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown in case of unsupported MuteType changes.</exception>
-            <exception cref="T:System.ArgumentNullException"><paramref name="lsTrack"/>is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="lsTrack"/> is null.</exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.ChangeVideoSendFramerate(System.Double)">
             <summary>

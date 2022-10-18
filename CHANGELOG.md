@@ -1,4 +1,33 @@
 # CHANGELOG
+## v2.0.0
+* API変更
+  * 破壊的変更 IClientListenerが実装を要求するコールバックメソッドの引数を1つに統一
+    * 変更に伴う[移行ガイド](Guide.md#v200)を追加
+    * 今後コールバックが渡す情報が追加される場合、引数のオブジェクトの属性が増えることになる
+  * OnOpenのコールバック属性にAccessTokenのclaimのJSON文字列を追加
+
+* SDK修正
+  * libwebrtcをm102に更新
+  * videoのmuteTypeがhardmuteで指定された際、Roomの帯域幅割当消費の対象外になった
+  * `Client#ChangeMediaRequirements`を実行時に指定したConnectionが同じタイミングで離脱するとエラーになる場合がある問題を修正
+  * OnOpenの直後やリスナー中でいくつかのメソッドを呼ぶと正常に動作しなかった問題を修正
+  * OnOpen発生前にdisconnectを呼び出すとエラーになる問題の修正
+  * Connect 中かつ Connecting 遷移前に Disconnect した場合に Closing および Closed 状態へ遷移しない問題の修正
+  * OnError(WebSocketError) 発生時に Disconnectせずアプリケーションの判断に任せるように修正
+  * 同じRoomに同じConnectionIDのConnectionが入室した際に、新しいConnectionが残り元のConnectionは退室する仕様変更に伴い、エラーコードを追加削除
+    * 追加: 43603 SameConnectionIDJoined
+    * 廃止: 43602 DuplicateConnectionIDOnConnect
+  * 一部エラー内容の表現を改善
+  * 下記ライブラリのバージョンアップ
+    * log4net : 2.0.8 → 2.0.15
+    * Newtonsoft.Json : 12.0.3 → 13.0.1
+
+* サンプルアプリ修正
+  * IClientListener の変更対応
+  * 下記ライブラリのバージョンアップ
+    * JWT : 7.2.1 → 9.0.3
+  * サンプルアプリ間接続の簡単のためroom_id, room_specを揃えた
+
 ## v1.4.0
 
 * API変更

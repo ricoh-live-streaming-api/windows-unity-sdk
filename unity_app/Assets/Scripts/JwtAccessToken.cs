@@ -27,7 +27,7 @@ public static class JwtAccessToken
             .WithSecret(clientSecret)
             .AddClaim("nbf", nbf.ToUnixTimeSeconds())
             .AddClaim("exp", exp.ToUnixTimeSeconds())
-            .AddClaim("connection_id", "WIN" + connectionId)
+            .AddClaim("connection_id", "WinUnitySampleUnityApp" + connectionId)
             .AddClaim("room_id", roomId)
             .AddClaim("room_spec", roomSpec.GetSpec())
             .Encode();

@@ -1,3 +1,6 @@
+/*
+ * Copyright 2022 RICOH Company, Ltd. All rights reserved.
+ */
 using com.ricoh.livestreaming;
 using com.ricoh.livestreaming.unity;
 using com.ricoh.livestreaming.webrtc;
@@ -162,7 +165,7 @@ public class Watch : BehaviorBase
                     Logger.Debug("IsH264Supported = " + isH264Supported);
                     var videoCodec = isH264Supported ? SendingVideoOption.VideoCodecType.H264 : SendingVideoOption.VideoCodecType.Vp8;
 
-                    var roomSpec = new RoomSpec(roomTypeDropdown.RoomType);
+                    var roomSpec = new RoomSpec(roomTypeDropdown.Type);
 
                     var accessToken = JwtAccessToken.CreateAccessToken(
                         Secrets.GetInstance().ClientSecret,
@@ -237,6 +240,7 @@ public class Watch : BehaviorBase
 
         protected override void RemoveRemoteTrackByConnectionId(string connectionId)
         {
+            (app as Watch).renderRemoteVideoTrack.RemoveSink(); ;
             ClearRemoteTracks();
         }
 

@@ -9,9 +9,9 @@ RICOH Live Streaming Serviceは、映像/音声などのメディアデータや
 詳細は下記Webサイトをご確認ください。
 
 * サービスサイト: https://livestreaming.ricoh/
-  * ソフトウェア開発者向けサイト: https://api.livestreaming.ricoh/
+* ソフトウェア開発者向けサイト: https://api.livestreaming.ricoh/
+* アカウント登録: https://livestreaming.ricoh/user_register.html
 * ソフトウェア使用許諾契約書 : [Software License Agreement](SoftwareLicenseAgreement.txt)
-
 * NOTICE: This package includes SDK and sample application(s) for "RICOH Live Streaming Service".
 At this moment, we provide API license agreement / software license agreement only in Japanese.
 
@@ -32,3 +32,11 @@ Unityプロジェクト [unity_app\Assets\Plugins\x86_64](unity_app/Assets/Plugi
 - log4net.dll
 - Newtonsoft.Json.dll
 - websocket-sharp.dll
+
+## 依存ライブラリ
+- log4net : v2.0.15
+- Newtonsoft.Json : v13.0.1
+- WebSocketSharp : v1.0.3-rc11
+
+## バージョンアップ時の更新方法
+- ClientSDK.dll および webrtc_wrapper.dll を差し替えてください

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IClientListener
    ">
-    <meta name="generator" content="docfx 2.52.0.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -87,13 +87,13 @@
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnAddLocalTrack_" data-uid="com.ricoh.livestreaming.IClientListener.OnAddLocalTrack*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnAddLocalTrack_com_ricoh_livestreaming_webrtc_MediaStreamTrack_com_ricoh_livestreaming_webrtc_MediaStream_" data-uid="com.ricoh.livestreaming.IClientListener.OnAddLocalTrack(com.ricoh.livestreaming.webrtc.MediaStreamTrack,com.ricoh.livestreaming.webrtc.MediaStream)">OnAddLocalTrack(MediaStreamTrack, MediaStream)</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnAddLocalTrack_com_ricoh_livestreaming_LSAddLocalTrackEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnAddLocalTrack(com.ricoh.livestreaming.LSAddLocalTrackEvent)">OnAddLocalTrack(LSAddLocalTrackEvent)</h4>
   <div class="markdown level1 summary"><p>Called when new local track added.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnAddLocalTrack(MediaStreamTrack mediaStreamTrack, MediaStream stream)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnAddLocalTrack(LSAddLocalTrackEvent lSAddLocalTrackEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -106,29 +106,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStreamTrack.html">MediaStreamTrack</a></td>
-        <td><span class="parametername">mediaStreamTrack</span></td>
-        <td><p>Added local track.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStream.html">MediaStream</a></td>
-        <td><span class="parametername">stream</span></td>
-        <td><p>Added local stream.</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSAddLocalTrackEvent.html">LSAddLocalTrackEvent</a></td>
+        <td><span class="parametername">lSAddLocalTrackEvent</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnAddRemoteConnection_" data-uid="com.ricoh.livestreaming.IClientListener.OnAddRemoteConnection*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnAddRemoteConnection_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="com.ricoh.livestreaming.IClientListener.OnAddRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">OnAddRemoteConnection(String, Dictionary&lt;String, Object&gt;)</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnAddRemoteConnection_com_ricoh_livestreaming_LSAddRemoteConnectionEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnAddRemoteConnection(com.ricoh.livestreaming.LSAddRemoteConnectionEvent)">OnAddRemoteConnection(LSAddRemoteConnectionEvent)</h4>
   <div class="markdown level1 summary"><p>Called when remote connection added.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnAddRemoteConnection(string connectionId, Dictionary&lt;string, object&gt; metadata)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnAddRemoteConnection(LSAddRemoteConnectionEvent lSAddRemoteConnectionEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,29 +134,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">connectionId</span></td>
-        <td><p>connection id</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-        <td><span class="parametername">metadata</span></td>
-        <td><p>Metadata of track.</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSAddRemoteConnectionEvent.html">LSAddRemoteConnectionEvent</a></td>
+        <td><span class="parametername">lSAddRemoteConnectionEvent</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnAddRemoteTrack_" data-uid="com.ricoh.livestreaming.IClientListener.OnAddRemoteTrack*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnAddRemoteTrack_System_String_com_ricoh_livestreaming_webrtc_MediaStream_com_ricoh_livestreaming_webrtc_MediaStreamTrack_System_Collections_Generic_Dictionary_System_String_System_Object__com_ricoh_livestreaming_MuteType_" data-uid="com.ricoh.livestreaming.IClientListener.OnAddRemoteTrack(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.Collections.Generic.Dictionary{System.String,System.Object},com.ricoh.livestreaming.MuteType)">OnAddRemoteTrack(String, MediaStream, MediaStreamTrack, Dictionary&lt;String, Object&gt;, MuteType)</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnAddRemoteTrack_com_ricoh_livestreaming_LSAddRemoteTrackEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnAddRemoteTrack(com.ricoh.livestreaming.LSAddRemoteTrackEvent)">OnAddRemoteTrack(LSAddRemoteTrackEvent)</h4>
   <div class="markdown level1 summary"><p>Called when new remote track added.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnAddRemoteTrack(string connectionId, MediaStream stream, MediaStreamTrack mediaStreamTrack, Dictionary&lt;string, object&gt; metadata, MuteType muteType)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnAddRemoteTrack(LSAddRemoteTrackEvent lSAddRemoteTrackEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,47 +162,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">connectionId</span></td>
-        <td><p>Connection ID.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStream.html">MediaStream</a></td>
-        <td><span class="parametername">stream</span></td>
-        <td><p>Added remote stream.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStreamTrack.html">MediaStreamTrack</a></td>
-        <td><span class="parametername">mediaStreamTrack</span></td>
-        <td><p>Added remote track.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-        <td><span class="parametername">metadata</span></td>
-        <td><p>Metadata of track.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.MuteType.html">MuteType</a></td>
-        <td><span class="parametername">muteType</span></td>
-        <td><p>Mute type of track.</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSAddRemoteTrackEvent.html">LSAddRemoteTrackEvent</a></td>
+        <td><span class="parametername">lSAddRemoteTrackEvent</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnChangeStability_" data-uid="com.ricoh.livestreaming.IClientListener.OnChangeStability*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnChangeStability_System_String_com_ricoh_livestreaming_Stability_" data-uid="com.ricoh.livestreaming.IClientListener.OnChangeStability(System.String,com.ricoh.livestreaming.Stability)">OnChangeStability(String, Stability)</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnChangeStability_com_ricoh_livestreaming_LSChangeStabilityEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnChangeStability(com.ricoh.livestreaming.LSChangeStabilityEvent)">OnChangeStability(LSChangeStabilityEvent)</h4>
   <div class="markdown level1 summary"><p>Called when stability of the connection changed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnChangeStability(string connectionId, Stability stability)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnChangeStability(LSChangeStabilityEvent lSChangeStabilityEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -229,52 +190,96 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">connectionId</span></td>
-        <td><p>Connection ID.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.Stability.html">Stability</a></td>
-        <td><span class="parametername">stability</span></td>
-        <td><p>Stability.</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSChangeStabilityEvent.html">LSChangeStabilityEvent</a></td>
+        <td><span class="parametername">lSChangeStabilityEvent</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnClosed_" data-uid="com.ricoh.livestreaming.IClientListener.OnClosed*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnClosed" data-uid="com.ricoh.livestreaming.IClientListener.OnClosed">OnClosed()</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnClosed_com_ricoh_livestreaming_LSCloseEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnClosed(com.ricoh.livestreaming.LSCloseEvent)">OnClosed(LSCloseEvent)</h4>
   <div class="markdown level1 summary"><p>Called when the <a class="xref" href="com.ricoh.livestreaming.Client.html">Client</a> is disconnected from the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnClosed()</code></pre>
+    <pre><code class="lang-csharp hljs">void OnClosed(LSCloseEvent lSCloseEvent)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSCloseEvent.html">LSCloseEvent</a></td>
+        <td><span class="parametername">lSCloseEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnClosing_" data-uid="com.ricoh.livestreaming.IClientListener.OnClosing*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnClosing" data-uid="com.ricoh.livestreaming.IClientListener.OnClosing">OnClosing()</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnClosing_com_ricoh_livestreaming_LSClosingEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnClosing(com.ricoh.livestreaming.LSClosingEvent)">OnClosing(LSClosingEvent)</h4>
   <div class="markdown level1 summary"><p>Called when the <a class="xref" href="com.ricoh.livestreaming.Client.html">Client</a> start to disconnect from the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnClosing()</code></pre>
+    <pre><code class="lang-csharp hljs">void OnClosing(LSClosingEvent lSClosingEvent)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSClosingEvent.html">LSClosingEvent</a></td>
+        <td><span class="parametername">lSClosingEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnConnecting_" data-uid="com.ricoh.livestreaming.IClientListener.OnConnecting*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnConnecting" data-uid="com.ricoh.livestreaming.IClientListener.OnConnecting">OnConnecting()</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnConnecting_com_ricoh_livestreaming_LSConnectingEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnConnecting(com.ricoh.livestreaming.LSConnectingEvent)">OnConnecting(LSConnectingEvent)</h4>
   <div class="markdown level1 summary"><p>Called when the <a class="xref" href="com.ricoh.livestreaming.Client.html">Client</a> start to connect to the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnConnecting()</code></pre>
+    <pre><code class="lang-csharp hljs">void OnConnecting(LSConnectingEvent lSConnectingEvent)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSConnectingEvent.html">LSConnectingEvent</a></td>
+        <td><span class="parametername">lSConnectingEvent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnError_" data-uid="com.ricoh.livestreaming.IClientListener.OnError*"></a>
@@ -306,24 +311,13 @@
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnOpen_" data-uid="com.ricoh.livestreaming.IClientListener.OnOpen*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnOpen" data-uid="com.ricoh.livestreaming.IClientListener.OnOpen">OnOpen()</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnOpen_com_ricoh_livestreaming_LSOpenEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnOpen(com.ricoh.livestreaming.LSOpenEvent)">OnOpen(LSOpenEvent)</h4>
   <div class="markdown level1 summary"><p>Called when the <a class="xref" href="com.ricoh.livestreaming.Client.html">Client</a> is connected to the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnOpen()</code></pre>
-  </div>
-  
-  
-  <a id="com_ricoh_livestreaming_IClientListener_OnRemoveRemoteConnection_" data-uid="com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnRemoveRemoteConnection_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__System_Collections_Generic_List_com_ricoh_livestreaming_webrtc_MediaStreamTrack__" data-uid="com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{com.ricoh.livestreaming.webrtc.MediaStreamTrack})">OnRemoveRemoteConnection(String, Dictionary&lt;String, Object&gt;, List&lt;MediaStreamTrack&gt;)</h4>
-  <div class="markdown level1 summary"><p>Called when remote connection removed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnRemoveRemoteConnection(string connectionId, Dictionary&lt;string, object&gt; metadata, List&lt;MediaStreamTrack&gt; mediaStreamTracks)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnOpen(LSOpenEvent lSOpenEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -336,35 +330,50 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">connectionId</span></td>
-        <td><p>Connection ID.</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSOpenEvent.html">LSOpenEvent</a></td>
+        <td><span class="parametername">lSOpenEvent</span></td>
+        <td></td>
       </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="com_ricoh_livestreaming_IClientListener_OnRemoveRemoteConnection_" data-uid="com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection*"></a>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnRemoveRemoteConnection_com_ricoh_livestreaming_LSRemoveRemoteConnectionEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnRemoveRemoteConnection(com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent)">OnRemoveRemoteConnection(LSRemoveRemoteConnectionEvent)</h4>
+  <div class="markdown level1 summary"><p>Called when remote connection removed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnRemoveRemoteConnection(LSRemoveRemoteConnectionEvent lSRemoveRemoteConnectionEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-        <td><span class="parametername">metadata</span></td>
-        <td><p>Metadata of track.</p>
-</td>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStreamTrack.html">MediaStreamTrack</a>&gt;</td>
-        <td><span class="parametername">mediaStreamTracks</span></td>
-        <td><p>List of media stream track.</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSRemoveRemoteConnectionEvent.html">LSRemoveRemoteConnectionEvent</a></td>
+        <td><span class="parametername">lSRemoveRemoteConnectionEvent</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnUpdateMute_" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateMute*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnUpdateMute_System_String_com_ricoh_livestreaming_webrtc_MediaStream_com_ricoh_livestreaming_webrtc_MediaStreamTrack_com_ricoh_livestreaming_MuteType_" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateMute(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,com.ricoh.livestreaming.MuteType)">OnUpdateMute(String, MediaStream, MediaStreamTrack, MuteType)</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnUpdateMute_com_ricoh_livestreaming_LSUpdateMuteEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateMute(com.ricoh.livestreaming.LSUpdateMuteEvent)">OnUpdateMute(LSUpdateMuteEvent)</h4>
   <div class="markdown level1 summary"><p>Called when remote track mute state updated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnUpdateMute(string connectionId, MediaStream stream, MediaStreamTrack mediaStreamTrack, MuteType muteType)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnUpdateMute(LSUpdateMuteEvent lSUpdateMuteEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -377,41 +386,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">connectionId</span></td>
-        <td><p>Connection ID.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStream.html">MediaStream</a></td>
-        <td><span class="parametername">stream</span></td>
-        <td><p>Updated remote stream.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStreamTrack.html">MediaStreamTrack</a></td>
-        <td><span class="parametername">mediaStreamTrack</span></td>
-        <td><p>Updated remote track.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.MuteType.html">MuteType</a></td>
-        <td><span class="parametername">muteType</span></td>
-        <td><p>new mute state.</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSUpdateMuteEvent.html">LSUpdateMuteEvent</a></td>
+        <td><span class="parametername">lSUpdateMuteEvent</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnUpdateRemoteConnection_" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateRemoteConnection*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnUpdateRemoteConnection_System_String_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateRemoteConnection(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">OnUpdateRemoteConnection(String, Dictionary&lt;String, Object&gt;)</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnUpdateRemoteConnection_com_ricoh_livestreaming_LSUpdateRemoteConnectionEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateRemoteConnection(com.ricoh.livestreaming.LSUpdateRemoteConnectionEvent)">OnUpdateRemoteConnection(LSUpdateRemoteConnectionEvent)</h4>
   <div class="markdown level1 summary"><p>Called when update metadata of remote connection</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnUpdateRemoteConnection(string connectionId, Dictionary&lt;string, object&gt; metadata)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnUpdateRemoteConnection(LSUpdateRemoteConnectionEvent lSUpdateRemoteConnectionEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -424,29 +414,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">connectionId</span></td>
-        <td><p>updated connection id</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-        <td><span class="parametername">metadata</span></td>
-        <td><p>new metadata of remote connection</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSUpdateRemoteConnectionEvent.html">LSUpdateRemoteConnectionEvent</a></td>
+        <td><span class="parametername">lSUpdateRemoteConnectionEvent</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   
   
   <a id="com_ricoh_livestreaming_IClientListener_OnUpdateRemoteTrack_" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateRemoteTrack*"></a>
-  <h4 id="com_ricoh_livestreaming_IClientListener_OnUpdateRemoteTrack_System_String_com_ricoh_livestreaming_webrtc_MediaStream_com_ricoh_livestreaming_webrtc_MediaStreamTrack_System_Collections_Generic_Dictionary_System_String_System_Object__" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateRemoteTrack(System.String,com.ricoh.livestreaming.webrtc.MediaStream,com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.Collections.Generic.Dictionary{System.String,System.Object})">OnUpdateRemoteTrack(String, MediaStream, MediaStreamTrack, Dictionary&lt;String, Object&gt;)</h4>
+  <h4 id="com_ricoh_livestreaming_IClientListener_OnUpdateRemoteTrack_com_ricoh_livestreaming_LSUpdateRemoteTrackEvent_" data-uid="com.ricoh.livestreaming.IClientListener.OnUpdateRemoteTrack(com.ricoh.livestreaming.LSUpdateRemoteTrackEvent)">OnUpdateRemoteTrack(LSUpdateRemoteTrackEvent)</h4>
   <div class="markdown level1 summary"><p>Called when remote track updated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnUpdateRemoteTrack(string connectionId, MediaStream stream, MediaStreamTrack mediaStreamTrack, Dictionary&lt;string, object&gt; metadata)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnUpdateRemoteTrack(LSUpdateRemoteTrackEvent lSUpdateRemoteTrackEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -459,28 +442,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">connectionId</span></td>
-        <td><p>Connection ID.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStream.html">MediaStream</a></td>
-        <td><span class="parametername">stream</span></td>
-        <td><p>Updated remote stream.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="com.ricoh.livestreaming.webrtc.MediaStreamTrack.html">MediaStreamTrack</a></td>
-        <td><span class="parametername">mediaStreamTrack</span></td>
-        <td><p>Updated remote track.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-        <td><span class="parametername">metadata</span></td>
-        <td><p>Metadata of track.</p>
-</td>
+        <td><a class="xref" href="com.ricoh.livestreaming.LSUpdateRemoteTrackEvent.html">LSUpdateRemoteTrackEvent</a></td>
+        <td><span class="parametername">lSUpdateRemoteTrackEvent</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -494,7 +458,8 @@
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

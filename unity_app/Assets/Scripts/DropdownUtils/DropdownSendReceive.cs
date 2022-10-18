@@ -1,37 +1,15 @@
-﻿using System;
-
-public class DropdownSendReceive : DropdownInheritance
+﻿/*
+ * Copyright 2022 RICOH Company, Ltd. All rights reserved.
+ */
+public enum SendReceiveType
 {
-    public bool IsSendingEnabled => (type == SendReceiveType.SendReceive) | (type == SendReceiveType.SendOnly);
-    public bool IsReceivingEnabled => (type == SendReceiveType.SendReceive) | (type == SendReceiveType.ReceiveOnly);
+    SendReceive,
+    SendOnly,
+    ReceiveOnly
+}
 
-    private enum SendReceiveType
-    {
-        SendReceive,
-        SendOnly,
-        ReceiveOnly
-    }
-
-    private SendReceiveType type = SendReceiveType.SendReceive;
-
-    internal void Initialize()
-    {
-        Initialize(true);
-        value = (int)(object)type;
-    }
-
-    override internal void OnValueChangedInternal()
-    {
-        type = (SendReceiveType)Enum.ToObject(typeof(SendReceiveType), value);
-    }
-
-    override internal void Refresh()
-    {
-        ClearOptions();
-
-        foreach (SendReceiveType type in Enum.GetValues(typeof(SendReceiveType)))
-        {
-            options.Add(new OptionData(type.ToString()));
-        }
-    }
+public class DropdownSendReceive : DropdownEnumBase<SendReceiveType>
+{
+    public bool IsSendingEnabled => (Type == SendReceiveType.SendReceive) | (Type == SendReceiveType.SendOnly);
+    public bool IsReceivingEnabled => (Type == SendReceiveType.SendReceive) | (Type == SendReceiveType.ReceiveOnly);
 }

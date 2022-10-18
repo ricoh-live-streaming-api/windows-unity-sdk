@@ -1,3 +1,6 @@
+/*
+ * Copyright 2022 RICOH Company, Ltd. All rights reserved.
+ */
 using com.ricoh.livestreaming;
 using com.ricoh.livestreaming.unity;
 using com.ricoh.livestreaming.webrtc;
@@ -33,6 +36,7 @@ public class AppBehaviour : BehaviorBase
     public DropdownRoomType roomTypeDropdown;
     public DropdownVideoCodecType videoCodecDropdown;
     public DropdownSendReceive sendReceiveDropdown;
+    public DropdownIceServersProtocol dropdownIceServersProtocol;
     public Button deviceDropdownRefreshButton;
 
     private UnityRenderer cappellaRenderer;
@@ -44,11 +48,12 @@ public class AppBehaviour : BehaviorBase
     private IntPtr hWnd;    // own window handle
     private VideoDeviceCapturer videoDeviceCapturer;
     protected override VideoCapturer VideoCapturer => videoDeviceCapturer;
-    protected override RoomSpec.Type RoomType => roomTypeDropdown.RoomType;
+    protected override RoomSpec.Type RoomType => roomTypeDropdown.Type;
     protected override int MaxBitrateKbps => int.TryParse(bitrateEdit.text, out int bitrate) ? bitrate : 500;
     private SendingVideoOption.VideoCodecType VideoCodecType => videoCodecDropdown.Type;
     private bool IsSendingEnabled => sendReceiveDropdown.IsSendingEnabled;
     private bool IsReceivingEnabled => sendReceiveDropdown.IsReceivingEnabled;
+    private IceServersProtocol IceServersProtocol => dropdownIceServersProtocol.Type;
 
     [DllImport("user32.dll")]
     public static extern IntPtr FindWindow(string lpszClass, string lpszTitle);
@@ -72,6 +77,7 @@ public class AppBehaviour : BehaviorBase
         roomTypeDropdown.Initialize();
         videoCodecDropdown.Initialize();
         sendReceiveDropdown.Initialize();
+        dropdownIceServersProtocol.Initialize();
     }
 
     // Start is called before the first frame update
@@ -242,7 +248,8 @@ public class AppBehaviour : BehaviorBase
                     var option = new Option()
                         .SetMeta(ConnectionMetadata)
                         .SetSendingOption(new SendingOption(sendingVideoOption, IsSendingEnabled))
-                        .SetReceivingOption(new ReceivingOption(IsReceivingEnabled));
+                        .SetReceivingOption(new ReceivingOption(IsReceivingEnabled))
+                        .SetIceServersProtocol(IceServersProtocol);
 
                     if (IsSendingEnabled)
                     {
@@ -264,7 +271,7 @@ public class AppBehaviour : BehaviorBase
                         {
                             var trackOption = new LSTrackOption()
                                 .SetMeta(AudioTrackMetadata)
-                                .SetMuteType(micMuteDropdown.MuteType);
+                                .SetMuteType(micMuteDropdown.Type);
 
                             localLSTracks.Add(new LSTrack(track, stream, trackOption));
                         }
@@ -273,7 +280,7 @@ public class AppBehaviour : BehaviorBase
                         {
                             var trackOption = new LSTrackOption()
                                 .SetMeta(VideoTrackMetadata)
-                                .SetMuteType(videoMuteDropdown.MuteType);
+                                .SetMuteType(videoMuteDropdown.Type);
 
                             localLSTracks.Add(new LSTrack(track, stream, trackOption));
                         }
@@ -408,6 +415,7 @@ public class AppBehaviour : BehaviorBase
                 var remoteView = appBehaviour.remoteTracks[trackId];
                 if (remoteView.GetConnectionId() == connectionId)
                 {
+                    remoteView.GetVideoTrack().RemoveSink();
                     MonoBehaviour.Destroy(remoteView.GetTexture());
                     appBehaviour.RemoveRemoteView(trackId);
                     break;

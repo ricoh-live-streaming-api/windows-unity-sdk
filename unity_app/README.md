@@ -28,7 +28,7 @@ Live Streaming API に接続するWindows Unityアプリケーション
 {
     "client_id" : "",
     "client_secret" : "",
-    "room_id" : "xxxxxx",
+    "room_id" : "sample-room",
     "video_bitrate" : 20000
 }
 ```
@@ -62,3 +62,8 @@ libwebrtc の実装に依存するため、記載されているすべての情�
 
 ## 対応プラットフォーム
 - Windows10 1903 x86_64以降
+
+## 依存ライブラリ
+- log4net : v2.0.15
+- Newtonsoft.Json : v13.0.1
+- JWT : v9.0.3

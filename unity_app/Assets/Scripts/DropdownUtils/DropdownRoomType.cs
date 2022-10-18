@@ -1,26 +1,10 @@
-﻿using System;
-
-public class DropdownRoomType : DropdownInheritance
+﻿/*
+ * Copyright 2022 RICOH Company, Ltd. All rights reserved.
+ */
+public class DropdownRoomType : DropdownEnumBase<RoomSpec.Type>
 {
-    internal RoomSpec.Type RoomType { get; private set; }
-
-    internal void Initialize(RoomSpec.Type defaultRoomType = RoomSpec.Type.Sfu)
+    override protected string GetItemName(RoomSpec.Type item)
     {
-        Initialize(true);
-        value = (int)defaultRoomType;
-    }
-
-    override internal void OnValueChangedInternal()
-    {
-        RoomType = (RoomSpec.Type)Enum.ToObject(typeof(RoomSpec.Type), value);
-    }
-
-    override internal void Refresh()
-    {
-        ClearOptions();
-        foreach (var type in Enum.GetValues(typeof(RoomSpec.Type)))
-        {
-            options.Add(new OptionData(type.ToString().ToUpper()));
-        }
+        return item.ToString().ToUpper();
     }
 }

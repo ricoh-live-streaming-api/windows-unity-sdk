@@ -259,22 +259,22 @@ public abstract class BehaviorBase : MonoBehaviour
     {
         protected readonly BehaviorBase app;
 
-        private System.Threading.Timer statsOutpuTimer;
+        private Timer statsOutpuTimer;
 
         public ClientListenerBase(BehaviorBase app)
         {
             this.app = app;
         }
 
-        public virtual void OnAddLocalTrack(MediaStreamTrack mediaStreamTrack, MediaStream stream)
+        public virtual void OnAddLocalTrack(LSAddLocalTrackEvent lSAddLocalTrackEvent)
         {
-            Logger.Debug($"OnAddLocalTrack() trackID={mediaStreamTrack.Id}");
+            Logger.Debug($"OnAddLocalTrack() trackID={lSAddLocalTrackEvent.MediaStreamTrack.Id}");
 
             app.UnityUIContext.Post(__ =>
             {
                 lock (frameLockObject)
                 {
-                    if (app.HasLocalVideoTrack && mediaStreamTrack is VideoTrack videoTrack)
+                    if (app.HasLocalVideoTrack && lSAddLocalTrackEvent.MediaStreamTrack is VideoTrack videoTrack)
                     {
                         videoTrack.SetEventListener(CreateVideoTrackListener(app));
                         videoTrack.AddSink();
@@ -283,20 +283,27 @@ public abstract class BehaviorBase : MonoBehaviour
                 }
             }, null);
         }
-        public virtual void OnAddRemoteConnection(string connectionId, Dictionary<string, object> metadata)
+
+        public virtual void OnAddRemoteConnection(LSAddRemoteConnectionEvent lSAddRemoteConnectionEvent)
         {
             var metadataStr = "";
-            foreach (var m in metadata)
+            foreach (var m in lSAddRemoteConnectionEvent.Metadata)
             {
                 metadataStr += $"({m.Key}, {m.Value})";
             }
 
-            Logger.Debug($"OnAddRemoteConnection() connectionId={connectionId} metadata={metadataStr}");
+            Logger.Debug($"OnAddRemoteConnection() connectionId={lSAddRemoteConnectionEvent.ConnectionId} metadata={metadataStr}");
         }
-        public virtual void OnAddRemoteTrack(string connectionId, MediaStream stream, MediaStreamTrack mediaStreamTrack, Dictionary<string, object> metadata, MuteType muteType)
+
+        public virtual void OnAddRemoteTrack(LSAddRemoteTrackEvent lSAddRemoteTrackEvent)
         {
-            Logger.Debug($"OnAddRemoteTrack() connectionId={connectionId}, streamID={stream.Id}, trackID={mediaStreamTrack.Id}, muteType={muteType}");
-            foreach (KeyValuePair<string, object> pair in metadata)
+            Logger.Debug($"OnAddRemoteTrack() " +
+                $"connectionId={lSAddRemoteTrackEvent.ConnectionId}, " +
+                $"streamID={lSAddRemoteTrackEvent.Stream.Id}, " +
+                $"trackID={lSAddRemoteTrackEvent.MediaStreamTrack.Id}, " +
+                $"muteType={lSAddRemoteTrackEvent.MuteType}");
+
+            foreach (KeyValuePair<string, object> pair in lSAddRemoteTrackEvent.Metadata)
             {
                 Logger.Debug($"key={pair.Key} value={pair.Value}");
             }
@@ -305,11 +312,16 @@ public abstract class BehaviorBase : MonoBehaviour
             {
                 lock (frameLockObject)
                 {
-                    AddRemoteTrack(connectionId, stream, mediaStreamTrack, metadata);
+                    AddRemoteTrack(
+                        lSAddRemoteTrackEvent.ConnectionId,
+                        lSAddRemoteTrackEvent.Stream,
+                        lSAddRemoteTrackEvent.MediaStreamTrack,
+                        lSAddRemoteTrackEvent.Metadata);
                 }
             }, null);
         }
-        public virtual void OnClosed()
+
+        public virtual void OnClosed(LSCloseEvent lSCloseEvent)
         {
             Logger.Debug("OnClosed()");
 
@@ -341,7 +353,8 @@ public abstract class BehaviorBase : MonoBehaviour
 
             app.SetConnectButtonText("Connect", true);
         }
-        public virtual void OnClosing()
+
+        public virtual void OnClosing(LSClosingEvent lSClosingEvent)
         {
             Logger.Debug("OnClosing()");
             app.SetConnectButtonText("Disconnecting...", false);
@@ -353,17 +366,21 @@ public abstract class BehaviorBase : MonoBehaviour
                 }
             }, null);
         }
-        public virtual void OnConnecting()
+
+        public virtual void OnConnecting(LSConnectingEvent lSConnectingEvent)
         {
             Logger.Debug("OnConnecting()");
         }
+
         public virtual void OnError(SDKErrorEvent error)
         {
             Logger.Debug($"OnError() code={error.Detail.Code}, type={error.Detail.Type}, error={error.Detail.Error}, detail={error.ToReportString()}");
         }
-        public virtual void OnOpen()
+
+        public virtual void OnOpen(LSOpenEvent LSOpenEvent)
         {
-            Logger.Debug("OnOpen()");
+            Logger.Debug($"OnOpen() accessToken=\n{LSOpenEvent.AccessTokenJson}");
+
             app.UnityUIContext.Post(__ =>
             {
                 app.StatsLogger = new RTCStatsLogger(Utils.CreateFilePath(app.logFilePath));
@@ -383,63 +400,77 @@ public abstract class BehaviorBase : MonoBehaviour
                         }
                     }
                 };
-                statsOutpuTimer = new System.Threading.Timer(rtcStatLog, null, 500, 1000);
+                statsOutpuTimer = new Timer(rtcStatLog, null, 500, 1000);
             }, null);
+
             app.SetConnectButtonText("Disconnect", true);
         }
 
-        public virtual void OnRemoveRemoteConnection(string connectionId, Dictionary<string, object> metadata, List<MediaStreamTrack> mediaStreamTracks)
+        public virtual void OnRemoveRemoteConnection(LSRemoveRemoteConnectionEvent lSRemoveRemoteConnectionEvent)
         {
             var metadataStr = "";
-            foreach (var m in metadata)
+            foreach (var m in lSRemoveRemoteConnectionEvent.Metadata)
             {
                 metadataStr += $"({m.Key}, {m.Value})";
             }
 
             var mediaStreamTracksStr = "";
-            foreach (var track in mediaStreamTracks)
+            foreach (var track in lSRemoveRemoteConnectionEvent.MediaStreamTracks)
             {
                 mediaStreamTracksStr += $"({track.Id}, {track.Type})";
             }
 
-            Logger.Debug($"OnRemoveRemoteConnection() connectionId={connectionId} metadata={metadataStr} mediaStreamTrack={mediaStreamTracksStr}");
+            Logger.Debug($"OnRemoveRemoteConnection() " +
+                $"connectionId={lSRemoveRemoteConnectionEvent.ConnectionId} " +
+                $"metadata={metadataStr} " +
+                $"mediaStreamTrack={mediaStreamTracksStr}");
 
             app.UnityUIContext.Post(__ =>
             {
                 lock (frameLockObject)
                 {
-                    RemoveRemoteTrackByConnectionId(connectionId);
+                    RemoveRemoteTrackByConnectionId(lSRemoveRemoteConnectionEvent.ConnectionId);
                 }
             }, null);
         }
 
-        public virtual void OnUpdateRemoteTrack(string connectionId, MediaStream stream, MediaStreamTrack track, Dictionary<string, object> metadata)
+        public virtual void OnUpdateRemoteTrack(LSUpdateRemoteTrackEvent lSUpdateRemoteTrackEvent)
         {
             var metadataStr = "";
-            foreach (var m in metadata)
+            foreach (var m in lSUpdateRemoteTrackEvent.Metadata)
             {
                 metadataStr += $"({m.Key}, {m.Value})";
             }
-            Logger.Debug($"OnUpdateRemoteTrack() connectionId={connectionId}, streamID={stream.Id}, trackID={track.Id} metadata={metadataStr}");
+
+            Logger.Debug($"OnUpdateRemoteTrack() " +
+                $"connectionId={lSUpdateRemoteTrackEvent.ConnectionId}, " +
+                $"streamID={lSUpdateRemoteTrackEvent.Stream.Id}, " +
+                $"trackID={lSUpdateRemoteTrackEvent.MediaStreamTrack.Id} " +
+                $"metadata={metadataStr}");
         }
 
-        public virtual void OnUpdateMute(string connectionId, MediaStream stream, MediaStreamTrack track, MuteType muteType)
+        public virtual void OnUpdateMute(LSUpdateMuteEvent lSUpdateMuteEvent)
         {
-            Logger.Debug($"OnUpdateMute() connectionId={connectionId}, streamID={stream.Id}, trackID={track.Id}, muteType={muteType}");
+            Logger.Debug($"OnUpdateMute() " +
+                $"connectionId={lSUpdateMuteEvent.ConnectionId}, " +
+                $"streamID={lSUpdateMuteEvent.Stream.Id}, " +
+                $"trackID={lSUpdateMuteEvent.MediaStreamTrack.Id}, " +
+                $"muteType={lSUpdateMuteEvent.MuteType}");
         }
 
-        public virtual void OnUpdateRemoteConnection(string connectionId, Dictionary<string, object> metadata)
+        public virtual void OnUpdateRemoteConnection(LSUpdateRemoteConnectionEvent lSUpdateRemoteConnectionEvent)
         {
-            Logger.Debug($"OnUpdateRemoteConnection() connectionId={connectionId}");
-            foreach (KeyValuePair<string, object> pair in metadata)
+            Logger.Debug($"OnUpdateRemoteConnection() connectionId={lSUpdateRemoteConnectionEvent.ConnectionId}");
+
+            foreach (KeyValuePair<string, object> pair in lSUpdateRemoteConnectionEvent.Metadata)
             {
                 Logger.Debug($"key={pair.Key} value={pair.Value}");
             }
         }
 
-        public virtual void OnChangeStability(string connectionId, Stability stability)
+        public virtual void OnChangeStability(LSChangeStabilityEvent lSChangeStabilityEvent)
         {
-            Logger.Debug($"OnChangeStability() connectionId={connectionId} stability={stability}");
+            Logger.Debug($"OnChangeStability() connectionId={lSChangeStabilityEvent.ConnectionId} stability={lSChangeStabilityEvent.Stability}");
         }
 
         /// <summary>

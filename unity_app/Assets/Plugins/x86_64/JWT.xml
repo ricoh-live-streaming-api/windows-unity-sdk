@@ -24,15 +24,21 @@
         <member name="M:JWT.Algorithms.DelegateAlgorithmFactory.Create(JWT.JwtDecoderContext)">
             <inheritdoc />
         </member>
+        <member name="T:JWT.Algorithms.ECDSAAlgorithmFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:JWT.Algorithms.GenericAlgorithmFactory`1.Create(JWT.JwtDecoderContext)">
+            <inheritdoc />
+        </member>
         <member name="T:JWT.Algorithms.HMACSHA256Algorithm">
             <summary>
             HMAC using SHA-256
             </summary>
         </member>
-        <member name="M:JWT.Algorithms.HMACSHA256Algorithm.Sign(System.Byte[],System.Byte[])">
+        <member name="P:JWT.Algorithms.HMACSHA256Algorithm.Name">
             <inheritdoc />
         </member>
-        <member name="P:JWT.Algorithms.HMACSHA256Algorithm.Name">
+        <member name="P:JWT.Algorithms.HMACSHA256Algorithm.HashAlgorithmName">
             <inheritdoc />
         </member>
         <member name="T:JWT.Algorithms.HMACSHA384Algorithm">
@@ -40,10 +46,10 @@
             HMAC using SHA-384
             </summary>
         </member>
-        <member name="M:JWT.Algorithms.HMACSHA384Algorithm.Sign(System.Byte[],System.Byte[])">
+        <member name="P:JWT.Algorithms.HMACSHA384Algorithm.Name">
             <inheritdoc />
         </member>
-        <member name="P:JWT.Algorithms.HMACSHA384Algorithm.Name">
+        <member name="P:JWT.Algorithms.HMACSHA384Algorithm.HashAlgorithmName">
             <inheritdoc />
         </member>
         <member name="T:JWT.Algorithms.HMACSHA512Algorithm">
@@ -51,16 +57,22 @@
             HMAC using SHA-512
             </summary>
         </member>
-        <member name="M:JWT.Algorithms.HMACSHA512Algorithm.Sign(System.Byte[],System.Byte[])">
-            <inheritdoc />
-        </member>
         <member name="P:JWT.Algorithms.HMACSHA512Algorithm.Name">
             <inheritdoc />
         </member>
-        <member name="T:JWT.Algorithms.HMACSHAAlgorithmFactory">
+        <member name="P:JWT.Algorithms.HMACSHA512Algorithm.HashAlgorithmName">
             <inheritdoc />
         </member>
-        <member name="M:JWT.Algorithms.HMACSHAAlgorithmFactory.Create(JWT.JwtDecoderContext)">
+        <member name="P:JWT.Algorithms.HMACSHAAlgorithm.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:JWT.Algorithms.HMACSHAAlgorithm.HashAlgorithmName">
+            <inheritdoc />
+        </member>
+        <member name="M:JWT.Algorithms.HMACSHAAlgorithm.Sign(System.Byte[],System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="T:JWT.Algorithms.HMACSHAAlgorithmFactory">
             <inheritdoc />
         </member>
         <member name="T:JWT.Algorithms.IAlgorithmFactory">
@@ -103,6 +115,11 @@
             Gets algorithm name.
             </summary>
         </member>
+        <member name="P:JWT.Algorithms.IJwtAlgorithm.HashAlgorithmName">
+            <summary>
+            Gets name of the hashing algorithm (e.g. SHA-256/SHA-384/SHA-512).
+            </summary>
+        </member>
         <member name="T:JWT.Algorithms.JwtAlgorithmExtensions">
              <summary>
              Extension methods for <seealso cref="T:JWT.Algorithms.IJwtAlgorithm" />
@@ -113,6 +130,12 @@
             Returns whether or not the algorithm is asymmetric.
             </summary>
             <param name="alg">The algorithm instance.</param>
+        </member>
+        <member name="T:JWT.Algorithms.JwtAlgorithmFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:JWT.Algorithms.JwtAlgorithmFactory.Create(JWT.JwtDecoderContext)">
+            <inheritdoc />
         </member>
         <member name="T:JWT.Algorithms.JwtAlgorithmName">
             <summary>
@@ -138,6 +161,132 @@
             <summary>
             RSASSA-PKCS1-v1_5 using SHA-256
             </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.RS384">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-384
+            </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.RS512">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-512
+            </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.RS1024">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-1024
+            </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.RS2048">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-2048
+            </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.RS4096">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-4096
+            </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.ES256">
+            <summary>
+            ECDSA using SHA-256
+            </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.ES384">
+            <summary>
+            ECDSA using SHA-384
+            </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.ES512">
+            <summary>
+            ECDSA using SHA-512
+            </summary>
+        </member>
+        <member name="F:JWT.Algorithms.JwtAlgorithmName.None">
+            <summary>
+            Algorithm used when no signing is wanted
+            </summary>
+        </member>
+        <member name="T:JWT.Algorithms.NoneAlgorithm">
+            <summary>
+            Implements the "None" algorithm.
+            </summary>
+            <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-6">RFC-7519</see>
+        </member>
+        <member name="P:JWT.Algorithms.NoneAlgorithm.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:JWT.Algorithms.NoneAlgorithm.HashAlgorithmName">
+            <inheritdoc />
+        </member>
+        <member name="M:JWT.Algorithms.NoneAlgorithm.Sign(System.Byte[],System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="T:JWT.Algorithms.RS1024Algorithm">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-1024
+            </summary>
+        </member>
+        <member name="M:JWT.Algorithms.RS1024Algorithm.#ctor(System.Security.Cryptography.RSA,System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS1024Algorithm" /> using the provided pair of public and private keys.
+            </summary>
+            <param name="publicKey">The public key for verifying the data.</param>
+            <param name="privateKey">The private key for signing the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS1024Algorithm.#ctor(System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS1024Algorithm" /> using the provided public key only.
+            </summary>
+            <remarks>
+            An instance created using this constructor can only be used for verifying the data, not for signing it.
+            </remarks>
+            <param name="publicKey">The public key for verifying the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS1024Algorithm.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Creates an instance using the provided certificate.
+            </summary>
+            <param name="cert">The certificate having a public key and an optional private key.</param>
+        </member>
+        <member name="P:JWT.Algorithms.RS1024Algorithm.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:JWT.Algorithms.RS1024Algorithm.HashAlgorithmName">
+            <inheritdoc />
+        </member>
+        <member name="T:JWT.Algorithms.RS2048Algorithm">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-2048
+            </summary>
+        </member>
+        <member name="M:JWT.Algorithms.RS2048Algorithm.#ctor(System.Security.Cryptography.RSA,System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS2048Algorithm" /> using the provided pair of public and private keys.
+            </summary>
+            <param name="publicKey">The public key for verifying the data.</param>
+            <param name="privateKey">The private key for signing the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS2048Algorithm.#ctor(System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS2048Algorithm" /> using the provided public key only.
+            </summary>
+            <remarks>
+            An instance created using this constructor can only be used for verifying the data, not for signing it.
+            </remarks>
+            <param name="publicKey">The public key for verifying the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS2048Algorithm.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Creates an instance using the provided certificate.
+            </summary>
+            <param name="cert">The certificate having a public key and an optional private key.</param>
+        </member>
+        <member name="P:JWT.Algorithms.RS2048Algorithm.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:JWT.Algorithms.RS2048Algorithm.HashAlgorithmName">
+            <inheritdoc />
         </member>
         <member name="T:JWT.Algorithms.RS256Algorithm">
             <summary>
@@ -169,17 +318,152 @@
         <member name="P:JWT.Algorithms.RS256Algorithm.Name">
             <inheritdoc />
         </member>
-        <member name="M:JWT.Algorithms.RS256Algorithm.Sign(System.Byte[],System.Byte[])">
+        <member name="P:JWT.Algorithms.RS256Algorithm.HashAlgorithmName">
             <inheritdoc />
         </member>
-        <member name="M:JWT.Algorithms.RS256Algorithm.Sign(System.Byte[])">
+        <member name="T:JWT.Algorithms.RS384Algorithm">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-384
+            </summary>
+        </member>
+        <member name="M:JWT.Algorithms.RS384Algorithm.#ctor(System.Security.Cryptography.RSA,System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS384Algorithm" /> using the provided pair of public and private keys.
+            </summary>
+            <param name="publicKey">The public key for verifying the data.</param>
+            <param name="privateKey">The private key for signing the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS384Algorithm.#ctor(System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS384Algorithm" /> using the provided public key only.
+            </summary>
+            <remarks>
+            An instance created using this constructor can only be used for verifying the data, not for signing it.
+            </remarks>
+            <param name="publicKey">The public key for verifying the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS384Algorithm.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Creates an instance using the provided certificate.
+            </summary>
+            <param name="cert">The certificate having a public key and an optional private key.</param>
+        </member>
+        <member name="P:JWT.Algorithms.RS384Algorithm.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:JWT.Algorithms.RS384Algorithm.HashAlgorithmName">
+            <inheritdoc />
+        </member>
+        <member name="T:JWT.Algorithms.RS4096Algorithm">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-4096
+            </summary>
+        </member>
+        <member name="M:JWT.Algorithms.RS4096Algorithm.#ctor(System.Security.Cryptography.RSA,System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS4096Algorithm" /> using the provided pair of public and private keys.
+            </summary>
+            <param name="publicKey">The public key for verifying the data.</param>
+            <param name="privateKey">The private key for signing the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS4096Algorithm.#ctor(System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS4096Algorithm" /> using the provided public key only.
+            </summary>
+            <remarks>
+            An instance created using this constructor can only be used for verifying the data, not for signing it.
+            </remarks>
+            <param name="publicKey">The public key for verifying the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS4096Algorithm.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Creates an instance using the provided certificate.
+            </summary>
+            <param name="cert">The certificate having a public key and an optional private key.</param>
+        </member>
+        <member name="P:JWT.Algorithms.RS4096Algorithm.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:JWT.Algorithms.RS4096Algorithm.HashAlgorithmName">
+            <inheritdoc />
+        </member>
+        <member name="T:JWT.Algorithms.RS512Algorithm">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-512
+            </summary>
+        </member>
+        <member name="M:JWT.Algorithms.RS512Algorithm.#ctor(System.Security.Cryptography.RSA,System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS512Algorithm" /> using the provided pair of public and private keys.
+            </summary>
+            <param name="publicKey">The public key for verifying the data.</param>
+            <param name="privateKey">The private key for signing the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS512Algorithm.#ctor(System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RS512Algorithm" /> using the provided public key only.
+            </summary>
+            <remarks>
+            An instance created using this constructor can only be used for verifying the data, not for signing it.
+            </remarks>
+            <param name="publicKey">The public key for verifying the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RS512Algorithm.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Creates an instance using the provided certificate.
+            </summary>
+            <param name="cert">The certificate having a public key and an optional private key.</param>
+        </member>
+        <member name="P:JWT.Algorithms.RS512Algorithm.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:JWT.Algorithms.RS512Algorithm.HashAlgorithmName">
+            <inheritdoc />
+        </member>
+        <member name="T:JWT.Algorithms.RSAlgorithm">
+            <summary>
+            RSASSA-PKCS1-v1_5 using SHA-256
+            </summary>
+        </member>
+        <member name="M:JWT.Algorithms.RSAlgorithm.#ctor(System.Security.Cryptography.RSA,System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RSAlgorithm" /> using the provided pair of public and private keys.
+            </summary>
+            <param name="publicKey">The public key for verifying the data.</param>
+            <param name="privateKey">The private key for signing the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RSAlgorithm.#ctor(System.Security.Cryptography.RSA)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Algorithms.RSAlgorithm" /> using the provided public key only.
+            </summary>
+            <remarks>
+            An instance created using this constructor can only be used for verifying the data, not for signing it.
+            </remarks>
+            <param name="publicKey">The public key for verifying the data.</param>
+        </member>
+        <member name="M:JWT.Algorithms.RSAlgorithm.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Creates an instance using the provided certificate.
+            </summary>
+            <param name="cert">The certificate having a public key and an optional private key.</param>
+        </member>
+        <member name="P:JWT.Algorithms.RSAlgorithm.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:JWT.Algorithms.RSAlgorithm.HashAlgorithmName">
+            <inheritdoc />
+        </member>
+        <member name="M:JWT.Algorithms.RSAlgorithm.Sign(System.Byte[],System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:JWT.Algorithms.RSAlgorithm.Sign(System.Byte[])">
             <summary>
             Signs the provided bytes.
             </summary>
             <param name="bytesToSign">The bytes to sign.</param>
             <returns>The signed bytes.</returns>
         </member>
-        <member name="M:JWT.Algorithms.RS256Algorithm.Verify(System.Byte[],System.Byte[])">
+        <member name="M:JWT.Algorithms.RSAlgorithm.Verify(System.Byte[],System.Byte[])">
             <inheritdoc />
         </member>
         <member name="T:JWT.Algorithms.RSAlgorithmFactory">
@@ -234,11 +518,25 @@
             Encode and decode JWT with Fluent API.
             </summary>
         </member>
+        <member name="M:JWT.Builder.JwtBuilder.Create">
+            <summary>
+            Creates a new instance of instance <see cref="T:JWT.Builder.JwtBuilder" />
+            </summary>
+        </member>
         <member name="M:JWT.Builder.JwtBuilder.AddHeader(JWT.Builder.HeaderName,System.Object)">
             <summary>
             Add header to the JWT.
             </summary>
             <param name="name">Well-known header name</param>
+            <param name="value">The value you want give to the header</param>
+            <returns>Current builder instance</returns>
+        </member>
+        <member name="M:JWT.Builder.JwtBuilder.AddHeader(System.String,System.Object)">
+            <summary>
+            Add header to the JWT.
+            </summary>
+            <remarks>This adds a non-standard header value.</remarks>
+            <param name="name">Header name</param>
             <param name="value">The value you want give to the header</param>
             <returns>Current builder instance</returns>
         </member>
@@ -312,25 +610,25 @@
         </member>
         <member name="M:JWT.Builder.JwtBuilder.WithSecret(System.String[])">
             <summary>
-            Sets certificate secret.
+            Sets secrets.
             </summary>
             <remarks>
-            Required to create new token that uses an symmetric algorithm such as <seealso cref="T:JWT.Algorithms.RS256Algorithm" />
+            Required to create a new token that uses an symmetric algorithm such as <seealso cref="T:JWT.Algorithms.RS256Algorithm" />
             </remarks>
             <returns>Current builder instance</returns>
         </member>
         <member name="M:JWT.Builder.JwtBuilder.WithSecret(System.Byte[][])">
             <summary>
-            Sets certificate secret.
+            Sets secrets.
             </summary>
             <remarks>
-            Required to create new token that uses an symmetric algorithm such as <seealso cref="T:JWT.Algorithms.RS256Algorithm" />
+            Required to create a new token that uses an symmetric algorithm such as <seealso cref="T:JWT.Algorithms.RS256Algorithm" />
             </remarks>
             <returns>Current builder instance</returns>
         </member>
         <member name="M:JWT.Builder.JwtBuilder.MustVerifySignature">
             <summary>
-            Instructs to do verify the JWT signature.
+            Instructs to verify the JWT signature.
             </summary>
             <returns>Current builder instance</returns>
         </member>
@@ -346,12 +644,29 @@
             </summary>
             <returns>Current builder instance</returns>
         </member>
+        <member name="M:JWT.Builder.JwtBuilder.WithValidationParameters(JWT.ValidationParameters)">
+            <summary>
+            Sets the JWT signature validation parameters.
+            </summary>
+            <param name="valParams">Parameters to be used for validation</param>
+            <exception cref="T:System.ArgumentNullException" />
+            <returns>Current builder instance</returns>
+        </member>
+        <member name="M:JWT.Builder.JwtBuilder.WithValidationParameters(System.Action{JWT.ValidationParameters})">
+            <summary>
+            Sets the JWT signature validation parameters.
+            </summary>
+            <param name="valParams">Parameters to be used for validation</param>
+            <exception cref="T:System.ArgumentNullException" />
+            <returns>Current builder instance</returns>
+        </member>
         <member name="M:JWT.Builder.JwtBuilder.Encode">
             <summary>
             Encodes a token using the supplied dependencies.
             </summary>
             <returns>The generated JWT</returns>
-            <exception cref="T:System.InvalidOperationException">Thrown if either algorithm, serializer, encoder or secret is null</exception>
+            <exception cref="T:System.InvalidOperationException" />
+            <returns>Current builder instance</returns>
         </member>
         <member name="M:JWT.Builder.JwtBuilder.Decode(System.String)">
             <summary>
@@ -377,7 +692,6 @@
             Decodes a token using the supplied dependencies.
             </summary>
             <param name="token">The JWT</param>
-            <returns>The payload converted to <see cref="!:T" /></returns>
         </member>
         <member name="M:JWT.Builder.JwtBuilder.CanEncode">
             <summary>
@@ -455,7 +769,7 @@
         </member>
         <member name="T:JWT.Exceptions.InvalidTokenPartsException">
             <summary>
-            Represents an exception thrown when when a token doesn't consist of 3 delimited by dot parts.
+            Represents an exception thrown when a token doesn't consist of 3 delimited by dot parts.
             </summary>
         </member>
         <member name="M:JWT.Exceptions.InvalidTokenPartsException.#ctor(System.String)">
@@ -514,6 +828,27 @@
             The expiration DateTime of the token.
             </summary>
         </member>
+        <member name="T:JWT.Exceptions.TokenNotYetValidException">
+            <summary>
+            Represents an exception thrown when a token is not yet valid.
+            </summary>
+        </member>
+        <member name="M:JWT.Exceptions.TokenNotYetValidException.#ctor(System.String)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.Exceptions.TokenNotYetValidException" />
+            </summary>
+            <param name="message">The error message</param>
+        </member>
+        <member name="P:JWT.Exceptions.TokenNotYetValidException.PayloadData">
+            <summary>
+            The payload.
+            </summary>
+        </member>
+        <member name="P:JWT.Exceptions.TokenNotYetValidException.NotBefore">
+            <summary>
+            The not before DateTime of the token.
+            </summary>
+        </member>
         <member name="T:JWT.IBase64UrlEncoder">
             <summary>
             Represents a base64 encoder/decoder.
@@ -521,12 +856,12 @@
         </member>
         <member name="M:JWT.IBase64UrlEncoder.Encode(System.Byte[])">
             <summary>
-            Encodes the byte array to a Base64 string.
+            Encodes the byte array to a base64 string.
             </summary>
         </member>
         <member name="M:JWT.IBase64UrlEncoder.Decode(System.String)">
             <summary>
-            Decodes the Base64 string to a byte array.
+            Decodes the base64 string to a byte array.
             </summary>
         </member>
         <member name="T:JWT.IDateTimeProvider">
@@ -541,23 +876,37 @@
         </member>
         <member name="T:JWT.IJsonSerializer">
             <summary>
-            Provides JSON Serialize and Deserialize.  Allows custom serializers used.
+            Provides JSON Serialize and Deserialize. Allows custom serializers used.
             </summary>
         </member>
         <member name="M:JWT.IJsonSerializer.Serialize(System.Object)">
             <summary>
-            Serialize an object to JSON string
+            Serializes an object to a JSON string.
             </summary>
-            <param name="obj">object</param>
+            <param name="obj">The object to serialize.</param>
             <returns>JSON string</returns>
         </member>
-        <member name="M:JWT.IJsonSerializer.Deserialize``1(System.String)">
+        <member name="M:JWT.IJsonSerializer.Deserialize(System.Type,System.String)">
             <summary>
-            Deserialize a JSON string to typed object.
+            Deserializes a JSON string to an object of specified type.
             </summary>
-            <typeparam name="T">type of object</typeparam>
+            <param name="type">The type of the object to deserialize to.</param>
+            <param name="json">The JSON string deserialize.</param>
+            <returns>Strongly-typed object.</returns>
+        </member>
+        <member name="T:JWT.JsonSerializerExtensions">
+             <summary>
+             Extension methods for <seealso cref="T:JWT.IJsonSerializer" />
+            </summary>
+        </member>
+        <member name="M:JWT.JsonSerializerExtensions.Deserialize``1(JWT.IJsonSerializer,System.String)">
+            <summary>
+            Deserializes a JSON string to an object of specified type.
+            </summary>
+            <typeparam name="T">The type of the object to deserialize to.</typeparam>
+            <param name="jsonSerializer">The JSON serializer instance.</param>
             <param name="json">JSON string</param>
-            <returns>Strongly-typed object</returns>
+            <returns>Strongly-typed object.</returns>
         </member>
         <member name="T:JWT.IJwtDecoder">
             <summary>
@@ -601,29 +950,29 @@
             <param name="verify">Whether to verify the signature (default is true)</param>
             <returns>A string containing the JSON payload</returns>
         </member>
-        <member name="M:JWT.IJwtDecoder.DecodeToObject``1(JWT.JwtParts)">
+        <member name="M:JWT.IJwtDecoder.DecodeToObject(System.Type,JWT.JwtParts)">
             <summary>
             Given a JWT, decodes it and return the payload as an object.
             </summary>
-            <typeparam name="T">The type to return</typeparam>
+            <param name="type">The type to deserialize to.</param>
             <param name="jwt">The JWT</param>
             <returns>An object representing the payload</returns>
         </member>
-        <member name="M:JWT.IJwtDecoder.DecodeToObject``1(JWT.JwtParts,System.Byte[],System.Boolean)">
+        <member name="M:JWT.IJwtDecoder.DecodeToObject(System.Type,JWT.JwtParts,System.Byte[],System.Boolean)">
             <summary>
             Given a JWT, decodes it and return the payload as an object.
             </summary>
-            <typeparam name="T">The type to return</typeparam>
+            <param name="type">The type to deserialize to.</param>
             <param name="jwt">The JWT</param>
             <param name="key">The key that was used to sign the JWT</param>
             <param name="verify">Whether to verify the signature (default is true)</param>
             <returns>An object representing the payload</returns>
         </member>
-        <member name="M:JWT.IJwtDecoder.DecodeToObject``1(JWT.JwtParts,System.Byte[][],System.Boolean)">
+        <member name="M:JWT.IJwtDecoder.DecodeToObject(System.Type,JWT.JwtParts,System.Byte[][],System.Boolean)">
             <summary>
             Given a JWT, decodes it and return the payload as an object.
             </summary>
-            <typeparam name="T">The type to return</typeparam>
+            <param name="type">The type to deserialize to.</param>
             <param name="jwt">The JWT</param>
             <param name="keys">The keys which one of them was used to sign the JWT</param>
             <param name="verify">Whether to verify the signature (default is true)</param>
@@ -703,21 +1052,32 @@
             <exception cref="T:System.ArgumentException" />
             <exception cref="T:System.ArgumentOutOfRangeException" />
         </member>
-        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject``1(JWT.IJwtDecoder,System.String)">
-            <summary>
-            Given a JWT, decodes it and return the payload as an object.
-            </summary>
-            <typeparam name="T">The type to return</typeparam>
-            <param name="decoder">The decoder instance</param>
-            <param name="token">The JWT</param>
-            <returns>An object representing the payload</returns>
-        </member>
         <member name="M:JWT.JwtDecoderExtensions.DecodeToObject(JWT.IJwtDecoder,System.String)">
             <summary>
             Given a JWT, decodes it and return the payload as a dictionary.
             </summary>
             <param name="decoder">The decoder instance</param>
             <param name="token">The JWT</param>
+            <returns>An object representing the payload</returns>
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject(JWT.IJwtDecoder,System.String,System.String,System.Boolean)">
+            <summary>
+            Given a JWT, decodes it and return the payload as a dictionary.
+            </summary>
+            <param name="decoder">The decoder instance</param>
+            <param name="token">The JWT</param>
+            <param name="key">The key that was used to sign the JWT</param>
+            <param name="verify">Whether to verify the signature (default is true)</param>
+            <returns>An object representing the payload</returns>
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject(JWT.IJwtDecoder,System.String,System.String[],System.Boolean)">
+            <summary>
+            Given a JWT, decodes it and return the payload as a dictionary.
+            </summary>
+            <param name="decoder">The decoder instance</param>
+            <param name="token">The JWT</param>
+            <param name="keys">The keys provided which one of them was used to sign the JWT</param>
+            <param name="verify">Whether to verify the signature (default is true)</param>
             <returns>An object representing the payload</returns>
         </member>
         <member name="M:JWT.JwtDecoderExtensions.DecodeToObject(JWT.IJwtDecoder,System.String,System.Byte[],System.Boolean)">
@@ -745,6 +1105,100 @@
             <exception cref="T:System.ArgumentException" />
             <exception cref="T:System.ArgumentOutOfRangeException" />
             <exception cref="T:JWT.Exceptions.InvalidTokenPartsException" />
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject(JWT.IJwtDecoder,System.Type,System.String,System.Byte[],System.Boolean)">
+            <summary>
+            Given a JWT, decodes it and return the payload as a dictionary.
+            </summary>
+            <param name="decoder">The decoder instance</param>
+            <param name="type">The type to deserialize to.</param>
+            <param name="token">The JWT</param>
+            <param name="key">The key that was used to sign the JWT</param>
+            <param name="verify">Whether to verify the signature (default is true)</param>
+            <returns>An object representing the payload</returns>
+            <exception cref = "T:System.ArgumentException" />
+            <exception cref="T:System.ArgumentOutOfRangeException" />
+            <exception cref="T:JWT.Exceptions.InvalidTokenPartsException" />
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject(JWT.IJwtDecoder,System.Type,System.String,System.Byte[][],System.Boolean)">
+            <summary>
+            Given a JWT, decodes it and return the payload as a dictionary.
+            </summary>
+            <param name="decoder">The decoder instance</param>
+            <param name="type">The type to deserialize to.</param>
+            <param name="token">The JWT</param>
+            <param name="keys">The keys that were used to sign the JWT</param>
+            <param name="verify">Whether to verify the signature (default is true)</param>
+            <returns>A string containing the JSON payload</returns>
+            <exception cref="T:System.ArgumentException" />
+            <exception cref="T:System.ArgumentOutOfRangeException" />
+            <exception cref="T:JWT.Exceptions.InvalidTokenPartsException" />
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject(JWT.IJwtDecoder,System.Type,System.String,System.String,System.Boolean)">
+            <summary>
+            Given a JWT, decodes it and return the payload as an dictionary.
+            </summary>
+            <param name="decoder">The decoder instance</param>
+            <param name="type">The type to deserialize to.</param>
+            <param name="token">The JWT</param>
+            <param name="key">The key that was used to sign the JWT</param>
+            <param name="verify">Whether to verify the signature (default is true)</param>
+            <returns>An object representing the payload</returns>
+            <exception cref="T:System.ArgumentException" />
+            <exception cref="T:System.ArgumentOutOfRangeException" />
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject(JWT.IJwtDecoder,System.Type,System.String,System.String[],System.Boolean)">
+            <summary>
+            Given a JWT, decodes it and return the payload as an dictionary.
+            </summary>
+            <param name="decoder">The decoder instance</param>
+            <param name="type">The type to deserialize to.</param>
+            <param name="token">The JWT</param>
+            <param name="keys">The key which one of them was used to sign the JWT</param>
+            <param name="verify">Whether to verify the signature (default is true)</param>
+            <returns>An object representing the payload</returns>
+            <exception cref="T:System.ArgumentException" />
+            <exception cref="T:System.ArgumentOutOfRangeException" />
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject``1(JWT.IJwtDecoder,JWT.JwtParts)">
+            <summary>
+            Given a JWT, decodes it and return the payload as an object.
+            </summary>
+            <typeparam name="T">The type to deserialize to.</typeparam>
+            <param name="decoder">The decoder instance</param>
+            <param name="jwt">The JWT</param>
+            <returns>An object representing the payload</returns>
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject``1(JWT.IJwtDecoder,JWT.JwtParts,System.Byte[],System.Boolean)">
+            <summary>
+            Given a JWT, decodes it and return the payload as an object.
+            </summary>
+            <typeparam name="T">The type to deserialize to.</typeparam>
+            <param name="decoder">The decoder instance</param>
+            <param name="jwt">The JWT</param>
+            <param name="key">The key that was used to sign the JWT</param>
+            <param name="verify">Whether to verify the signature (default is true)</param>
+            <returns>An object representing the payload</returns>
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject``1(JWT.IJwtDecoder,JWT.JwtParts,System.Byte[][],System.Boolean)">
+            <summary>
+            Given a JWT, decodes it and return the payload as an object.
+            </summary>
+            <typeparam name="T">The type to deserialize to.</typeparam>
+            <param name="decoder">The decoder instance</param>
+            <param name="jwt">The JWT</param>
+            <param name="keys">The keys which one of them was used to sign the JWT</param>
+            <param name="verify">Whether to verify the signature (default is true)</param>
+            <returns>An object representing the payload</returns>
+        </member>
+        <member name="M:JWT.JwtDecoderExtensions.DecodeToObject``1(JWT.IJwtDecoder,System.String)">
+            <summary>
+            Given a JWT, decodes it and return the payload as an object.
+            </summary>
+            <typeparam name="T">The type to return</typeparam>
+            <param name="decoder">The decoder instance</param>
+            <param name="token">The JWT</param>
+            <returns>An object representing the payload</returns>
         </member>
         <member name="M:JWT.JwtDecoderExtensions.DecodeToObject``1(JWT.IJwtDecoder,System.String,System.String,System.Boolean)">
             <summary>
@@ -898,7 +1352,7 @@
         </member>
         <member name="T:JWT.JwtBase64UrlEncoder">
             <summary>
-            Base64 encoding/decoding implementation according to the JWT spec
+            base64 encoding/decoding implementation according to the JWT spec
             </summary>
         </member>
         <member name="M:JWT.JwtBase64UrlEncoder.Encode(System.Byte[])">
@@ -923,28 +1377,28 @@
             <remarks>
             This overload supplies no <see cref="T:JWT.IJwtValidator" /> and no <see cref="T:JWT.Algorithms.IAlgorithmFactory" /> so the resulting decoder cannot be used for signature validation.
             </remarks>
-            <param name="jsonSerializer">The Json Serializer</param>
-            <param name="urlEncoder">The Base64 URL Encoder</param>
+            <param name="jsonSerializer">The JSON serializer</param>
+            <param name="urlEncoder">The base64 URL encoder</param>
             <exception cref="T:System.ArgumentNullException" />
         </member>
         <member name="M:JWT.JwtDecoder.#ctor(JWT.IJsonSerializer,JWT.IJwtValidator,JWT.IBase64UrlEncoder,JWT.Algorithms.IAlgorithmFactory)">
             <summary>
             Creates an instance of <see cref="T:JWT.JwtDecoder" />
             </summary>
-            <param name="jsonSerializer">The Json Serializer</param>
-            <param name="jwtValidator">The Jwt validator</param>
-            <param name="urlEncoder">The Base64 URL Encoder</param>
-            <param name="algFactory">The Algorithm Factory</param>
+            <param name="jsonSerializer">The JSON serializer</param>
+            <param name="jwtValidator">The JWT validator</param>
+            <param name="urlEncoder">The base64 URL encoder</param>
+            <param name="algFactory">The JWT algorithm Factory</param>
             <exception cref="T:System.ArgumentNullException" />
         </member>
         <member name="M:JWT.JwtDecoder.#ctor(JWT.IJsonSerializer,JWT.IJwtValidator,JWT.IBase64UrlEncoder,JWT.Algorithms.IJwtAlgorithm)">
             <summary>
             Creates an instance of <see cref="T:JWT.JwtDecoder" />
             </summary>
-            <param name="jsonSerializer">The Json Serializer</param>
-            <param name="jwtValidator">The Jwt validator</param>
-            <param name="urlEncoder">The Base64 URL Encoder</param>
-            <param name="algorithm">The Algorithm</param>
+            <param name="jsonSerializer">The JSON serializer</param>
+            <param name="jwtValidator">The JWT validator</param>
+            <param name="urlEncoder">The base64 URL encoder</param>
+            <param name="algorithm">The JWT algorithm</param>
             <exception cref="T:System.ArgumentNullException" />
         </member>
         <member name="M:JWT.JwtDecoder.DecodeHeader(System.String)">
@@ -982,14 +1436,14 @@
             <exception cref="T:JWT.Exceptions.SignatureVerificationException" />
             <exception cref="T:JWT.Exceptions.TokenExpiredException" />
         </member>
-        <member name="M:JWT.JwtDecoder.DecodeToObject``1(JWT.JwtParts)">
+        <member name="M:JWT.JwtDecoder.DecodeToObject(System.Type,JWT.JwtParts)">
             <inheritdoc />
             <exception cref="T:System.ArgumentException" />
             <exception cref="T:System.ArgumentNullException" />
             <exception cref="T:System.ArgumentOutOfRangeException" />
             <exception cref="T:System.FormatException" />
         </member>
-        <member name="M:JWT.JwtDecoder.DecodeToObject``1(JWT.JwtParts,System.Byte[],System.Boolean)">
+        <member name="M:JWT.JwtDecoder.DecodeToObject(System.Type,JWT.JwtParts,System.Byte[],System.Boolean)">
             <inheritdoc />
             <exception cref="T:System.ArgumentException" />
             <exception cref="T:System.ArgumentNullException" />
@@ -998,7 +1452,7 @@
             <exception cref="T:JWT.Exceptions.SignatureVerificationException" />
             <exception cref="T:JWT.Exceptions.TokenExpiredException" />
         </member>
-        <member name="M:JWT.JwtDecoder.DecodeToObject``1(JWT.JwtParts,System.Byte[][],System.Boolean)">
+        <member name="M:JWT.JwtDecoder.DecodeToObject(System.Type,JWT.JwtParts,System.Byte[][],System.Boolean)">
             <inheritdoc />
             <exception cref="T:System.ArgumentException" />
             <exception cref="T:System.ArgumentNullException" />
@@ -1064,13 +1518,21 @@
             Encodes Jwt.
             </summary>
         </member>
+        <member name="M:JWT.JwtEncoder.#ctor(JWT.Algorithms.IAlgorithmFactory,JWT.IJsonSerializer,JWT.IBase64UrlEncoder)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.JwtEncoder" />
+            </summary>
+            <param name="algFactory">The JWT algorithm factory</param>
+            <param name="jsonSerializer">The JSON serializer</param>
+            <param name="urlEncoder">The base64 URL encoder</param>
+        </member>
         <member name="M:JWT.JwtEncoder.#ctor(JWT.Algorithms.IJwtAlgorithm,JWT.IJsonSerializer,JWT.IBase64UrlEncoder)">
             <summary>
             Creates an instance of <see cref="T:JWT.JwtEncoder" />
             </summary>
-            <param name="jsonSerializer">The Json Serializer</param>
-            <param name="algorithm">The Jwt Algorithm</param>
-            <param name="urlEncoder">The Base64 URL Encoder</param>
+            <param name="algorithm">The JWT algorithm</param>
+            <param name="jsonSerializer">The JSON serializer</param>
+            <param name="urlEncoder">The base64 URL encoder</param>
         </member>
         <member name="M:JWT.JwtEncoder.Encode(System.Collections.Generic.IDictionary{System.String,System.Object},System.Object,System.Byte[])">
             <inheritdoc />
@@ -1131,8 +1593,25 @@
             <summary>
             Creates an instance of <see cref="T:JWT.JwtValidator" />
             </summary>
-            <param name="jsonSerializer">The Json Serializer</param>
-            <param name="dateTimeProvider">The DateTime Provider</param>
+            <param name="jsonSerializer">The JSON serializer</param>
+            <param name="dateTimeProvider">The DateTime provider</param>
+        </member>
+        <member name="M:JWT.JwtValidator.#ctor(JWT.IJsonSerializer,JWT.IDateTimeProvider,JWT.ValidationParameters)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.JwtValidator" /> with time margin
+            </summary>
+            <param name="jsonSerializer">The JSON serializer</param>
+            <param name="dateTimeProvider">The DateTime provider</param>
+            <param name="valParams">Validation parameters that are passed on to <see cref="T:JWT.JwtValidator"/></param>
+        </member>
+        <member name="M:JWT.JwtValidator.#ctor(JWT.IJsonSerializer,JWT.IDateTimeProvider,JWT.ValidationParameters,JWT.IBase64UrlEncoder)">
+            <summary>
+            Creates an instance of <see cref="T:JWT.JwtValidator" /> with time margin
+            </summary>
+            <param name="jsonSerializer">The JSON serializer</param>
+            <param name="dateTimeProvider">The DateTime provider</param>
+            <param name="valParams">Validation parameters that are passed on to <see cref="T:JWT.JwtValidator"/></param>
+            <param name="urlEncoder">The base64 URL Encoder</param>
         </member>
         <member name="M:JWT.JwtValidator.Validate(System.String,System.String,System.String[])">
             <inheritdoc />
@@ -1163,7 +1642,7 @@
             <summary>
             Verifies the 'exp' claim.
             </summary>
-            <remarks>See https://tools.ietf.org/html/rfc7515#section-4.1.4</remarks>
+            <remarks>See https://tools.ietf.org/html/rfc7519#section-4.1.4</remarks>
             <exception cref="T:JWT.Exceptions.SignatureVerificationException" />
             <exception cref="T:JWT.Exceptions.TokenExpiredException" />
         </member>
@@ -1171,7 +1650,7 @@
             <summary>
             Verifies the 'nbf' claim.
             </summary>
-            <remarks>See https://tools.ietf.org/html/rfc7515#section-4.1.5</remarks>
+            <remarks>See https://tools.ietf.org/html/rfc7519#section-4.1.5</remarks>
             <exception cref="T:JWT.Exceptions.SignatureVerificationException" />
         </member>
         <member name="T:JWT.Serializers.JsonNetSerializer">
@@ -1184,18 +1663,23 @@
             Creates a new instance of <see cref="T:JWT.Serializers.JsonNetSerializer" />
             </summary>
             <remarks>Uses <see cref="M:Newtonsoft.Json.JsonSerializer.CreateDefault" /> as internal serializer</remarks>
+            <exception cref="T:System.ArgumentNullException" />
         </member>
         <member name="M:JWT.Serializers.JsonNetSerializer.#ctor(Newtonsoft.Json.JsonSerializer)">
             <summary>
             Creates a new instance of <see cref="T:JWT.Serializers.JsonNetSerializer" />
             </summary>
             <param name="serializer">Internal <see cref="T:Newtonsoft.Json.JsonSerializer" /> to use for serialization</param>
+            <exception cref="T:System.ArgumentNullException" />
         </member>
         <member name="M:JWT.Serializers.JsonNetSerializer.Serialize(System.Object)">
             <inheritdoc />
+            <exception cref="T:System.ArgumentNullException" />
         </member>
-        <member name="M:JWT.Serializers.JsonNetSerializer.Deserialize``1(System.String)">
+        <member name="M:JWT.Serializers.JsonNetSerializer.Deserialize(System.Type,System.String)">
             <inheritdoc />
+            <exception cref="T:System.ArgumentNullException" />
+            <exception cref="T:System.ArgumentException" />
         </member>
         <member name="P:JWT.UnixEpoch.Value">
             <summary>
@@ -1213,6 +1697,47 @@
             Retuns the current time (UTC).
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:JWT.ValidationParameters">
+            <summary>
+            Contains a set of parameters that are used by a <see cref="T:JWT.JwtValidator" /> when validating a token.
+            </summary>
+        </member>
+        <member name="M:JWT.ValidationParameters.#ctor">
+            <remarks>
+            Use <see cref="P:JWT.ValidationParameters.Default"/> if you'd like to set all properties set to <see langword="true" />
+            or use <see cref="P:JWT.ValidationParameters.None"/> if you'd like to set all properties set to <see langword="false" />.
+            </remarks>>
+        </member>
+        <member name="P:JWT.ValidationParameters.ValidateSignature">
+            <summary>
+            Gets or sets whether to validate the validity of the token's signature.
+            </summary>
+        </member>
+        <member name="P:JWT.ValidationParameters.ValidateExpirationTime">
+            <summary>
+            Gets or sets whether to validate the validity of the token's expiration time.
+            </summary>
+        </member>
+        <member name="P:JWT.ValidationParameters.ValidateIssuedTime">
+            <summary>
+            Gets or sets whether to validate the validity of the token's issued time.
+            </summary>
+        </member>
+        <member name="P:JWT.ValidationParameters.TimeMargin">
+            <summary>
+            Gets or sets the time margin in seconds for exp and nbf during token validation.
+            </summary>
+        </member>
+        <member name="P:JWT.ValidationParameters.Default">
+            <summary>
+            Returns a <see cref="T:JWT.ValidationParameters" /> with all properties set to <see langword="true" />.
+            </summary>
+        </member>
+        <member name="P:JWT.ValidationParameters.None">
+            <summary>
+            Returns a <see cref="T:JWT.ValidationParameters" /> with all properties set to <see langword="false" />.
+            </summary>
         </member>
     </members>
 </doc>
