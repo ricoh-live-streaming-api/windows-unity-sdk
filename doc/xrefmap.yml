@@ -208,6 +208,19 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.Client.SetEventListener
   nameWithType: Client.SetEventListener
+- uid: com.ricoh.livestreaming.Client.SetLibWebrtcLogOption(com.ricoh.livestreaming.LibWebrtcLogOption)
+  name: SetLibWebrtcLogOption(LibWebrtcLogOption)
+  href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_SetLibWebrtcLogOption_com_ricoh_livestreaming_LibWebrtcLogOption_
+  commentId: M:com.ricoh.livestreaming.Client.SetLibWebrtcLogOption(com.ricoh.livestreaming.LibWebrtcLogOption)
+  fullName: com.ricoh.livestreaming.Client.SetLibWebrtcLogOption(com.ricoh.livestreaming.LibWebrtcLogOption)
+  nameWithType: Client.SetLibWebrtcLogOption(LibWebrtcLogOption)
+- uid: com.ricoh.livestreaming.Client.SetLibWebrtcLogOption*
+  name: SetLibWebrtcLogOption
+  href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_SetLibWebrtcLogOption_
+  commentId: Overload:com.ricoh.livestreaming.Client.SetLibWebrtcLogOption
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.Client.SetLibWebrtcLogOption
+  nameWithType: Client.SetLibWebrtcLogOption
 - uid: com.ricoh.livestreaming.Client.UpdateMeta(System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Object})
   name: UpdateMeta(ReadOnlyDictionary<String, Object>)
   href: api/com.ricoh.livestreaming.Client.html#com_ricoh_livestreaming_Client_UpdateMeta_System_Collections_ObjectModel_ReadOnlyDictionary_System_String_System_Object__
@@ -568,6 +581,82 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.IClientListener.OnUpdateRemoteTrack
   nameWithType: IClientListener.OnUpdateRemoteTrack
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption
+  name: LibWebrtcLogOption
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html
+  commentId: T:com.ricoh.livestreaming.LibWebrtcLogOption
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption
+  nameWithType: LibWebrtcLogOption
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.#ctor(System.String,System.UInt32,com.ricoh.livestreaming.LibWebrtcLogOption.Level)
+  name: LibWebrtcLogOption(String, UInt32, LibWebrtcLogOption.Level)
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html#com_ricoh_livestreaming_LibWebrtcLogOption__ctor_System_String_System_UInt32_com_ricoh_livestreaming_LibWebrtcLogOption_Level_
+  commentId: M:com.ricoh.livestreaming.LibWebrtcLogOption.#ctor(System.String,System.UInt32,com.ricoh.livestreaming.LibWebrtcLogOption.Level)
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.LibWebrtcLogOption(System.String, System.UInt32, com.ricoh.livestreaming.LibWebrtcLogOption.Level)
+  nameWithType: LibWebrtcLogOption.LibWebrtcLogOption(String, UInt32, LibWebrtcLogOption.Level)
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.#ctor*
+  name: LibWebrtcLogOption
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html#com_ricoh_livestreaming_LibWebrtcLogOption__ctor_
+  commentId: Overload:com.ricoh.livestreaming.LibWebrtcLogOption.#ctor
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.LibWebrtcLogOption
+  nameWithType: LibWebrtcLogOption.LibWebrtcLogOption
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.Level
+  name: LibWebrtcLogOption.Level
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.Level.html
+  commentId: T:com.ricoh.livestreaming.LibWebrtcLogOption.Level
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.Level
+  nameWithType: LibWebrtcLogOption.Level
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.Level.Info
+  name: Info
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.Level.html#com_ricoh_livestreaming_LibWebrtcLogOption_Level_Info
+  commentId: F:com.ricoh.livestreaming.LibWebrtcLogOption.Level.Info
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.Level.Info
+  nameWithType: LibWebrtcLogOption.Level.Info
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.Level.Verbose
+  name: Verbose
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.Level.html#com_ricoh_livestreaming_LibWebrtcLogOption_Level_Verbose
+  commentId: F:com.ricoh.livestreaming.LibWebrtcLogOption.Level.Verbose
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.Level.Verbose
+  nameWithType: LibWebrtcLogOption.Level.Verbose
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.LogLevel
+  name: LogLevel
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html#com_ricoh_livestreaming_LibWebrtcLogOption_LogLevel
+  commentId: P:com.ricoh.livestreaming.LibWebrtcLogOption.LogLevel
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.LogLevel
+  nameWithType: LibWebrtcLogOption.LogLevel
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.LogLevel*
+  name: LogLevel
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html#com_ricoh_livestreaming_LibWebrtcLogOption_LogLevel_
+  commentId: Overload:com.ricoh.livestreaming.LibWebrtcLogOption.LogLevel
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.LogLevel
+  nameWithType: LibWebrtcLogOption.LogLevel
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.MaxTotalFileSize
+  name: MaxTotalFileSize
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html#com_ricoh_livestreaming_LibWebrtcLogOption_MaxTotalFileSize
+  commentId: P:com.ricoh.livestreaming.LibWebrtcLogOption.MaxTotalFileSize
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.MaxTotalFileSize
+  nameWithType: LibWebrtcLogOption.MaxTotalFileSize
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.MaxTotalFileSize*
+  name: MaxTotalFileSize
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html#com_ricoh_livestreaming_LibWebrtcLogOption_MaxTotalFileSize_
+  commentId: Overload:com.ricoh.livestreaming.LibWebrtcLogOption.MaxTotalFileSize
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.MaxTotalFileSize
+  nameWithType: LibWebrtcLogOption.MaxTotalFileSize
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.Path
+  name: Path
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html#com_ricoh_livestreaming_LibWebrtcLogOption_Path
+  commentId: P:com.ricoh.livestreaming.LibWebrtcLogOption.Path
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.Path
+  nameWithType: LibWebrtcLogOption.Path
+- uid: com.ricoh.livestreaming.LibWebrtcLogOption.Path*
+  name: Path
+  href: api/com.ricoh.livestreaming.LibWebrtcLogOption.html#com_ricoh_livestreaming_LibWebrtcLogOption_Path_
+  commentId: Overload:com.ricoh.livestreaming.LibWebrtcLogOption.Path
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.LibWebrtcLogOption.Path
+  nameWithType: LibWebrtcLogOption.Path
 - uid: com.ricoh.livestreaming.LSAddLocalTrackEvent
   name: LSAddLocalTrackEvent
   href: api/com.ricoh.livestreaming.LSAddLocalTrackEvent.html
@@ -1821,6 +1910,57 @@ references:
   commentId: N:com.ricoh.livestreaming.webrtc
   fullName: com.ricoh.livestreaming.webrtc
   nameWithType: com.ricoh.livestreaming.webrtc
+- uid: com.ricoh.livestreaming.webrtc.AudioCapturer
+  name: AudioCapturer
+  href: api/com.ricoh.livestreaming.webrtc.AudioCapturer.html
+  commentId: T:com.ricoh.livestreaming.webrtc.AudioCapturer
+  fullName: com.ricoh.livestreaming.webrtc.AudioCapturer
+  nameWithType: AudioCapturer
+- uid: com.ricoh.livestreaming.webrtc.AudioCapturer.#ctor
+  name: AudioCapturer()
+  href: api/com.ricoh.livestreaming.webrtc.AudioCapturer.html#com_ricoh_livestreaming_webrtc_AudioCapturer__ctor
+  commentId: M:com.ricoh.livestreaming.webrtc.AudioCapturer.#ctor
+  fullName: com.ricoh.livestreaming.webrtc.AudioCapturer.AudioCapturer()
+  nameWithType: AudioCapturer.AudioCapturer()
+- uid: com.ricoh.livestreaming.webrtc.AudioCapturer.#ctor*
+  name: AudioCapturer
+  href: api/com.ricoh.livestreaming.webrtc.AudioCapturer.html#com_ricoh_livestreaming_webrtc_AudioCapturer__ctor_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.AudioCapturer.#ctor
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.AudioCapturer.AudioCapturer
+  nameWithType: AudioCapturer.AudioCapturer
+- uid: com.ricoh.livestreaming.webrtc.AudioDataCapturer
+  name: AudioDataCapturer
+  href: api/com.ricoh.livestreaming.webrtc.AudioDataCapturer.html
+  commentId: T:com.ricoh.livestreaming.webrtc.AudioDataCapturer
+  fullName: com.ricoh.livestreaming.webrtc.AudioDataCapturer
+  nameWithType: AudioDataCapturer
+- uid: com.ricoh.livestreaming.webrtc.AudioDataCapturer.#ctor
+  name: AudioDataCapturer()
+  href: api/com.ricoh.livestreaming.webrtc.AudioDataCapturer.html#com_ricoh_livestreaming_webrtc_AudioDataCapturer__ctor
+  commentId: M:com.ricoh.livestreaming.webrtc.AudioDataCapturer.#ctor
+  fullName: com.ricoh.livestreaming.webrtc.AudioDataCapturer.AudioDataCapturer()
+  nameWithType: AudioDataCapturer.AudioDataCapturer()
+- uid: com.ricoh.livestreaming.webrtc.AudioDataCapturer.#ctor*
+  name: AudioDataCapturer
+  href: api/com.ricoh.livestreaming.webrtc.AudioDataCapturer.html#com_ricoh_livestreaming_webrtc_AudioDataCapturer__ctor_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.AudioDataCapturer.#ctor
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.AudioDataCapturer.AudioDataCapturer
+  nameWithType: AudioDataCapturer.AudioDataCapturer
+- uid: com.ricoh.livestreaming.webrtc.AudioDataCapturer.NativeWebrtcWrapperPtr
+  name: NativeWebrtcWrapperPtr
+  href: api/com.ricoh.livestreaming.webrtc.AudioDataCapturer.html#com_ricoh_livestreaming_webrtc_AudioDataCapturer_NativeWebrtcWrapperPtr
+  commentId: P:com.ricoh.livestreaming.webrtc.AudioDataCapturer.NativeWebrtcWrapperPtr
+  fullName: com.ricoh.livestreaming.webrtc.AudioDataCapturer.NativeWebrtcWrapperPtr
+  nameWithType: AudioDataCapturer.NativeWebrtcWrapperPtr
+- uid: com.ricoh.livestreaming.webrtc.AudioDataCapturer.NativeWebrtcWrapperPtr*
+  name: NativeWebrtcWrapperPtr
+  href: api/com.ricoh.livestreaming.webrtc.AudioDataCapturer.html#com_ricoh_livestreaming_webrtc_AudioDataCapturer_NativeWebrtcWrapperPtr_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.AudioDataCapturer.NativeWebrtcWrapperPtr
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.AudioDataCapturer.NativeWebrtcWrapperPtr
+  nameWithType: AudioDataCapturer.NativeWebrtcWrapperPtr
 - uid: com.ricoh.livestreaming.webrtc.AudioTrack
   name: AudioTrack
   href: api/com.ricoh.livestreaming.webrtc.AudioTrack.html
@@ -2243,6 +2383,102 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.webrtc.MediaStreamTrack.Type
   nameWithType: MediaStreamTrack.Type
+- uid: com.ricoh.livestreaming.webrtc.PixelImageCapturer
+  name: PixelImageCapturer
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.html
+  commentId: T:com.ricoh.livestreaming.webrtc.PixelImageCapturer
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageCapturer
+  nameWithType: PixelImageCapturer
+- uid: com.ricoh.livestreaming.webrtc.PixelImageCapturer.#ctor(System.Int32,System.Int32)
+  name: PixelImageCapturer(Int32, Int32)
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.html#com_ricoh_livestreaming_webrtc_PixelImageCapturer__ctor_System_Int32_System_Int32_
+  commentId: M:com.ricoh.livestreaming.webrtc.PixelImageCapturer.#ctor(System.Int32,System.Int32)
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageCapturer.PixelImageCapturer(System.Int32, System.Int32)
+  nameWithType: PixelImageCapturer.PixelImageCapturer(Int32, Int32)
+- uid: com.ricoh.livestreaming.webrtc.PixelImageCapturer.#ctor*
+  name: PixelImageCapturer
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.html#com_ricoh_livestreaming_webrtc_PixelImageCapturer__ctor_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.PixelImageCapturer.#ctor
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageCapturer.PixelImageCapturer
+  nameWithType: PixelImageCapturer.PixelImageCapturer
+- uid: com.ricoh.livestreaming.webrtc.PixelImageCapturer.NativeWebrtcWrapperPtr
+  name: NativeWebrtcWrapperPtr
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.html#com_ricoh_livestreaming_webrtc_PixelImageCapturer_NativeWebrtcWrapperPtr
+  commentId: P:com.ricoh.livestreaming.webrtc.PixelImageCapturer.NativeWebrtcWrapperPtr
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageCapturer.NativeWebrtcWrapperPtr
+  nameWithType: PixelImageCapturer.NativeWebrtcWrapperPtr
+- uid: com.ricoh.livestreaming.webrtc.PixelImageCapturer.NativeWebrtcWrapperPtr*
+  name: NativeWebrtcWrapperPtr
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.html#com_ricoh_livestreaming_webrtc_PixelImageCapturer_NativeWebrtcWrapperPtr_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.PixelImageCapturer.NativeWebrtcWrapperPtr
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageCapturer.NativeWebrtcWrapperPtr
+  nameWithType: PixelImageCapturer.NativeWebrtcWrapperPtr
+- uid: com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage(System.Byte[])
+  name: RenderPixelImage(Byte[])
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.html#com_ricoh_livestreaming_webrtc_PixelImageCapturer_RenderPixelImage_System_Byte___
+  commentId: M:com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage(System.Byte[])
+  name.vb: RenderPixelImage(Byte())
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage(System.Byte[])
+  fullName.vb: com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage(System.Byte())
+  nameWithType: PixelImageCapturer.RenderPixelImage(Byte[])
+  nameWithType.vb: PixelImageCapturer.RenderPixelImage(Byte())
+- uid: com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage*
+  name: RenderPixelImage
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.html#com_ricoh_livestreaming_webrtc_PixelImageCapturer_RenderPixelImage_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage
+  nameWithType: PixelImageCapturer.RenderPixelImage
+- uid: com.ricoh.livestreaming.webrtc.PixelImageRenerer
+  name: PixelImageRenerer
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.html
+  commentId: T:com.ricoh.livestreaming.webrtc.PixelImageRenerer
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageRenerer
+  nameWithType: PixelImageRenerer
+- uid: com.ricoh.livestreaming.webrtc.PixelImageRenerer.#ctor
+  name: PixelImageRenerer()
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.html#com_ricoh_livestreaming_webrtc_PixelImageRenerer__ctor
+  commentId: M:com.ricoh.livestreaming.webrtc.PixelImageRenerer.#ctor
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageRenerer.PixelImageRenerer()
+  nameWithType: PixelImageRenerer.PixelImageRenerer()
+- uid: com.ricoh.livestreaming.webrtc.PixelImageRenerer.#ctor*
+  name: PixelImageRenerer
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.html#com_ricoh_livestreaming_webrtc_PixelImageRenerer__ctor_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.PixelImageRenerer.#ctor
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageRenerer.PixelImageRenerer
+  nameWithType: PixelImageRenerer.PixelImageRenerer
+- uid: com.ricoh.livestreaming.webrtc.PixelImageRenerer.GetTrackId(com.ricoh.livestreaming.webrtc.VideoTrack)
+  name: GetTrackId(VideoTrack)
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.html#com_ricoh_livestreaming_webrtc_PixelImageRenerer_GetTrackId_com_ricoh_livestreaming_webrtc_VideoTrack_
+  commentId: M:com.ricoh.livestreaming.webrtc.PixelImageRenerer.GetTrackId(com.ricoh.livestreaming.webrtc.VideoTrack)
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageRenerer.GetTrackId(com.ricoh.livestreaming.webrtc.VideoTrack)
+  nameWithType: PixelImageRenerer.GetTrackId(VideoTrack)
+- uid: com.ricoh.livestreaming.webrtc.PixelImageRenerer.GetTrackId*
+  name: GetTrackId
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.html#com_ricoh_livestreaming_webrtc_PixelImageRenerer_GetTrackId_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.PixelImageRenerer.GetTrackId
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageRenerer.GetTrackId
+  nameWithType: PixelImageRenerer.GetTrackId
+- uid: com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData(System.Byte[],System.Int32,System.Int32,com.ricoh.livestreaming.webrtc.VideoTrack)
+  name: WritePixelData(Byte[], Int32, Int32, VideoTrack)
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.html#com_ricoh_livestreaming_webrtc_PixelImageRenerer_WritePixelData_System_Byte___System_Int32_System_Int32_com_ricoh_livestreaming_webrtc_VideoTrack_
+  commentId: M:com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData(System.Byte[],System.Int32,System.Int32,com.ricoh.livestreaming.webrtc.VideoTrack)
+  name.vb: WritePixelData(Byte(), Int32, Int32, VideoTrack)
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData(System.Byte[], System.Int32, System.Int32, com.ricoh.livestreaming.webrtc.VideoTrack)
+  fullName.vb: com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData(System.Byte(), System.Int32, System.Int32, com.ricoh.livestreaming.webrtc.VideoTrack)
+  nameWithType: PixelImageRenerer.WritePixelData(Byte[], Int32, Int32, VideoTrack)
+  nameWithType.vb: PixelImageRenerer.WritePixelData(Byte(), Int32, Int32, VideoTrack)
+- uid: com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData*
+  name: WritePixelData
+  href: api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.html#com_ricoh_livestreaming_webrtc_PixelImageRenerer_WritePixelData_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData
+  nameWithType: PixelImageRenerer.WritePixelData
 - uid: com.ricoh.livestreaming.webrtc.RTCStats
   name: RTCStats
   href: api/com.ricoh.livestreaming.webrtc.RTCStats.html
@@ -2656,3 +2892,22 @@ references:
   isSpec: "True"
   fullName: com.ricoh.livestreaming.webrtc.WebrtcLog.Destroy
   nameWithType: WebrtcLog.Destroy
+- uid: com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister
+  name: WebrtcWrapperForPixelImageRegister
+  href: api/com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.html
+  commentId: T:com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister
+  fullName: com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister
+  nameWithType: WebrtcWrapperForPixelImageRegister
+- uid: com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.Apply
+  name: Apply()
+  href: api/com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.html#com_ricoh_livestreaming_webrtc_WebrtcWrapperForPixelImageRegister_Apply
+  commentId: M:com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.Apply
+  fullName: com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.Apply()
+  nameWithType: WebrtcWrapperForPixelImageRegister.Apply()
+- uid: com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.Apply*
+  name: Apply
+  href: api/com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.html#com_ricoh_livestreaming_webrtc_WebrtcWrapperForPixelImageRegister_Apply_
+  commentId: Overload:com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.Apply
+  isSpec: "True"
+  fullName: com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.Apply
+  nameWithType: WebrtcWrapperForPixelImageRegister.Apply

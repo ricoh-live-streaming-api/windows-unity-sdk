@@ -27,7 +27,6 @@ public class UnityCamera : BehaviorBase
     public DropdownAudioOutput audioOutputDropdown;
     public DropdownMuteType micMuteDropdown;
     public DropdownMuteType videoMuteDropdown;
-    public DropdownRoomType roomTypeDropdown;
     public Button deviceDropdownRefreshButton;
     public Button connectButton;
 
@@ -54,27 +53,6 @@ public class UnityCamera : BehaviorBase
     [DllImport("user32.dll")]
     public static extern IntPtr FindWindow(string lpszClass, string lpszTitle);
 
-
-    private void Awake()
-    {
-        userDataFilePath = Application.persistentDataPath + "/UserData.json";
-        userData = UserDataSerializer.Load(userDataFilePath);
-
-        // Read configuration.
-        try
-        {
-            Secrets.GetInstance();
-        }
-        catch (Exception ex)
-        {
-            Logger.Error("Failed to read configuration.", ex);
-            UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.Abort);
-        }
-
-        // Set RoomType dropdown.
-        roomTypeDropdown.Initialize();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -99,7 +77,6 @@ public class UnityCamera : BehaviorBase
         HasLocalVideoTrack = true;
         InitializeClient(new ClientListener(this));
         InitializeDevice();
-        SetConfigWebrtcLog();
 
         StartCoroutine(Render());
 
@@ -401,7 +378,6 @@ public class UnityCamera : BehaviorBase
                 var remoteView = unityCamera.remoteTracks[trackId];
                 if (remoteView.GetConnectionId() == connectionId)
                 {
-                    remoteView.GetVideoTrack().RemoveSink();
                     MonoBehaviour.Destroy(remoteView.GetTexture());
                     unityCamera.RemoveRemoteView(trackId);
                     break;

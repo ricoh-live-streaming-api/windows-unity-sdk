@@ -12,7 +12,7 @@
           "hash": "pq3KyDv/bzkDzVf43vx5cIe9l/7KEJUPkQtpSuC92uM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "VWjrclI2a+rxQKIB7sEqwmsjG5x8kG20aaTMV20N+jQ="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "J+boBoQks1sN3sFl6Se69onQb5dK8IoUacx/wB427Ck="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -63,7 +63,7 @@
           "hash": "V/5EaeNXLptIQ4gvdo4CW7fmEuJ3m9ZFKE+BmXNMgZ8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
       "output": {
         ".html": {
           "relative_path": "api/com.ricoh.livestreaming.Client.html",
-          "hash": "Fe2jh5Q5BO+91O4lmr1/901HzuLgu5m+kFyxj3Q3LGw="
+          "hash": "mR0wB9RXJrj3iDxza1AdnIQbeG/89WNt+yascDmt1XI="
         }
       },
       "is_incremental": false,
@@ -320,6 +320,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/com.ricoh.livestreaming.LibWebrtcLogOption.Level.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/com.ricoh.livestreaming.LibWebrtcLogOption.Level.html",
+          "hash": "cdkHgKTQcst9NUNfxFBd8cJVAcWaUq+jhOpfteK53GQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/com.ricoh.livestreaming.LibWebrtcLogOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/com.ricoh.livestreaming.LibWebrtcLogOption.html",
+          "hash": "qtzoDcTIyP2MvaQ96jTNu+5jkas8U4Z3hJ+vD7bfL5c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/com.ricoh.livestreaming.MuteType.yml",
       "output": {
         ".html": {
@@ -524,6 +548,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/com.ricoh.livestreaming.webrtc.AudioCapturer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/com.ricoh.livestreaming.webrtc.AudioCapturer.html",
+          "hash": "+Qy2LIhp2LAqeqf9q731kF8p3qm0jVrPy6uPP320LRg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/com.ricoh.livestreaming.webrtc.AudioDataCapturer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/com.ricoh.livestreaming.webrtc.AudioDataCapturer.html",
+          "hash": "OytjxT8dyZxo4vsgy4OQ2AyKsoG8lsjHezGGf8uXKMM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/com.ricoh.livestreaming.webrtc.AudioTrack.yml",
       "output": {
         ".html": {
@@ -540,7 +588,7 @@
       "output": {
         ".html": {
           "relative_path": "api/com.ricoh.livestreaming.webrtc.ByteArrayCapturer.html",
-          "hash": "VYmcc9ngWe7b98qy3n9BGIaoHBBqoANr1g3WpcXL/Rk="
+          "hash": "b/MN7ElAMM14WqletJFUwld7EwXphVtuzfPT+LZx7SU="
         }
       },
       "is_incremental": false,
@@ -625,6 +673,30 @@
         ".html": {
           "relative_path": "api/com.ricoh.livestreaming.webrtc.MediaStreamTrack.html",
           "hash": "rNRx/biOERiFdwSyUG41owVQlrFLbvcGSAoPPwhqhGE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/com.ricoh.livestreaming.webrtc.PixelImageCapturer.html",
+          "hash": "KBblBd7Gu/k8L+PUd6A9+LcQozF5VTo1+u4GGGVoqDk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/com.ricoh.livestreaming.webrtc.PixelImageRenerer.html",
+          "hash": "3gAWbnXK2j0YdimLiWIeGyWavo/hKDGh2LPsYbLLOv8="
         }
       },
       "is_incremental": false,
@@ -732,7 +804,19 @@
       "output": {
         ".html": {
           "relative_path": "api/com.ricoh.livestreaming.webrtc.WebrtcLog.html",
-          "hash": "QpXVCvCVXd6clW2QwSMu4TfB3p7GEBaStEysUEVDdAw="
+          "hash": "u39F8XL1vg6XosUPaU5b1potyCfCDnsBc00NKQYoUlE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.html",
+          "hash": "m9qlDDHe30YEMEyfj5Z3SjiZZfdlI0pW6hTB2k80tFk="
         }
       },
       "is_incremental": false,
@@ -744,7 +828,7 @@
       "output": {
         ".html": {
           "relative_path": "api/com.ricoh.livestreaming.webrtc.html",
-          "hash": "L7Z7b2M88ix0s8ao+qKZAbl1/CxKSXQPHjX52Ij9VzY="
+          "hash": "WaBtXWpDfRpybfmpcWNm18UzAb7fZPHeRgGHc9d7ets="
         }
       },
       "is_incremental": false,
@@ -756,7 +840,7 @@
       "output": {
         ".html": {
           "relative_path": "api/com.ricoh.livestreaming.html",
-          "hash": "EgRmhMfs1sTac3wDimsCHFqxBTDrw1GRxtbUDTWcfmo="
+          "hash": "RG2nQ5CrdvQaL/cuI/d3N4KDoeibS2Jr4euJF39J4B4="
         }
       },
       "is_incremental": false,
@@ -768,7 +852,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "yoMeXUgOS3wmLuxPmWZ4743gjoPx6KbyjeLM229pHpM="
+          "hash": "7PEMdmX6r/LRrYleKcO9CwLf8r1zqIZRDv1pJRRlfNI="
         }
       },
       "is_incremental": false,
@@ -790,23 +874,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 4
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 58,
-          "skipped_file_count": 3
+          "total_file_count": 65,
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -819,8 +905,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

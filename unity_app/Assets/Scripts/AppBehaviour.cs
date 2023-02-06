@@ -33,7 +33,6 @@ public class AppBehaviour : BehaviorBase
     public DropdownAudioOutput audioOutputDropdown;
     public DropdownMuteType micMuteDropdown;
     public DropdownMuteType videoMuteDropdown;
-    public DropdownRoomType roomTypeDropdown;
     public DropdownVideoCodecType videoCodecDropdown;
     public DropdownSendReceive sendReceiveDropdown;
     public DropdownIceServersProtocol dropdownIceServersProtocol;
@@ -58,23 +57,10 @@ public class AppBehaviour : BehaviorBase
     [DllImport("user32.dll")]
     public static extern IntPtr FindWindow(string lpszClass, string lpszTitle);
 
-    void Awake()
+    public override void Awake()
     {
-        userDataFilePath = Application.persistentDataPath + "/UserData.json";
-        userData = UserDataSerializer.Load(userDataFilePath);
+        base.Awake();
 
-        // Read configuration.
-        try
-        {
-            Secrets.GetInstance();
-        }
-        catch (Exception ex)
-        {
-            Logger.Error("Failed to read configuration.", ex);
-            UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.Abort);
-        }
-
-        roomTypeDropdown.Initialize();
         videoCodecDropdown.Initialize();
         sendReceiveDropdown.Initialize();
         dropdownIceServersProtocol.Initialize();
@@ -110,7 +96,6 @@ public class AppBehaviour : BehaviorBase
         HasLocalVideoTrack = true;
         InitializeClient(new ClientListener(this));
         InitializeDevice();
-        SetConfigWebrtcLog();
 
         // Set MuteType dropdown.
         micMuteDropdown.Initialize(OnMicMuteValueChanged);
@@ -415,7 +400,6 @@ public class AppBehaviour : BehaviorBase
                 var remoteView = appBehaviour.remoteTracks[trackId];
                 if (remoteView.GetConnectionId() == connectionId)
                 {
-                    remoteView.GetVideoTrack().RemoveSink();
                     MonoBehaviour.Destroy(remoteView.GetTexture());
                     appBehaviour.RemoveRemoteView(trackId);
                     break;

@@ -4,6 +4,8 @@ using com.ricoh.livestreaming.webrtc;
 using log4net;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -11,6 +13,7 @@ using UnityEngine.UI;
 
 public abstract class BehaviorBase : MonoBehaviour
 {
+    public DropdownRoomType roomTypeDropdown;
     public SynchronizationContext UnityUIContext { get; protected set; }
     public RTCStatsLogger StatsLogger { get; protected set; }
     public VideoTrack RenderLocalVideoTrack { get; protected set; }
@@ -25,7 +28,6 @@ public abstract class BehaviorBase : MonoBehaviour
     protected static readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     protected Client client;
-    protected string logFilePath;
     protected virtual VideoCapturer VideoCapturer { get; }
     protected virtual RoomSpec.Type RoomType { get; }
     protected virtual int MaxBitrateKbps { get; }
@@ -33,6 +35,37 @@ public abstract class BehaviorBase : MonoBehaviour
     protected UserData userData;
     protected string userDataFilePath;
     protected WindowProcedureHook windowProcedureHook;
+
+    private string logFilePath;
+    private string webrtcLogPath;
+    private const string webrtcLogName = "webrtc";
+    private const uint webrtcMaxTotalFileSizeMbyte = 10;
+
+    public virtual void Awake()
+    {
+        logFilePath = Path.Combine(Application.persistentDataPath, "logs");
+        webrtcLogPath = Path.Combine(logFilePath, "webrtc");
+
+        // webrtc ログのバックアップフォルダを削除
+        DeleteWebrtcLog();
+
+        userDataFilePath = Application.persistentDataPath + "/UserData.json";
+        userData = UserDataSerializer.Load(userDataFilePath);
+
+        // Read configuration.
+        try
+        {
+            Secrets.GetInstance();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error("Failed to read configuration.", ex);
+            UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.Abort);
+        }
+
+        // Set RoomType dropdown.
+        roomTypeDropdown.Initialize();
+    }
 
     /// <summary>
     /// <see cref="client"/>を新しく生成し、初期化処理を行う。
@@ -42,17 +75,57 @@ public abstract class BehaviorBase : MonoBehaviour
     {
         client = new Client();
         client.SetEventListener(listener);
+        SetConfigWebrtcLog(client);
         SetDevice(client);
     }
 
     /// <summary>
     /// webrtcのログの設定を行う
     /// </summary>
-    protected void SetConfigWebrtcLog()
+    /// <param name="client"><see cref="Client"/></param>
+    protected void SetConfigWebrtcLog(Client client)
     {
-        logFilePath = Application.persistentDataPath + "/logs";
-        uint logSize = 10 * 1024 * 1024;
-        WebrtcLog.Create(logFilePath, "webrtc_", logSize);
+        Directory.CreateDirectory(webrtcLogPath);
+
+        // 前回 Connect 時の webrtc ログを検索
+        var files = Directory.EnumerateFiles(webrtcLogPath, webrtcLogName + "*", SearchOption.TopDirectoryOnly);
+        if (files.Count() > 0)
+        {
+            // webrtc ログを別フォルダに退避
+            string backupDir = Path.Combine(webrtcLogPath, DateTime.Now.ToString("yyyyMMddHHmmss"));
+            Directory.CreateDirectory(backupDir);
+
+            foreach (string file in files)
+            {
+                File.Move(file, Path.Combine(backupDir, Path.GetFileName(file)));
+            }
+        }
+
+        try
+        {
+            client.SetLibWebrtcLogOption(new LibWebrtcLogOption(
+                Path.Combine(webrtcLogPath, webrtcLogName),
+                webrtcMaxTotalFileSizeMbyte,
+                LibWebrtcLogOption.Level.Info));
+        }
+        catch (SDKException e)
+        {
+            Logger.Error($"Failed to SetLibWebrtcLogOption. code={e.Detail.Code}", e);
+        }
+    }
+
+    /// <summary>
+    /// webrtc ログフォルダ削除
+    /// </summary>
+    protected void DeleteWebrtcLog()
+    {
+        Directory.CreateDirectory(webrtcLogPath);
+
+        var folders = Directory.EnumerateDirectories(webrtcLogPath, "*", SearchOption.AllDirectories);
+        foreach (string folder in folders)
+        {
+            Directory.Delete(folder, true);
+        }
     }
 
     /// <summary>

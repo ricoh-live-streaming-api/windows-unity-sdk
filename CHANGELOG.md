@@ -1,4 +1,18 @@
 # CHANGELOG
+
+## v2.1.0
+- API 変更
+  - [libwebrtc のログをファイルに出力するメソッド SetLibWebrtcLogOption を追加](https://api.livestreaming.ricoh/docs/clientsdk-api-external-specification/#setlibwebrtclogoption)しました
+
+- SDK 修正
+  - [NetworkError の追加と廃止](https://api.livestreaming.ricoh/docs/clientsdk-error-specification/#networkerror)を行いました
+    - 追加: Room 管理 API (3 月までにリリース予定) でアプリケーションから切断された場合のエラーコード 53002 ConnectionClosedByApplication
+    - 追加: Room の最大持続時間(24 時間)を越えて切断された場合のエラーコード 53003 MaxRoomPeriodExceeded
+    - 廃止: 54000 OnTrackTimeout。同等の内容はログに出力されるのみになります
+
+- サンプルアプリ修正
+  - SetLibWebrtcLogOption の使用例を追加しました
+
 ## v2.0.0
 * API変更
   * 破壊的変更 IClientListenerが実装を要求するコールバックメソッドの引数を1つに統一

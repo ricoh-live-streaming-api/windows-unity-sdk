@@ -74,6 +74,49 @@
             Use TLS only.
             </summary>
         </member>
+        <member name="T:com.ricoh.livestreaming.LibWebrtcLogOption">
+            <summary>
+            libwebrtc log option.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.LibWebrtcLogOption.Level">
+            <summary>
+            Log levels.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.LibWebrtcLogOption.Level.Verbose">
+            <summary>
+            All logs.
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.LibWebrtcLogOption.Level.Info">
+            <summary>
+            Important logs only.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LibWebrtcLogOption.Path">
+            <summary>
+            Full path of the destination filename.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LibWebrtcLogOption.MaxTotalFileSize">
+            <summary>
+            Maximum total size of log files(Mbyte).
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.LibWebrtcLogOption.LogLevel">
+            <summary>
+            Log levels.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.LibWebrtcLogOption.#ctor(System.String,System.UInt32,com.ricoh.livestreaming.LibWebrtcLogOption.Level)">
+            <summary>
+            Create new LibWebrtcLogOption.
+            </summary>
+            <param name="path">Full path of the destination filename. If the file name contains an extension, it is ignored.</param>
+            <param name="maxTotalFileSize">Maximum total size of log files(Mbyte).</param>
+            <param name="logLevel">Log <see cref="T:com.ricoh.livestreaming.LibWebrtcLogOption.Level"/>.</param>
+        </member>
         <member name="T:com.ricoh.livestreaming.LSAddLocalTrackEvent">
             <summary>
             Parameters notified by <see cref="M:com.ricoh.livestreaming.IClientListener.OnAddLocalTrack(com.ricoh.livestreaming.LSAddLocalTrackEvent)"/> events.
@@ -280,6 +323,15 @@
             取り出す Task の順序は登録順とは限らない
             </summary>
             <returns>取り出した Task、取り出す Task がなくなった場合は、IsCompleted = true を設定し null を返却</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.SignalingCloseError.GetError(System.Int32,System.String@,System.Boolean@)">
+            <summary>
+            エラー内容を取得する
+            </summary>
+            <param name="code">判定対象のコード</param>
+            <param name="error">エラー内容</param>
+            <param name="shouldReport">報告するべきエラーの場合は true, 無視する場合は false</param>
+            <returns>判定対象のコードが見つかった場合は true, それ以外は false</returns>
         </member>
         <member name="T:com.ricoh.livestreaming.SFUUpdateConnectOptionsMessage">
             <summary>
@@ -889,6 +941,15 @@
             SFU UpdateTrackのメッセージ。
             </summary>
         </member>
+        <member name="M:com.ricoh.livestreaming.SignalingError.GetError(System.Int32,System.String@,System.Boolean@)">
+            <summary>
+            エラー内容を取得する
+            </summary>
+            <param name="code">判定対象のコード</param>
+            <param name="error">エラー内容</param>
+            <param name="shouldReport">報告するべきエラーの場合は true, 無視する場合は false</param>
+            <returns>判定対象のコードが見つかった場合は true, それ以外は false</returns>
+        </member>
         <member name="T:com.ricoh.livestreaming.SourceType">
             <summary>
             Tagの生成元の種類
@@ -1358,6 +1419,32 @@
             </summary>
             <param name="action"></param>
         </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.AudioCapturer">
+            <summary>
+            Audio Capturer Interface.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.AudioCapturer.#ctor">
+            <summary>
+            Create new AudioCapturer.
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.AudioDataCapturer">
+            <summary>
+            Audio Data Capturer interface.
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.AudioDataCapturer.NativeWebrtcWrapperPtr">
+            <summary>
+            The pointer of WebrtcWrapper.
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.AudioDataCapturer.#ctor">
+            <summary>
+            Create new AudioDataCapturer.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">IWebrtcWrapper instance is null or have no interface of IWebrtcWrapperForPixelImage.</exception>
+        </member>
         <member name="T:com.ricoh.livestreaming.webrtc.ByteArrayCapturer">
             <summary>
             Byte array capturer interface.
@@ -1619,6 +1706,62 @@
             <summary>
             PeerConnectionObserver Interface
             </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.PixelImageCapturer">
+            <summary>
+            PixelImage用キャプチャラー
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.webrtc.PixelImageCapturer.NativeWebrtcWrapperPtr">
+            <summary>
+            WebrtcWrapperへのポインタ<br/>
+            パフォーマンス改善のために<see cref="M:com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage(System.Byte[])"/>を通さずに直接WebrtcWrapperを呼び出すために使用する
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PixelImageCapturer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="videoWidth">ビデオサイズ（幅[pixel]）</param>
+            <param name="videoHeight">ビデオサイズ（高さ[pixel]）</param>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PixelImageCapturer.RenderPixelImage(System.Byte[])">
+            <summary>
+            バイト配列の画像イメージを送信する
+            </summary>
+            <param name="image">バイト配列の画像イメージ</param>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.PixelImageRenerer">
+            <summary>
+            受信画像をバイト配列で扱うためのクラス
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.webrtc.PixelImageRenerer.webrtcWrapper">
+            <summary>
+            IWebrtcWrapperForPixelImageの実体
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PixelImageRenerer.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PixelImageRenerer.GetTrackId(com.ricoh.livestreaming.webrtc.VideoTrack)">
+            <summary>
+            ビデオトラックのIDを取得する<br/>
+            パフォーマンス改善のために<see cref="M:com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData(System.Byte[],System.Int32,System.Int32,com.ricoh.livestreaming.webrtc.VideoTrack)"/>を通さずに直接WebrtcWrapperを呼び出すために使用する
+            </summary>
+            <param name="videoTrack"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.PixelImageRenerer.WritePixelData(System.Byte[],System.Int32,System.Int32,com.ricoh.livestreaming.webrtc.VideoTrack)">
+            <summary>
+            バイト配列に受信画像を書き込む
+            </summary>
+            <param name="buffer">画像イメージを書き込むバッファ（サイズはwidth*4*height）</param>
+            <param name="width">画像イメージの幅[px]</param>
+            <param name="height">画像イメージの高さ[px]</param>
+            <param name="videoTrack">ビデオトラック</param>
         </member>
         <member name="T:com.ricoh.livestreaming.webrtc.VideoCapturerDeviceConfig">
             <summary>
@@ -2041,6 +2184,27 @@
             </summary>
             <returns>IWebrtcWrapperのインスタンス</returns>
         </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister">
+            <summary>
+            WebrtcWrapperForPixelImageを使用するように登録するクラス
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImageRegister.Apply">
+            <summary>
+            FactoryクラスにWebrtcWrapperForPixelImageを登録する
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImage">
+            <summary>
+            WebrtcWrapperを継承してUnrealEngine向けにピクセルデータを扱えるメソッドを追加
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.webrtc.WebrtcWrapperForPixelImage.SetInstance(com.ricoh.livestreaming.webrtc.IWebrtcWrapperForPixelImage)">
+            <summary>
+            テスト用のインスタンスをセットする
+            </summary>
+            <param name="wrapper"></param>
+        </member>
         <member name="P:com.ricoh.livestreaming.SignalingChannel.IsClosing">
             <summary>
             true : Close()を呼び出し後, false : Open()を呼び出し後
@@ -2239,6 +2403,13 @@
             <param name="maxFramerate">Upper limit of transmission frame rate.</param>
             <exception cref="T:com.ricoh.livestreaming.SDKException">Thrown when the method was called other than Open state.</exception>
             <exception cref="T:com.ricoh.livestreaming.SDKException">The maxFramerate is out of the specified range.</exception>
+        </member>
+        <member name="M:com.ricoh.livestreaming.Client.SetLibWebrtcLogOption(com.ricoh.livestreaming.LibWebrtcLogOption)">
+            <summary>
+            Set libwebrtc logging option and start logging.
+            </summary>
+            <param name="option"><see cref="T:com.ricoh.livestreaming.LibWebrtcLogOption"/></param>
+            <exception cref="T:com.ricoh.livestreaming.SDKException">The <see cref="P:com.ricoh.livestreaming.LibWebrtcLogOption.MaxTotalFileSize"/> is out of the specified range.</exception>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.ReplaceAllPeerLocalTracks(System.IntPtr,System.IntPtr,com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType)">
             <summary>
