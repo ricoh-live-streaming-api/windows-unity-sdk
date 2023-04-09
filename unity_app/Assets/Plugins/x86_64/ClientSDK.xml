@@ -302,6 +302,159 @@
             Metadata of the updated remote track.
             </summary>
         </member>
+        <member name="T:com.ricoh.livestreaming.RemoteStreamSet">
+            <summary>
+            StreamId をキーに <see cref="T:com.ricoh.livestreaming.RemoteStreamSet.RemoteStream"/> を管理する
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteStreamSet.RemoteStream.Stream">
+            <summary>
+            Remote stream
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteStreamSet.RemoteStream.ConnectionId">
+            <summary>
+            Remote ConnectionId
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.RemoteStreamSet.remoteStreams">
+            <summary>
+            StreamId をキーとした <see cref="T:com.ricoh.livestreaming.RemoteStreamSet.RemoteStream"/> の連想配列
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteStreamSet.ConnectionId">
+            <summary>
+            ConnectionId
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteStreamSet.AddOrUpdate(System.String,System.IntPtr,System.String)">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.webrtc.MediaStream"/> を追加・更新する
+            </summary>
+            <param name="streamId">追加・更新対象の StreamId</param>
+            <param name="nativeStream">追加・更新対象の MediaStream のポインタ</param>
+            <param name="connectionId">追加・更新対象の ConnectionId</param>
+            <returns>追加・更新した <see cref="T:com.ricoh.livestreaming.webrtc.MediaStreamTrack"/></returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteStreamSet.Remove(System.String,com.ricoh.livestreaming.webrtc.MediaStream@)">
+            <summary>
+            ConnectionId で指定した <see cref="T:com.ricoh.livestreaming.RemoteStreamSet.RemoteStream"/> を削除する
+            </summary>
+            <param name="connectionId">削除対象の ConnectionId</param>
+            <param name="mediaStream">削除された <see cref="T:com.ricoh.livestreaming.webrtc.MediaStream"/></param>
+            <returns>true : 削除成功, false : 削除失敗</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteStreamSet.Get(System.String,com.ricoh.livestreaming.webrtc.MediaStream@)">
+            <summary>
+            TrackId をキーに <see cref="T:com.ricoh.livestreaming.webrtc.MediaStream"/> を取得する
+            </summary>
+            <param name="trackId">取得対象の TrackId</param>
+            <param name="mediaStream">取得した <see cref="T:com.ricoh.livestreaming.webrtc.MediaStream"/>, 取得できなかった場合は null</param>
+            <returns>true : 取得成功, false : 取得失敗</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteStreamSet.Clear">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.webrtc.MediaStream"/> をクリアする
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteTrack.MediaStreamTrack">
+            <summary>
+            Remote connection の MediaStreamTrack<br/>
+            <see cref="M:com.ricoh.livestreaming.Client.SFUPeerConnectionObserver.OnAddTrack(System.Int32,System.String,System.IntPtr,System.String,System.IntPtr,System.UInt32,System.String,System.String)"/> で設定するため、取得タイミング次第では null の可能性がある
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteTrack.Metadata">
+            <summary>
+            Remote connection の RemoteTrackMetadata
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteTrack.ReservedRemoteTagList">
+            <summary>
+            <see cref="M:com.ricoh.livestreaming.Client.SFUPeerConnectionObserver.OnAddTrack(System.Int32,System.String,System.IntPtr,System.String,System.IntPtr,System.UInt32,System.String,System.String)"/> 前に通知された <see cref="M:com.ricoh.livestreaming.ISignalingChannelListener.OnUpdateRemoteTrack(System.String,System.Collections.Generic.List{com.ricoh.livestreaming.RemoteTag})"/> の RemoteTag を退避
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteTrack.IsTrackAdded">
+            <summary>
+            <see cref="M:com.ricoh.livestreaming.Client.SFUPeerConnectionObserver.OnAddTrack(System.Int32,System.String,System.IntPtr,System.String,System.IntPtr,System.UInt32,System.String,System.String)"/> したかどうか
+            </summary>
+        </member>
+        <member name="P:com.ricoh.livestreaming.RemoteTrack.ConnectionId">
+            <summary>
+            ConnectionId
+            </summary>
+        </member>
+        <member name="T:com.ricoh.livestreaming.RemoteTrackSet">
+            <summary>
+            TrackId をキーに <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> を管理する<br/>
+            SFU : TrackId は <see cref="T:com.ricoh.livestreaming.RemoteTrackMetadata"/> でサーバーから通知された ID を使用する
+            P2P : TrackId は <see cref="M:com.ricoh.livestreaming.Client.SFUPeerConnectionObserver.OnAddTrack(System.Int32,System.String,System.IntPtr,System.String,System.IntPtr,System.UInt32,System.String,System.String)"/> で通知された ID を使用する
+            </summary>
+        </member>
+        <member name="F:com.ricoh.livestreaming.RemoteTrackSet.remoteTracks">
+            <summary>
+            TrackId をキーとした <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> の連想配列
+            </summary>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteTrackSet.Add(com.ricoh.livestreaming.RemoteTrackMetadata)">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> を追加する
+            </summary>
+            <param name="remoteTrackMetadata"><see cref="T:com.ricoh.livestreaming.RemoteTrack"/> に設定する <see cref="T:com.ricoh.livestreaming.RemoteTrackMetadata"/></param>
+            <returns>true : 追加成功, false : <see cref="P:com.ricoh.livestreaming.RemoteTrackMetadata.TrackId"/> が登録済みの TrackId と重複する</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteTrackSet.Add(com.ricoh.livestreaming.webrtc.MediaStreamTrack,System.String)">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> を追加する
+            </summary>
+            <param name="mediaStreamTrack"><see cref="T:com.ricoh.livestreaming.RemoteTrack"/> に設定する <see cref="T:com.ricoh.livestreaming.webrtc.MediaStreamTrack"/></param>
+            <param name="connectionId"><see cref="T:com.ricoh.livestreaming.RemoteTrack"/> に設定する ConnectionId</param>
+            <returns>true : 追加成功, false : <see cref="P:com.ricoh.livestreaming.webrtc.MediaStreamTrack.Id"/> が登録済みの TrackId と重複する</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteTrackSet.Remove(System.String,com.ricoh.livestreaming.RemoteTrack@)">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> を削除する
+            </summary>
+            <param name="trackId">削除対象の TrackId</param>
+            <param name="remoteTrack">削除された <see cref="T:com.ricoh.livestreaming.RemoteTrack"/></param>
+            <returns>true : 削除成功, false : 削除失敗</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteTrackSet.GetByTrackId(System.String,com.ricoh.livestreaming.RemoteTrack@)">
+            <summary>
+            TrackId をキーに <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> を取得する
+            </summary>
+            <param name="trackId">取得対象の TrackId</param>
+            <param name="remoteTrack">取得した <see cref="T:com.ricoh.livestreaming.RemoteTrack"/>, 取得できなかった場合は null</param>
+            <returns>true : 取得成功, false : 取得失敗</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteTrackSet.GetByStreamId(System.String,System.String,com.ricoh.livestreaming.RemoteTrack@)">
+            <summary>
+            mid と msid をキーに <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> を取得する
+            </summary>
+            <param name="mid">取得対象の mid</param>
+            <param name="msid">取得対象の msid</param>
+            <param name="remoteTrack">取得した <see cref="T:com.ricoh.livestreaming.RemoteTrack"/>, 取得できなかった場合は null</param>
+            <returns>true : 取得成功, false : 取得失敗</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteTrackSet.GetByConnectionId(System.String)">
+            <summary>
+            ConnectionId をキーに TrackId と <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> のペアを取得する
+            </summary>
+            <param name="connectionId">取得対象の ConnectionId</param>
+            <returns>取得した TrackId と <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> のペアの列挙子</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteTrackSet.GetByConnectionId(System.String,com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType)">
+            <summary>
+            ConnectionId と <see cref="T:com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType"/> をキーに TrackId と <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> のペアを取得する
+            </summary>
+            <param name="connectionId">取得対象の ConnectionId</param>
+            <param name="trackType">取得対象の <see cref="T:com.ricoh.livestreaming.webrtc.MediaStreamTrack.TrackType"/></param>
+            <returns>取得した TrackId と <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> のペア</returns>
+        </member>
+        <member name="M:com.ricoh.livestreaming.RemoteTrackSet.Clear">
+            <summary>
+            <see cref="T:com.ricoh.livestreaming.RemoteTrack"/> をクリアする
+            </summary>
+        </member>
         <member name="P:com.ricoh.livestreaming.ReservedTasks.IsCompleted">
             <summary>
             保留中の全 Task を取り出したかどうか
@@ -1535,35 +1688,27 @@
             Dispose
             </summary>
         </member>
-        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.AddTrack(com.ricoh.livestreaming.webrtc.AudioTrack)">
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.AddLocalTrack(com.ricoh.livestreaming.webrtc.AudioTrack)">
             <summary>
-            Add audio track.
+            Add local audio track.
             </summary>
             <param name="track">Audio track.</param>
             <returns>If true, success. If false, failure. </returns>
             <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
         </member>
-        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.AddTrack(com.ricoh.livestreaming.webrtc.VideoTrack)">
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.AddLocalTrack(com.ricoh.livestreaming.webrtc.VideoTrack)">
             <summary>
-            Add vido track.
+            Add local vido track.
             </summary>
             <param name="track">Video track.</param>
             <returns>If true, success. If false, failure. </returns>
             <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
         </member>
-        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.RemoveTrack(com.ricoh.livestreaming.webrtc.AudioTrack)">
+        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.AddRemoteTrack(com.ricoh.livestreaming.webrtc.MediaStreamTrack)">
             <summary>
-            Remove audio track.
+            Add a remote MediaStreamTrack
             </summary>
-            <param name="track">Video track.</param>
-            <returns>If true, success. If false, failure. </returns>
-            <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
-        </member>
-        <member name="M:com.ricoh.livestreaming.webrtc.MediaStream.RemoveTrack(com.ricoh.livestreaming.webrtc.VideoTrack)">
-            <summary>
-            Remove vido track.
-            </summary>
-            <param name="track">Audio track.</param>
+            <param name="mediaStreamTrack">MediaStreamTrack to be added.</param>
             <returns>If true, success. If false, failure. </returns>
             <exception cref="T:System.InvalidOperationException">Thrown when the method is called while the MediaStream has been disposed.</exception>
         </member>
@@ -2214,16 +2359,6 @@
             <summary>
             Client class of RICOH Live Streaming API.
             This class has a state. The state can be acquired with the <see cref="M:com.ricoh.livestreaming.Client.GetState"/> method. The following figure shows the state transition.
-            </summary>
-        </member>
-        <member name="P:com.ricoh.livestreaming.Client.RemoteTrackMetadataInfo.ReservedRemoteTagList">
-            <summary>
-            OnAddTrack 前に通知された OnUpdateRemoteTrack の RemoteTag を退避
-            </summary>
-        </member>
-        <member name="P:com.ricoh.livestreaming.Client.RemoteTrackMetadataInfo.IsTrackAdded">
-            <summary>
-            OnAddTrack したかどうか
             </summary>
         </member>
         <member name="M:com.ricoh.livestreaming.Client.#ctor">

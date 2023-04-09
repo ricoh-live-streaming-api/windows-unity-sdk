@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.1.1
+- SDK 修正
+  - 受信している映像の解像度が変更されるとクラッシュすることがある問題を修正しました
+  - P2P 型接続時の IClientListener#OnRemoveRemoteConnection() コールバックの引数に MediaStreamTrack が含まれていなかった問題を修正しました
+  - IClientListener#OnAddRemoteTrack()、IClientListener#OnUpdateRemoteTrack()、IClientListener#OnUpdateMute() コールバックの引数の MediaStream に AudioTrack と VideoTrack が含まれていなかった問題を修正しました
+
 ## v2.1.0
 - API 変更
   - [libwebrtc のログをファイルに出力するメソッド SetLibWebrtcLogOption を追加](https://api.livestreaming.ricoh/docs/clientsdk-api-external-specification/#setlibwebrtclogoption)しました
